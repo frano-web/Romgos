@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0e13">
+  <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie – stroje, treningi, informacje i kontakt.">
+  <title>Akademia Unihokeja Romgos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Akademia Unihokeja Romgos – strona główna">
+        <div class="brand-mark" id="brandMark">AU</div>
+        <div class="brand-copy">
+          <strong>AKADEMIA UNIHOKEJA</strong>
+          <span>ROMGOS • KOTLIN</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Otwórz menu</span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#zamowienia" class="nav-primary">Zamów strój</a>
+        <a href="#akademia">Akademia</a>
+        <a href="#treningi">Treningi</a>
+        <a href="#sponsorzy">Sponsorzy</a>
+        <a href="#rozgrywki">Rozgrywki</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-dark">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">AKADEMIA UNIHOKEJA ROMGOS • KOTLIN</div>
+          <h1>Stroje klubowe<br><span>bez chaosu.</span></h1>
+          <p>
+            Wybierz produkt, rozmiar i złóż zamówienie w kilka chwil.
+            Bez płatności online — płatność odbywa się przy odbiorze.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#zamowienia">Zamów strój</a>
+            <a class="btn btn-ghost" href="#rozmiary">Tabela rozmiarów</a>
+          </div>
+
+          <div class="hero-pills">
+            <span>✓ Proste zamówienie</span>
+            <span>✓ Potwierdzenie danych</span>
+            <span>✓ Płatność przy odbiorze</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-card">
+            <div class="visual-tag">MIEJSCE NA GŁÓWNĄ FOTOGRAFIĘ</div>
+            <div class="jersey-placeholder">
+              <div class="jersey-neck"></div>
+              <div class="jersey-body">
+                <span>ROMGOS</span>
+                <strong>24</strong>
+              </div>
+            </div>
+            <p>Po otrzymaniu zdjęć tutaj wstawimy zawodnika / strój / wizualizację.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-info">
+      <div class="container quick-grid">
+        <div>
+          <span class="quick-label">01</span>
+          <strong>Wybierz produkt</strong>
+          <small>Koszulka, spodenki, dres lub dodatki.</small>
+        </div>
+        <div>
+          <span class="quick-label">02</span>
+          <strong>Podaj rozmiar</strong>
+          <small>Skorzystaj z tabeli rozmiarów.</small>
+        </div>
+        <div>
+          <span class="quick-label">03</span>
+          <strong>Wyślij zamówienie</strong>
+          <small>Zamówienie trafia do Akademii.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="zamowienia">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">STREFA ZAMÓWIEŃ</span>
+            <h2>Wybierz stroje i dodatki</h2>
+          </div>
+          <p>
+            Poniższe produkty są przykładowe. Zdjęcia, ceny i warianty podmienimy,
+            kiedy dostaniesz komplet materiałów od Akademii.
+          </p>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+          <!-- Produkty generowane są z config.js -->
+        </div>
+
+        <div class="order-layout">
+          <aside class="cart-card" id="cartCard">
+            <div class="cart-head">
+              <div>
+                <span class="section-kicker">TWOJE ZAMÓWIENIE</span>
+                <h3>Podsumowanie</h3>
+              </div>
+              <span class="cart-count" id="cartCount">0</span>
+            </div>
+
+            <div class="cart-empty" id="cartEmpty">
+              Dodaj wybrany produkt do zamówienia.
+            </div>
+
+            <div class="cart-items" id="cartItems"></div>
+
+            <div class="cart-total">
+              <span>Łącznie</span>
+              <strong id="cartTotal">0,00 zł</strong>
+            </div>
+
+            <div class="payment-note">
+              <strong>Płatność przy odbiorze</strong>
+              <span>Na stronie nie pobieramy żadnych płatności.</span>
+            </div>
+          </aside>
+
+          <div class="order-form-card">
+            <div class="section-kicker">DANE ZAMAWIAJĄCEGO</div>
+            <h3>Uzupełnij dane</h3>
+
+            <form id="orderForm">
+              <div class="form-grid">
+                <label>
+                  <span>Imię i nazwisko rodzica / opiekuna *</span>
+                  <input type="text" name="parentName" required autocomplete="name">
+                </label>
+
+                <label>
+                  <span>Imię i nazwisko zawodnika *</span>
+                  <input type="text" name="playerName" required>
+                </label>
+
+                <label>
+                  <span>Adres e-mail *</span>
+                  <input type="email" name="email" required autocomplete="email">
+                </label>
+
+                <label>
+                  <span>Telefon kontaktowy *</span>
+                  <input type="tel" name="phone" required autocomplete="tel">
+                </label>
+
+                <label>
+                  <span>Grupa / rocznik</span>
+                  <input type="text" name="group" placeholder="np. młodzicy / 2013">
+                </label>
+
+                <label>
+                  <span>Preferowany sposób odbioru</span>
+                  <select name="pickup">
+                    <option>Odbiór na treningu</option>
+                    <option>Odbiór po wcześniejszym kontakcie</option>
+                    <option>Inny – wpiszę w uwagach</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                <span>Uwagi do zamówienia</span>
+                <textarea name="notes" rows="4" placeholder="Np. dodatkowy nadruk, numer zawodnika, inna informacja..."></textarea>
+              </label>
+
+              <label class="check-row">
+                <input type="checkbox" name="confirm" required>
+                <span>Potwierdzam poprawność danych i przyjmuję do wiadomości, że płatność następuje przy odbiorze.</span>
+              </label>
+
+              <button class="btn btn-primary btn-full" type="submit" id="submitOrder">
+                Wyślij zamówienie
+              </button>
+
+              <p class="form-status" id="formStatus"></p>
+              <p class="privacy-mini">
+                Finalnie dodamy tutaj krótką informację o przetwarzaniu danych i politykę prywatności.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="rozmiary">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">DOBÓR ROZMIARU</span>
+            <h2>Tabela rozmiarów</h2>
+          </div>
+          <p>Na razie wartości przykładowe — docelowo wstawimy tabelę producenta.</p>
+        </div>
+
+        <div class="size-wrap">
+          <div class="size-tabs" id="sizeTabs">
+            <button class="active" data-size-table="kids">Dziecięce</button>
+            <button data-size-table="adult">Dorosłe</button>
+          </div>
+
+          <div class="table-card">
+            <table class="size-table active" data-table="kids">
+              <thead>
+                <tr>
+                  <th>Rozmiar</th>
+                  <th>Wzrost</th>
+                  <th>Klatka</th>
+                  <th>Pas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>128</td><td>123–132 cm</td><td>64–68 cm</td><td>58–62 cm</td></tr>
+                <tr><td>140</td><td>133–144 cm</td><td>68–74 cm</td><td>61–66 cm</td></tr>
+                <tr><td>152</td><td>145–156 cm</td><td>74–80 cm</td><td>65–70 cm</td></tr>
+                <tr><td>164</td><td>157–168 cm</td><td>80–86 cm</td><td>69–74 cm</td></tr>
+              </tbody>
+            </table>
+
+            <table class="size-table" data-table="adult">
+              <thead>
+                <tr>
+                  <th>Rozmiar</th>
+                  <th>Wzrost</th>
+                  <th>Klatka</th>
+                  <th>Pas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>S</td><td>164–174 cm</td><td>86–94 cm</td><td>74–82 cm</td></tr>
+                <tr><td>M</td><td>170–180 cm</td><td>94–102 cm</td><td>82–90 cm</td></tr>
+                <tr><td>L</td><td>176–186 cm</td><td>102–110 cm</td><td>90–98 cm</td></tr>
+                <tr><td>XL</td><td>182–192 cm</td><td>110–118 cm</td><td>98–106 cm</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="measure-note">
+            <strong>Jak mierzyć?</strong>
+            <p>Po otrzymaniu wytycznych producenta dodamy prostą instrukcję z grafiką pokazującą miejsca pomiaru.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="akademia">
+      <div class="container split-section">
+        <div>
+          <span class="section-kicker">O NAS</span>
+          <h2>Akademia Unihokeja Romgos</h2>
+          <p class="lead">
+            Miejsce na krótki, konkretny opis Akademii: dla kogo prowadzone są zajęcia,
+            jaki jest cel klubu, od kiedy działa i co wyróżnia szkolenie.
+          </p>
+          <p>
+            Nie trzeba tutaj robić rozbudowanej „encyklopedii”. Rodzic powinien w 20–30 sekund
+            zrozumieć, czym jest Akademia i gdzie odbywają się zajęcia.
+          </p>
+        </div>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <span>LOKALIZACJA</span>
+            <strong>Kotlin</strong>
+            <small>Dokładny adres uzupełnimy później.</small>
+          </div>
+          <div class="info-card">
+            <span>DYSCYPLINA</span>
+            <strong>Unihokej</strong>
+            <small>Treningi dzieci i młodzieży.</small>
+          </div>
+          <div class="info-card">
+            <span>CEL</span>
+            <strong>Sport + rozwój</strong>
+            <small>Opis filozofii Akademii do uzupełnienia.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="treningi">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">TRENINGI</span>
+            <h2>Kiedy i gdzie trenujemy?</h2>
+          </div>
+          <p>Po otrzymaniu grafiku wpiszemy konkretne grupy, dni, godziny i halę.</p>
+        </div>
+
+        <div class="training-grid">
+          <article class="training-card">
+            <span class="training-group">GRUPA 01</span>
+            <h3>Młodsi</h3>
+            <p>Wtorek • 17:00–18:15</p>
+            <p>Czwartek • 17:00–18:15</p>
+            <small>Przykładowy harmonogram</small>
+          </article>
+          <article class="training-card">
+            <span class="training-group">GRUPA 02</span>
+            <h3>Starsi</h3>
+            <p>Wtorek • 18:15–19:45</p>
+            <p>Czwartek • 18:15–19:45</p>
+            <small>Przykładowy harmonogram</small>
+          </article>
+          <article class="training-card accent-card">
+            <span class="training-group">NOWI ZAWODNICY</span>
+            <h3>Chcesz dołączyć?</h3>
+            <p>Skontaktuj się z Akademią i sprawdź aktualny nabór.</p>
+            <a href="#kontakt">Przejdź do kontaktu →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sponsorzy">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">PARTNERZY</span>
+            <h2>Sponsorzy Akademii</h2>
+          </div>
+          <p>Logotypy podmienimy po otrzymaniu materiałów.</p>
+        </div>
+
+        <div class="sponsor-grid">
+          <div class="sponsor-placeholder">LOGO 01</div>
+          <div class="sponsor-placeholder">LOGO 02</div>
+          <div class="sponsor-placeholder">LOGO 03</div>
+          <div class="sponsor-placeholder">LOGO 04</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="rozgrywki">
+      <div class="container split-section align-center">
+        <div>
+          <span class="section-kicker">MECZE I WYNIKI</span>
+          <h2>Rozgrywki</h2>
+          <p class="lead">
+            Zamiast ręcznie przepisywać tabelę można kierować rodziców bezpośrednio
+            do aktualnych rozgrywek w serwisie Polskiego Związku Unihokeja.
+          </p>
+          <a class="btn btn-dark" id="leagueLink" target="_blank" rel="noopener noreferrer">
+            Sprawdź rozgrywki PZU
+          </a>
+        </div>
+
+        <div class="score-card">
+          <span>AKTUALNE ROZGRYWKI</span>
+          <strong>Polski Związek Unihokeja</strong>
+          <p>Link ustawiony w jednym miejscu w pliku <code>config.js</code>.</p>
+          <div class="score-lines">
+            <i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="container contact-grid">
+        <div>
+          <span class="section-kicker">KONTAKT</span>
+          <h2>Masz pytanie?</h2>
+          <p class="lead">Dane kontaktowe, Facebook i Instagram uzupełnimy po ich otrzymaniu.</p>
+        </div>
+
+        <div class="contact-card">
+          <a id="contactEmail" href="#">e-mail do uzupełnienia</a>
+          <a id="contactPhone" href="#">telefon do uzupełnienia</a>
+
+          <div class="social-row">
+            <a id="facebookLink" href="#" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a id="instagramLink" href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Akademia Unihokeja Romgos</strong>
+        <span>Kotlin</span>
+      </div>
+      <div class="footer-links">
+        <a href="#zamowienia">Zamówienia</a>
+        <a href="#treningi">Treningi</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <small>© <span id="year"></span> Akademia Unihokeja Romgos</small>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
