@@ -1,6 +1,6 @@
-# Akademia Unihokeja Romgos — wersja biało-czerwona
+# Akademia Unihokeja Romgos — szkielet strony
 
-Gotowy statyczny projekt pod GitHub Pages. Wersja po poprawkach: biało-czerwona identyfikacja, prawdziwe zdjęcie Akademii, zdjęcie dresu, nowe hero, rozbudowana stopka i mikroanimacje.
+Gotowy statyczny projekt pod GitHub Pages.
 
 ## Pliki
 - `index.html` — cała strona

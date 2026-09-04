@@ -41,15 +41,15 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-bg-word" aria-hidden="true">ROMGOS</div>
+    <section class="hero romgos-hero">
+      <div class="hero-accent" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy reveal">
           <div class="eyebrow">AKADEMIA UNIHOKEJA ROMGOS • KOTLIN</div>
-          <h1>Zamów strój<br><span>Akademii.</span></h1>
+          <h1>Oficjalne stroje<br><span>Akademii Romgos</span></h1>
           <p>
-            Oficjalne stroje i odzież Akademii w jednym miejscu.
-            Wybierz produkt, dobierz rozmiar i wyślij zamówienie online.
+            Zamów stroje i odzież klubową w jednym miejscu. Wybierz produkt,
+            dobierz rozmiar i prześlij zamówienie do Akademii.
           </p>
 
           <div class="hero-actions">
@@ -58,23 +58,22 @@
           </div>
 
           <div class="hero-pills">
-            <span><b>01</b> Wybierasz</span>
-            <span><b>02</b> Zamawiasz</span>
-            <span><b>03</b> Płacisz przy odbiorze</span>
+            <span>Proste zamówienie</span>
+            <span>Płatność przy odbiorze</span>
+            <span>Wszystko w jednym miejscu</span>
           </div>
         </div>
 
         <div class="hero-visual reveal reveal-delay">
           <figure class="hero-photo-card">
-            <img src="assets/images/romgos-grupa.jpg" alt="Akademia Unihokeja Romgos w Kotlinie">
+            <img src="assets/images/romgos-grupa.jpg" alt="Zawodnicy i społeczność Akademii Unihokeja Romgos w Kotlinie">
             <figcaption>
               <span>AKADEMIA UNIHOKEJA ROMGOS</span>
-              <strong>Kotlin</strong>
+              <strong>KOTLIN</strong>
             </figcaption>
           </figure>
         </div>
       </div>
-      <div class="hero-red-slash" aria-hidden="true"></div>
     </section>
 
     <section class="quick-info">
@@ -99,14 +98,14 @@
 
     <section class="section" id="zamowienia">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div>
             <span class="section-kicker">STREFA ZAMÓWIEŃ</span>
             <h2>Wybierz stroje i dodatki</h2>
           </div>
           <p>
-            Część materiałów jest już podpięta. Ceny, pozostałe produkty i warianty
-            uzupełnimy po otrzymaniu pełnej listy od Akademii.
+            Poniższe produkty są przykładowe. Zdjęcia, ceny i warianty podmienimy,
+            kiedy dostaniesz komplet materiałów od Akademii.
           </p>
         </div>
 
@@ -114,7 +113,7 @@
           <!-- Produkty generowane są z config.js -->
         </div>
 
-        <div class="order-layout">
+        <div class="order-layout reveal">
           <aside class="cart-card" id="cartCard">
             <div class="cart-head">
               <div>
@@ -208,7 +207,7 @@
 
     <section class="section section-soft" id="rozmiary">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div>
             <span class="section-kicker">DOBÓR ROZMIARU</span>
             <h2>Tabela rozmiarów</h2>
@@ -216,7 +215,7 @@
           <p>Na razie wartości przykładowe — docelowo wstawimy tabelę producenta.</p>
         </div>
 
-        <div class="size-wrap">
+        <div class="size-wrap reveal">
           <div class="size-tabs" id="sizeTabs">
             <button class="active" data-size-table="kids">Dziecięce</button>
             <button data-size-table="adult">Dorosłe</button>
@@ -267,7 +266,7 @@
     </section>
 
     <section class="section" id="akademia">
-      <div class="container split-section">
+      <div class="container split-section reveal">
         <div>
           <span class="section-kicker">O NAS</span>
           <h2>Akademia Unihokeja Romgos</h2>
@@ -303,7 +302,7 @@
 
     <section class="section section-dark" id="treningi">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div>
             <span class="section-kicker">TRENINGI</span>
             <h2>Kiedy i gdzie trenujemy?</h2>
@@ -338,7 +337,7 @@
 
     <section class="section" id="sponsorzy">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div>
             <span class="section-kicker">PARTNERZY</span>
             <h2>Sponsorzy Akademii</h2>
@@ -356,7 +355,7 @@
     </section>
 
     <section class="section section-soft" id="rozgrywki">
-      <div class="container split-section align-center">
+      <div class="container split-section align-center reveal">
         <div>
           <span class="section-kicker">MECZE I WYNIKI</span>
           <h2>Rozgrywki</h2>
@@ -372,7 +371,7 @@
         <div class="score-card">
           <span>AKTUALNE ROZGRYWKI</span>
           <strong>Polski Związek Unihokeja</strong>
-          <p>Aktualne wyniki i informacje o rozgrywkach w oficjalnym serwisie związku.</p>
+          <p>Link ustawiony w jednym miejscu w pliku <code>config.js</code>.</p>
           <div class="score-lines">
             <i></i><i></i><i></i><i></i>
           </div>
@@ -381,7 +380,7 @@
     </section>
 
     <section class="section" id="kontakt">
-      <div class="container contact-grid">
+      <div class="container contact-grid reveal">
         <div>
           <span class="section-kicker">KONTAKT</span>
           <h2>Masz pytanie?</h2>
@@ -402,30 +401,19 @@
   </main>
 
   <footer class="site-footer">
-    <div class="footer-cta">
-      <div class="container footer-cta-inner">
-        <div>
-          <span class="footer-kicker">STROJE KLUBOWE</span>
-          <strong>Gotowy na zamówienie?</strong>
-          <p>Wybierz produkt i prześlij zamówienie w kilka chwil.</p>
-        </div>
-        <a class="btn footer-order-btn" href="#zamowienia">Zamów strój <span>→</span></a>
-      </div>
-    </div>
-
-    <div class="footer-main">
-      <div class="container footer-content">
+    <div class="footer-top">
+      <div class="container footer-top-grid">
         <div class="footer-brand">
           <img src="assets/images/logo-akademii.png" alt="Logo Akademii Unihokeja Romgos">
           <div>
             <strong>Akademia Unihokeja Romgos</strong>
             <span>Kotlin</span>
           </div>
-          <p>Sport, drużyna i rozwój młodych zawodników.</p>
+          <p>Oficjalna strona Akademii — zamówienia strojów, treningi, rozgrywki i kontakt.</p>
         </div>
 
         <div class="footer-column">
-          <span class="footer-title">STRONA</span>
+          <span class="footer-title">NAWIGACJA</span>
           <a href="#zamowienia">Zamów stroje</a>
           <a href="#rozmiary">Tabela rozmiarów</a>
           <a href="#treningi">Treningi</a>
@@ -444,19 +432,17 @@
           <a id="footerEmail" href="#">e-mail do uzupełnienia</a>
           <a id="footerPhone" href="#">telefon do uzupełnienia</a>
           <div class="footer-socials">
-            <a id="footerFacebook" href="#" target="_blank" rel="noopener noreferrer">f</a>
-            <a id="footerInstagram" href="#" target="_blank" rel="noopener noreferrer">ig</a>
+            <a id="footerFacebook" href="#" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a id="footerInstagram" href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="container footer-bottom">
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
         <span>© <span id="year"></span> Akademia Unihokeja Romgos w Kotlinie</span>
-        <div>
-          <a href="#">Polityka prywatności</a>
-          <span class="footer-dot">•</span>
-          <span>Strona oficjalna Akademii</span>
-        </div>
+        <a href="#zamowienia">Zamów strój <span>→</span></a>
       </div>
     </div>
   </footer>

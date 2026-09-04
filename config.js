@@ -23,19 +23,19 @@ window.SITE_CONFIG = {
 
   products: [
     {
-      id: "dres",
-      name: "Dres klubowy",
-      description: "Oficjalny dres Akademii — bluza + spodnie.",
-      price: 0,
-      image: "assets/images/dres-klubowy.jpg",
-      sizes: ["128", "140", "152", "164", "S", "M", "L", "XL"]
-    },
-    {
       id: "komplet-meczowy",
       name: "Komplet meczowy",
       description: "Koszulka + spodenki. Główny komplet Akademii.",
       price: 0,
       image: "",
+      sizes: ["128", "140", "152", "164", "S", "M", "L", "XL"]
+    },
+    {
+      id: "dres",
+      name: "Dres klubowy",
+      description: "Bluza + spodnie. Wersja treningowa / wyjazdowa.",
+      price: 0,
+      image: "assets/images/dres-romgos.jpg",
       sizes: ["128", "140", "152", "164", "S", "M", "L", "XL"]
     },
     {

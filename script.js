@@ -65,12 +65,6 @@ function renderProducts() {
       });
 
       renderCart();
-      const badge = document.getElementById("cartCount");
-      if (badge) {
-        badge.classList.remove("pop");
-        void badge.offsetWidth;
-        badge.classList.add("pop");
-      }
       showToast(`${product.name} dodano do zamówienia.`);
     });
   });
@@ -240,12 +234,11 @@ function initSiteData() {
     footerPhone.href = cfg.phone ? `tel:${String(cfg.phone).replace(/\s+/g, "")}` : "#";
   }
 
-  const footerFb = document.getElementById("footerFacebook");
-  if (footerFb) footerFb.href = cfg.facebook || "#";
+  const footerFacebook = document.getElementById("footerFacebook");
+  if (footerFacebook) footerFacebook.href = cfg.facebook || "#";
 
-  const footerIg = document.getElementById("footerInstagram");
-  if (footerIg) footerIg.href = cfg.instagram || "#";
-
+  const footerInstagram = document.getElementById("footerInstagram");
+  if (footerInstagram) footerInstagram.href = cfg.instagram || "#";
 }
 
 function initMenu() {
@@ -281,19 +274,16 @@ function initSizeTabs() {
   });
 }
 
-
 function initRevealAnimations() {
-  const targets = document.querySelectorAll(
-    ".section-head, .product-card, .cart-card, .order-form-card, .size-wrap, .info-card, .training-card, .sponsor-placeholder, .score-card, .contact-card, .footer-content > *"
-  );
-  targets.forEach(el => el.classList.add("reveal"));
+  const nodes = document.querySelectorAll(".reveal");
+  if (!nodes.length) return;
 
   if (!("IntersectionObserver" in window)) {
-    document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
+    nodes.forEach(node => node.classList.add("is-visible"));
     return;
   }
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-visible");
@@ -302,7 +292,7 @@ function initRevealAnimations() {
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  nodes.forEach(node => observer.observe(node));
 }
 
 let toastTimer;
