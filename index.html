@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0e13">
+  <meta name="theme-color" content="#d71920">
   <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie – stroje, treningi, informacje i kontakt.">
   <title>Akademia Unihokeja Romgos</title>
 
@@ -17,7 +17,7 @@
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a class="brand" href="#top" aria-label="Akademia Unihokeja Romgos – strona główna">
-        <div class="brand-mark" id="brandMark">AU</div>
+        <div class="brand-mark brand-logo" id="brandMark"><img src="assets/images/logo-akademii.png" alt="Logo Akademii Unihokeja Romgos"></div>
         <div class="brand-copy">
           <strong>AKADEMIA UNIHOKEJA</strong>
           <span>ROMGOS • KOTLIN</span>
@@ -41,42 +41,40 @@
   </header>
 
   <main>
-    <section class="hero section-dark">
+    <section class="hero">
+      <div class="hero-bg-word" aria-hidden="true">ROMGOS</div>
       <div class="container hero-grid">
-        <div class="hero-copy">
+        <div class="hero-copy reveal">
           <div class="eyebrow">AKADEMIA UNIHOKEJA ROMGOS • KOTLIN</div>
-          <h1>Stroje klubowe<br><span>bez chaosu.</span></h1>
+          <h1>Zamów strój<br><span>Akademii.</span></h1>
           <p>
-            Wybierz produkt, rozmiar i złóż zamówienie w kilka chwil.
-            Bez płatności online — płatność odbywa się przy odbiorze.
+            Oficjalne stroje i odzież Akademii w jednym miejscu.
+            Wybierz produkt, dobierz rozmiar i wyślij zamówienie online.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#zamowienia">Zamów strój</a>
-            <a class="btn btn-ghost" href="#rozmiary">Tabela rozmiarów</a>
+            <a class="btn btn-primary" href="#zamowienia">Zamów strój <span class="btn-arrow">→</span></a>
+            <a class="btn btn-ghost" href="#rozmiary">Sprawdź rozmiary</a>
           </div>
 
           <div class="hero-pills">
-            <span>✓ Proste zamówienie</span>
-            <span>✓ Potwierdzenie danych</span>
-            <span>✓ Płatność przy odbiorze</span>
+            <span><b>01</b> Wybierasz</span>
+            <span><b>02</b> Zamawiasz</span>
+            <span><b>03</b> Płacisz przy odbiorze</span>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="visual-card">
-            <div class="visual-tag">MIEJSCE NA GŁÓWNĄ FOTOGRAFIĘ</div>
-            <div class="jersey-placeholder">
-              <div class="jersey-neck"></div>
-              <div class="jersey-body">
-                <span>ROMGOS</span>
-                <strong>24</strong>
-              </div>
-            </div>
-            <p>Po otrzymaniu zdjęć tutaj wstawimy zawodnika / strój / wizualizację.</p>
-          </div>
+        <div class="hero-visual reveal reveal-delay">
+          <figure class="hero-photo-card">
+            <img src="assets/images/romgos-grupa.jpg" alt="Akademia Unihokeja Romgos w Kotlinie">
+            <figcaption>
+              <span>AKADEMIA UNIHOKEJA ROMGOS</span>
+              <strong>Kotlin</strong>
+            </figcaption>
+          </figure>
         </div>
       </div>
+      <div class="hero-red-slash" aria-hidden="true"></div>
     </section>
 
     <section class="quick-info">
@@ -107,8 +105,8 @@
             <h2>Wybierz stroje i dodatki</h2>
           </div>
           <p>
-            Poniższe produkty są przykładowe. Zdjęcia, ceny i warianty podmienimy,
-            kiedy dostaniesz komplet materiałów od Akademii.
+            Część materiałów jest już podpięta. Ceny, pozostałe produkty i warianty
+            uzupełnimy po otrzymaniu pełnej listy od Akademii.
           </p>
         </div>
 
@@ -374,7 +372,7 @@
         <div class="score-card">
           <span>AKTUALNE ROZGRYWKI</span>
           <strong>Polski Związek Unihokeja</strong>
-          <p>Link ustawiony w jednym miejscu w pliku <code>config.js</code>.</p>
+          <p>Aktualne wyniki i informacje o rozgrywkach w oficjalnym serwisie związku.</p>
           <div class="score-lines">
             <i></i><i></i><i></i><i></i>
           </div>
@@ -404,17 +402,62 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>Akademia Unihokeja Romgos</strong>
-        <span>Kotlin</span>
+    <div class="footer-cta">
+      <div class="container footer-cta-inner">
+        <div>
+          <span class="footer-kicker">STROJE KLUBOWE</span>
+          <strong>Gotowy na zamówienie?</strong>
+          <p>Wybierz produkt i prześlij zamówienie w kilka chwil.</p>
+        </div>
+        <a class="btn footer-order-btn" href="#zamowienia">Zamów strój <span>→</span></a>
       </div>
-      <div class="footer-links">
-        <a href="#zamowienia">Zamówienia</a>
-        <a href="#treningi">Treningi</a>
-        <a href="#kontakt">Kontakt</a>
+    </div>
+
+    <div class="footer-main">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <img src="assets/images/logo-akademii.png" alt="Logo Akademii Unihokeja Romgos">
+          <div>
+            <strong>Akademia Unihokeja Romgos</strong>
+            <span>Kotlin</span>
+          </div>
+          <p>Sport, drużyna i rozwój młodych zawodników.</p>
+        </div>
+
+        <div class="footer-column">
+          <span class="footer-title">STRONA</span>
+          <a href="#zamowienia">Zamów stroje</a>
+          <a href="#rozmiary">Tabela rozmiarów</a>
+          <a href="#treningi">Treningi</a>
+          <a href="#rozgrywki">Rozgrywki</a>
+        </div>
+
+        <div class="footer-column">
+          <span class="footer-title">AKADEMIA</span>
+          <a href="#akademia">O Akademii</a>
+          <a href="#sponsorzy">Sponsorzy</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+
+        <div class="footer-column footer-contact">
+          <span class="footer-title">KONTAKT</span>
+          <a id="footerEmail" href="#">e-mail do uzupełnienia</a>
+          <a id="footerPhone" href="#">telefon do uzupełnienia</a>
+          <div class="footer-socials">
+            <a id="footerFacebook" href="#" target="_blank" rel="noopener noreferrer">f</a>
+            <a id="footerInstagram" href="#" target="_blank" rel="noopener noreferrer">ig</a>
+          </div>
+        </div>
       </div>
-      <small>© <span id="year"></span> Akademia Unihokeja Romgos</small>
+
+      <div class="container footer-bottom">
+        <span>© <span id="year"></span> Akademia Unihokeja Romgos w Kotlinie</span>
+        <div>
+          <a href="#">Polityka prywatności</a>
+          <span class="footer-dot">•</span>
+          <span>Strona oficjalna Akademii</span>
+        </div>
+      </div>
     </div>
   </footer>
 

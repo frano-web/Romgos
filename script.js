@@ -65,6 +65,12 @@ function renderProducts() {
       });
 
       renderCart();
+      const badge = document.getElementById("cartCount");
+      if (badge) {
+        badge.classList.remove("pop");
+        void badge.offsetWidth;
+        badge.classList.add("pop");
+      }
       showToast(`${product.name} dodano do zamówienia.`);
     });
   });
@@ -221,6 +227,25 @@ function initSiteData() {
 
   const ig = document.getElementById("instagramLink");
   if (ig) ig.href = cfg.instagram || "#";
+
+  const footerEmail = document.getElementById("footerEmail");
+  if (footerEmail) {
+    footerEmail.textContent = cfg.contactEmail || "e-mail do uzupełnienia";
+    footerEmail.href = cfg.contactEmail ? `mailto:${cfg.contactEmail}` : "#";
+  }
+
+  const footerPhone = document.getElementById("footerPhone");
+  if (footerPhone) {
+    footerPhone.textContent = cfg.phone || "telefon do uzupełnienia";
+    footerPhone.href = cfg.phone ? `tel:${String(cfg.phone).replace(/\s+/g, "")}` : "#";
+  }
+
+  const footerFb = document.getElementById("footerFacebook");
+  if (footerFb) footerFb.href = cfg.facebook || "#";
+
+  const footerIg = document.getElementById("footerInstagram");
+  if (footerIg) footerIg.href = cfg.instagram || "#";
+
 }
 
 function initMenu() {
@@ -256,6 +281,30 @@ function initSizeTabs() {
   });
 }
 
+
+function initRevealAnimations() {
+  const targets = document.querySelectorAll(
+    ".section-head, .product-card, .cart-card, .order-form-card, .size-wrap, .info-card, .training-card, .sponsor-placeholder, .score-card, .contact-card, .footer-content > *"
+  );
+  targets.forEach(el => el.classList.add("reveal"));
+
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+}
+
 let toastTimer;
 function showToast(message) {
   const toast = document.getElementById("toast");
@@ -272,6 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSiteData();
   initMenu();
   initSizeTabs();
+  initRevealAnimations();
 
   const form = document.getElementById("orderForm");
   if (form) form.addEventListener("submit", handleOrderSubmit);
