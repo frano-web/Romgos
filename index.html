@@ -1,455 +1,852 @@
 <!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#d71920">
-  <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie – stroje, treningi, informacje i kontakt.">
-  <title>Akademia Unihokeja Romgos</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#cf1820">
+<title>Akademia Unihokeja Romgos | Kotlin</title>
+<meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<!--
+  WERSJA V4 – CZYSTA
+  Celowo nie ma zewnętrznego style.css ani script.js.
+  Dzięki temu GitHub Pages nie może wczytać starego zielonego CSS z cache.
+-->
+<style>
+:root{
+  --red:#cf1820;
+  --red-dark:#a50f16;
+  --red-soft:#fff3f3;
+  --black:#171717;
+  --text:#202124;
+  --muted:#6c7077;
+  --line:#e7e7ea;
+  --white:#fff;
+  --soft:#f7f7f8;
+  --radius:22px;
+  --shadow:0 20px 60px rgba(0,0,0,.10);
+  --max:1180px;
+}
 
-  <link rel="stylesheet" href="style.css">
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;
+  background:var(--white);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.55;
+  text-align:left;
+  overflow-x:hidden;
+}
+body.menu-open{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(calc(100% - 40px),var(--max));margin:0 auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* HEADER */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-wrap{
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand img{width:52px;height:52px;object-fit:contain}
+.brand-copy{display:flex;flex-direction:column;line-height:1.05}
+.brand-copy strong{font-size:15px;letter-spacing:.2px}
+.brand-copy span{font-size:10px;color:var(--red);font-weight:800;letter-spacing:1.15px;margin-top:5px}
+.main-nav{display:flex;align-items:center;gap:22px}
+.main-nav a{font-size:13px;font-weight:700;color:#333;transition:.18s}
+.main-nav a:hover{color:var(--red)}
+.main-nav .nav-primary{
+  background:var(--red);
+  color:#fff;
+  border-radius:999px;
+  padding:11px 17px;
+}
+.main-nav .nav-primary:hover{background:var(--red-dark);color:#fff}
+.menu-toggle{display:none;background:transparent;border:0;padding:8px}
+.menu-toggle span:not(.sr-only){display:block;width:26px;height:2px;margin:5px 0;background:#222}
+
+/* HERO */
+.hero{
+  position:relative;
+  padding:72px 0 68px;
+  background:
+    linear-gradient(90deg,rgba(207,24,32,.055) 0,rgba(207,24,32,0) 42%),
+    #fff;
+  border-bottom:1px solid var(--line);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  right:-120px;
+  top:45px;
+  width:360px;
+  height:360px;
+  border:70px solid rgba(207,24,32,.045);
+  border-radius:50%;
+  pointer-events:none;
+}
+.hero-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:.92fr 1.08fr;
+  gap:56px;
+  align-items:center;
+}
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:var(--red);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.35px;
+  text-transform:uppercase;
+}
+.kicker::before{content:"";width:28px;height:3px;background:var(--red);border-radius:10px}
+.hero h1{
+  margin:16px 0 20px;
+  max-width:680px;
+  color:var(--black);
+  font-size:clamp(48px,6.4vw,84px);
+  line-height:.97;
+  letter-spacing:-3px;
+  text-transform:uppercase;
+}
+.hero h1 span{color:var(--red)}
+.hero-copy>p{
+  max-width:590px;
+  margin:0 0 28px;
+  color:var(--muted);
+  font-size:17px;
+}
+.hero-actions{display:flex;gap:11px;flex-wrap:wrap}
+.btn{
+  min-height:50px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border-radius:999px;
+  padding:0 21px;
+  border:1px solid transparent;
+  font-size:13px;
+  font-weight:900;
+  transition:transform .18s,background .18s,border-color .18s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-dark)}
+.btn-light{background:#fff;color:#222;border-color:#dcdce0}
+.btn-light:hover{border-color:#b7b7bc}
+.hero-notes{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero-notes span{
+  border:1px solid var(--line);
+  background:#fff;
+  color:#555b64;
+  padding:8px 11px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+}
+.hero-photo{
+  margin:0;
+  position:relative;
+  border-radius:28px;
+  overflow:hidden;
+  background:#eee;
+  box-shadow:var(--shadow);
+  border:7px solid #fff;
+  min-height:430px;
+}
+.hero-photo img{width:100%;height:510px;object-fit:cover;object-position:center}
+.hero-photo::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:38%;
+  background:linear-gradient(transparent,rgba(0,0,0,.63));
+}
+.hero-photo figcaption{
+  position:absolute;
+  z-index:2;
+  left:24px;
+  right:24px;
+  bottom:20px;
+  color:#fff;
+}
+.hero-photo figcaption span{display:block;font-size:10px;font-weight:800;letter-spacing:1.3px;opacity:.78}
+.hero-photo figcaption strong{display:block;font-size:23px;margin-top:4px}
+
+/* 3 KROKI */
+.steps{background:#fff;border-bottom:1px solid var(--line)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.step{display:grid;grid-template-columns:44px 1fr;gap:13px;padding:25px 28px;border-right:1px solid var(--line)}
+.step:last-child{border-right:0}
+.step-no{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--red);color:#fff;
+  display:grid;place-items:center;
+  font-size:11px;font-weight:900
+}
+.step strong{display:block;font-size:13px;margin-top:1px}
+.step small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+
+/* SEKCJE */
+.section{padding:88px 0}
+.section-soft{background:var(--soft)}
+.section-red{background:var(--red);color:#fff}
+.section-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(280px,470px);
+  gap:46px;
+  align-items:end;
+  margin-bottom:34px;
+  text-align:left;
+}
+.section-label{
+  display:block;
+  color:var(--red);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.45px;
+  text-transform:uppercase;
+}
+.section h2{
+  margin:8px 0 0;
+  color:var(--black);
+  font-size:clamp(38px,4.7vw,62px);
+  line-height:1;
+  letter-spacing:-2px;
+  text-transform:uppercase;
+}
+.section-head>p{margin:0;color:var(--muted);font-size:14px}
+.section-red .section-label,.section-red h2{color:#fff}
+.section-red .section-head>p{color:rgba(255,255,255,.75)}
+
+/* PRODUKTY */
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.product-card{
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 16px 42px rgba(0,0,0,.08);border-color:#d4d4d8}
+.product-image{
+  height:260px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:linear-gradient(145deg,#fff,#f3f3f4);
+  border-bottom:1px solid var(--line);
+}
+.product-image img{width:100%;height:100%;object-fit:contain;background:#fff}
+.product-placeholder{text-align:center;padding:24px;color:#8b8f95}
+.product-placeholder b{display:block;color:#3b3e43;font-size:20px;margin-top:7px}
+.product-placeholder small{font-size:9px;letter-spacing:1.2px}
+.product-copy{padding:19px}
+.product-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.product-copy h3{margin:0;font-size:17px}
+.price{white-space:nowrap;font-weight:900;color:var(--red);font-size:13px}
+.product-copy p{min-height:40px;margin:8px 0 14px;color:var(--muted);font-size:12px}
+.product-controls{display:grid;grid-template-columns:1fr 83px;gap:8px}
+select,input,textarea{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #dddde1;
+  border-radius:11px;
+  background:#fff;
+  color:#222;
+  outline:none;
+}
+select:focus,input:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(207,24,32,.08)}
+.add-btn{
+  width:100%;
+  margin-top:9px;
+  padding:12px 14px;
+  border:0;
+  border-radius:11px;
+  background:#191919;
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+  transition:.18s
+}
+.add-btn:hover{background:var(--red);transform:translateY(-1px)}
+
+/* ZAMÓWIENIE */
+.order-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:22px;margin-top:28px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.cart{position:sticky;top:102px}
+.card h3{margin:6px 0 17px;font-size:24px}
+.cart-head{display:flex;align-items:flex-start;justify-content:space-between}
+.cart-count{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;font-weight:900}
+.empty{border:1px dashed #d7d7db;border-radius:13px;padding:17px;color:var(--muted);font-size:12px}
+.cart-item{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.cart-item strong{font-size:12px;display:block}
+.cart-item small{font-size:11px;color:var(--muted)}
+.cart-item button{border:0;background:none;color:var(--red);font-size:10px;padding:0}
+.cart-total{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+.cart-total strong{font-size:18px}
+.payment-note{margin-top:15px;padding:13px;border-radius:12px;background:var(--red-soft);border:1px solid #ffd7d9}
+.payment-note strong{display:block;font-size:12px}
+.payment-note span{display:block;color:#76585a;font-size:10px;margin-top:2px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label>span{display:block;margin:0 0 6px;color:#555b63;font-size:11px;font-weight:800}
+textarea{resize:vertical}
+.check{display:flex;align-items:flex-start;gap:9px;margin:14px 0}
+.check input{width:17px;height:17px;margin-top:2px}
+.check span{margin:0;font-weight:500;color:var(--muted)}
+.submit-btn{width:100%;border:0;background:var(--red);color:#fff;padding:14px;border-radius:12px;font-weight:900}
+.submit-btn:hover{background:var(--red-dark)}
+.status{min-height:20px;margin:10px 0 0;font-size:12px;font-weight:800}
+
+/* ROZMIARY */
+.size-box{max-width:900px}
+.tabs{display:flex;gap:8px;margin-bottom:10px}
+.tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-weight:800;font-size:11px}
+.tabs button.active{background:var(--red);border-color:var(--red);color:#fff}
+.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:18px}
+.size-table{width:100%;border-collapse:collapse;display:none}
+.size-table.active{display:table}
+.size-table th,.size-table td{padding:13px 16px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:left}
+.size-table th{background:#fafafa;font-size:10px;text-transform:uppercase;letter-spacing:.6px}
+.size-table td{font-size:12px}
+
+/* AKADEMIA */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.about-grid .lead{font-size:18px;color:#3e4248;margin-top:22px}
+.about-grid p{color:var(--muted)}
+.info-grid{display:grid;gap:11px}
+.info-card{padding:19px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.info-card span{font-size:9px;color:var(--red);font-weight:900;letter-spacing:1.2px}
+.info-card strong{display:block;font-size:22px;margin-top:3px}
+.info-card small{color:var(--muted)}
+
+/* TRENINGI */
+.training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.training-card{padding:24px;border:1px solid rgba(255,255,255,.25);border-radius:18px;background:rgba(255,255,255,.08)}
+.training-card span{font-size:9px;font-weight:900;letter-spacing:1.2px;opacity:.72}
+.training-card h3{font-size:26px;margin:8px 0 15px}
+.training-card p{margin:5px 0;color:rgba(255,255,255,.88);font-size:12px}
+.training-card small{color:rgba(255,255,255,.62)}
+.training-card.light{background:#fff;color:var(--red);border-color:#fff}
+.training-card.light p,.training-card.light small{color:#7a3e42}
+.training-card.light a{display:inline-block;margin-top:12px;font-size:11px;font-weight:900}
+
+/* SPONSORZY */
+.sponsor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sponsor{min-height:112px;border:1px dashed #cacacf;border-radius:16px;display:grid;place-items:center;background:#fff;color:#9b9ba0;font-size:10px;font-weight:900;letter-spacing:1px}
+
+/* ROZGRYWKI */
+.league-grid{display:grid;grid-template-columns:1fr .85fr;gap:42px;align-items:center}
+.league-card{padding:30px;border-radius:22px;background:#1b1b1b;color:#fff;box-shadow:var(--shadow)}
+.league-card span{font-size:9px;color:#aaa;font-weight:900;letter-spacing:1.1px}
+.league-card strong{display:block;font-size:29px;margin:8px 0}
+.league-card p{margin:0;color:#aaa;font-size:12px}
+
+/* KONTAKT */
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:46px}
+.contact-card{border:1px solid var(--line);border-radius:20px;padding:24px}
+.contact-card>a{display:block;padding:12px 0;border-bottom:1px solid var(--line);font-size:clamp(20px,3vw,32px);font-weight:900}
+.socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.socials a{background:var(--soft);padding:9px 13px;border-radius:999px;font-size:11px;font-weight:800}
+.socials a:hover{background:var(--red);color:#fff}
+
+/* STOPKA */
+.footer{
+  position:relative;
+  overflow:hidden;
+  background:#161616;
+  color:#fff;
+}
+.footer::before{
+  content:"ROMGOS";
+  position:absolute;
+  right:-25px;
+  bottom:3px;
+  color:rgba(255,255,255,.025);
+  font-weight:900;
+  font-size:clamp(90px,16vw,230px);
+  line-height:.78;
+  letter-spacing:-9px;
+}
+.footer-cta{
+  position:relative;
+  z-index:1;
+  background:var(--red);
+  border-bottom:1px solid rgba(255,255,255,.18);
+}
+.footer-cta-inner{
+  min-height:138px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+.footer-cta span{display:block;font-size:10px;font-weight:900;letter-spacing:1.2px;opacity:.75}
+.footer-cta strong{display:block;font-size:clamp(27px,4vw,46px);line-height:1;margin-top:6px}
+.footer-cta .btn{background:#fff;color:var(--red);flex-shrink:0}
+.footer-main{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1.45fr .7fr .7fr 1fr;
+  gap:42px;
+  padding:46px 0 38px;
+}
+.footer-brand{display:grid;grid-template-columns:72px 1fr;gap:15px;align-items:start}
+.footer-brand img{width:72px;height:72px;object-fit:contain;background:#fff;border-radius:14px;padding:5px}
+.footer-brand strong{display:block;font-size:18px}
+.footer-brand p{margin:7px 0 0;color:#989898;font-size:11px;max-width:330px}
+.footer-col{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.footer-col b{font-size:9px;color:#777;letter-spacing:1.3px;margin-bottom:5px}
+.footer-col a{font-size:11px;color:#d7d7d7}
+.footer-col a:hover{color:#fff}
+.footer-bottom{
+  position:relative;
+  z-index:1;
+  border-top:1px solid #2b2b2b;
+}
+.footer-bottom-inner{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  color:#707070;
+  font-size:10px;
+}
+
+/* MICRO ANIMACJE */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+.product-card,.info-card,.training-card,.sponsor{will-change:transform}
+.cart-count.bump{animation:bump .28s ease}
+@keyframes bump{50%{transform:scale(1.22)}}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* MOBILE */
+@media(max-width:980px){
+  .menu-toggle{display:block}
+  .main-nav{
+    display:none;
+    position:fixed;
+    left:0;right:0;top:80px;
+    height:calc(100vh - 80px);
+    padding:25px 20px;
+    background:#fff;
+    flex-direction:column;
+    align-items:stretch;
+    border-top:1px solid var(--line)
+  }
+  .main-nav.open{display:flex}
+  .main-nav a{font-size:17px;padding:7px 0}
+  .main-nav .nav-primary{text-align:center;padding:13px}
+  .hero-grid,.about-grid,.league-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-grid{gap:30px}
+  .hero-photo img{height:430px}
+  .order-grid{grid-template-columns:1fr}
+  .cart{position:static}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .training-grid{grid-template-columns:1fr 1fr}
+  .sponsor-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-main{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+@media(max-width:680px){
+  .container{width:min(calc(100% - 28px),var(--max))}
+  .brand-copy strong{font-size:12px}
+  .brand-copy span{font-size:8px}
+  .brand img{width:45px;height:45px}
+  .hero{padding:45px 0 34px}
+  .hero h1{font-size:clamp(43px,13vw,62px);letter-spacing:-2px}
+  .hero-copy>p{font-size:15px}
+  .hero-photo{min-height:0;border-width:5px;border-radius:19px}
+  .hero-photo img{height:280px}
+  .steps-grid{grid-template-columns:1fr}
+  .step{border-right:0;border-bottom:1px solid var(--line);padding:17px 4px}
+  .section{padding:66px 0}
+  .section-head{grid-template-columns:1fr;gap:14px}
+  .section h2{font-size:42px;letter-spacing:-1.5px}
+  .product-grid{grid-template-columns:1fr}
+  .product-image{height:250px}
+  .form-grid{grid-template-columns:1fr}
+  .training-grid{grid-template-columns:1fr}
+  .footer-cta-inner{padding:28px 0;min-height:0;align-items:flex-start;flex-direction:column}
+  .footer-main{grid-template-columns:1fr 1fr;gap:28px 18px}
+  .footer-brand{grid-template-columns:60px 1fr}
+  .footer-brand img{width:60px;height:60px}
+  .footer-bottom-inner{padding:16px 0;min-height:0;flex-direction:column;align-items:flex-start}
+}
+</style>
 </head>
+
 <body>
-  <header class="site-header" id="top">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Akademia Unihokeja Romgos – strona główna">
-        <div class="brand-mark brand-logo" id="brandMark"><img src="assets/images/logo-akademii.png" alt="Logo Akademii Unihokeja Romgos"></div>
-        <div class="brand-copy">
-          <strong>AKADEMIA UNIHOKEJA</strong>
-          <span>ROMGOS • KOTLIN</span>
+<header class="site-header" id="top">
+  <div class="container nav-wrap">
+    <a href="#top" class="brand">
+      <img src="romgos-logo-2026.png" alt="Logo Akademii Unihokeja Romgos">
+      <span class="brand-copy">
+        <strong>AKADEMIA UNIHOKEJA ROMGOS</strong>
+        <span>KOTLIN</span>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#zamowienia" class="nav-primary">Zamów strój</a>
+      <a href="#akademia">Akademia</a>
+      <a href="#treningi">Treningi</a>
+      <a href="#sponsorzy">Sponsorzy</a>
+      <a href="#rozgrywki">Rozgrywki</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <div class="kicker">Akademia Unihokeja Romgos • Kotlin</div>
+        <h1>Zamów strój<br><span>Akademii</span></h1>
+        <p>Wybierz produkt, dobierz rozmiar i prześlij zamówienie. Płatność odbywa się przy odbiorze — bez płatności internetowych.</p>
+
+        <div class="hero-actions">
+          <a href="#zamowienia" class="btn btn-red">Zamów strój <b>→</b></a>
+          <a href="#rozmiary" class="btn btn-light">Tabela rozmiarów</a>
         </div>
-      </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">
-        <span></span><span></span><span></span>
-        <span class="sr-only">Otwórz menu</span>
-      </button>
+        <div class="hero-notes">
+          <span>✓ Proste zamówienie</span>
+          <span>✓ Płatność przy odbiorze</span>
+          <span>✓ Wersja mobilna</span>
+        </div>
+      </div>
 
-      <nav class="main-nav" id="mainNav">
-        <a href="#zamowienia" class="nav-primary">Zamów strój</a>
-        <a href="#akademia">Akademia</a>
-        <a href="#treningi">Treningi</a>
-        <a href="#sponsorzy">Sponsorzy</a>
-        <a href="#rozgrywki">Rozgrywki</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
+      <figure class="hero-photo reveal">
+        <img src="romgos-team-2026.jpg" alt="Akademia Unihokeja Romgos w Kotlinie">
+        <figcaption>
+          <span>AKADEMIA UNIHOKEJA ROMGOS</span>
+          <strong>Razem na boisku i poza nim.</strong>
+        </figcaption>
+      </figure>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero romgos-hero">
-      <div class="hero-accent" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <div class="eyebrow">AKADEMIA UNIHOKEJA ROMGOS • KOTLIN</div>
-          <h1>Oficjalne stroje<br><span>Akademii Romgos</span></h1>
-          <p>
-            Zamów stroje i odzież klubową w jednym miejscu. Wybierz produkt,
-            dobierz rozmiar i prześlij zamówienie do Akademii.
-          </p>
+  <section class="steps">
+    <div class="container steps-grid">
+      <div class="step"><span class="step-no">01</span><div><strong>Wybierz produkt</strong><small>Dres, komplet, koszulka lub dodatki.</small></div></div>
+      <div class="step"><span class="step-no">02</span><div><strong>Wybierz rozmiar</strong><small>Skorzystaj z tabeli rozmiarów.</small></div></div>
+      <div class="step"><span class="step-no">03</span><div><strong>Wyślij zamówienie</strong><small>Informacja trafi bezpośrednio do Akademii.</small></div></div>
+    </div>
+  </section>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#zamowienia">Zamów strój <span class="btn-arrow">→</span></a>
-            <a class="btn btn-ghost" href="#rozmiary">Sprawdź rozmiary</a>
-          </div>
-
-          <div class="hero-pills">
-            <span>Proste zamówienie</span>
-            <span>Płatność przy odbiorze</span>
-            <span>Wszystko w jednym miejscu</span>
-          </div>
+  <section class="section" id="zamowienia">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-label">Strefa zamówień</span>
+          <h2>Stroje i odzież klubowa</h2>
         </div>
-
-        <div class="hero-visual reveal reveal-delay">
-          <figure class="hero-photo-card">
-            <img src="assets/images/romgos-grupa.jpg" alt="Zawodnicy i społeczność Akademii Unihokeja Romgos w Kotlinie">
-            <figcaption>
-              <span>AKADEMIA UNIHOKEJA ROMGOS</span>
-              <strong>KOTLIN</strong>
-            </figcaption>
-          </figure>
-        </div>
+        <p>Na razie część produktów jest przykładowa. Po otrzymaniu cen, zdjęć i dokładnej rozmiarówki można podmienić je bez przebudowy strony.</p>
       </div>
-    </section>
 
-    <section class="quick-info">
-      <div class="container quick-grid">
-        <div>
-          <span class="quick-label">01</span>
-          <strong>Wybierz produkt</strong>
-          <small>Koszulka, spodenki, dres lub dodatki.</small>
-        </div>
-        <div>
-          <span class="quick-label">02</span>
-          <strong>Podaj rozmiar</strong>
-          <small>Skorzystaj z tabeli rozmiarów.</small>
-        </div>
-        <div>
-          <span class="quick-label">03</span>
-          <strong>Wyślij zamówienie</strong>
-          <small>Zamówienie trafia do Akademii.</small>
-        </div>
-      </div>
-    </section>
+      <div class="product-grid" id="products"></div>
 
-    <section class="section" id="zamowienia">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <span class="section-kicker">STREFA ZAMÓWIEŃ</span>
-            <h2>Wybierz stroje i dodatki</h2>
+      <div class="order-grid reveal">
+        <aside class="card cart">
+          <div class="cart-head">
+            <div><span class="section-label">Twoje zamówienie</span><h3>Podsumowanie</h3></div>
+            <span class="cart-count" id="cartCount">0</span>
           </div>
-          <p>
-            Poniższe produkty są przykładowe. Zdjęcia, ceny i warianty podmienimy,
-            kiedy dostaniesz komplet materiałów od Akademii.
-          </p>
-        </div>
+          <div class="empty" id="empty">Dodaj wybrany produkt do zamówienia.</div>
+          <div id="cartItems"></div>
+          <div class="cart-total"><span>Łącznie</span><strong id="total">0,00 zł</strong></div>
+          <div class="payment-note"><strong>Płatność przy odbiorze</strong><span>Na stronie nie są pobierane płatności.</span></div>
+        </aside>
 
-        <div class="product-grid" id="productGrid">
-          <!-- Produkty generowane są z config.js -->
-        </div>
-
-        <div class="order-layout reveal">
-          <aside class="cart-card" id="cartCard">
-            <div class="cart-head">
-              <div>
-                <span class="section-kicker">TWOJE ZAMÓWIENIE</span>
-                <h3>Podsumowanie</h3>
-              </div>
-              <span class="cart-count" id="cartCount">0</span>
-            </div>
-
-            <div class="cart-empty" id="cartEmpty">
-              Dodaj wybrany produkt do zamówienia.
-            </div>
-
-            <div class="cart-items" id="cartItems"></div>
-
-            <div class="cart-total">
-              <span>Łącznie</span>
-              <strong id="cartTotal">0,00 zł</strong>
-            </div>
-
-            <div class="payment-note">
-              <strong>Płatność przy odbiorze</strong>
-              <span>Na stronie nie pobieramy żadnych płatności.</span>
-            </div>
-          </aside>
-
-          <div class="order-form-card">
-            <div class="section-kicker">DANE ZAMAWIAJĄCEGO</div>
-            <h3>Uzupełnij dane</h3>
-
-            <form id="orderForm">
-              <div class="form-grid">
-                <label>
-                  <span>Imię i nazwisko rodzica / opiekuna *</span>
-                  <input type="text" name="parentName" required autocomplete="name">
-                </label>
-
-                <label>
-                  <span>Imię i nazwisko zawodnika *</span>
-                  <input type="text" name="playerName" required>
-                </label>
-
-                <label>
-                  <span>Adres e-mail *</span>
-                  <input type="email" name="email" required autocomplete="email">
-                </label>
-
-                <label>
-                  <span>Telefon kontaktowy *</span>
-                  <input type="tel" name="phone" required autocomplete="tel">
-                </label>
-
-                <label>
-                  <span>Grupa / rocznik</span>
-                  <input type="text" name="group" placeholder="np. młodzicy / 2013">
-                </label>
-
-                <label>
-                  <span>Preferowany sposób odbioru</span>
-                  <select name="pickup">
-                    <option>Odbiór na treningu</option>
-                    <option>Odbiór po wcześniejszym kontakcie</option>
-                    <option>Inny – wpiszę w uwagach</option>
-                  </select>
-                </label>
-              </div>
-
-              <label>
-                <span>Uwagi do zamówienia</span>
-                <textarea name="notes" rows="4" placeholder="Np. dodatkowy nadruk, numer zawodnika, inna informacja..."></textarea>
+        <div class="card">
+          <span class="section-label">Dane zamawiającego</span>
+          <h3>Uzupełnij dane</h3>
+          <form id="orderForm">
+            <div class="form-grid">
+              <label><span>Imię i nazwisko rodzica / opiekuna *</span><input required name="parent"></label>
+              <label><span>Imię i nazwisko zawodnika *</span><input required name="player"></label>
+              <label><span>Adres e-mail *</span><input required type="email" name="email"></label>
+              <label><span>Telefon *</span><input required type="tel" name="phone"></label>
+              <label><span>Grupa / rocznik</span><input name="group" placeholder="np. Młodzik / 2013"></label>
+              <label><span>Sposób odbioru</span>
+                <select name="pickup">
+                  <option>Odbiór na treningu</option>
+                  <option>Odbiór po wcześniejszym kontakcie</option>
+                  <option>Inny – wpiszę w uwagach</option>
+                </select>
               </label>
-
-              <label class="check-row">
-                <input type="checkbox" name="confirm" required>
-                <span>Potwierdzam poprawność danych i przyjmuję do wiadomości, że płatność następuje przy odbiorze.</span>
-              </label>
-
-              <button class="btn btn-primary btn-full" type="submit" id="submitOrder">
-                Wyślij zamówienie
-              </button>
-
-              <p class="form-status" id="formStatus"></p>
-              <p class="privacy-mini">
-                Finalnie dodamy tutaj krótką informację o przetwarzaniu danych i politykę prywatności.
-              </p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-soft" id="rozmiary">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <span class="section-kicker">DOBÓR ROZMIARU</span>
-            <h2>Tabela rozmiarów</h2>
-          </div>
-          <p>Na razie wartości przykładowe — docelowo wstawimy tabelę producenta.</p>
-        </div>
-
-        <div class="size-wrap reveal">
-          <div class="size-tabs" id="sizeTabs">
-            <button class="active" data-size-table="kids">Dziecięce</button>
-            <button data-size-table="adult">Dorosłe</button>
-          </div>
-
-          <div class="table-card">
-            <table class="size-table active" data-table="kids">
-              <thead>
-                <tr>
-                  <th>Rozmiar</th>
-                  <th>Wzrost</th>
-                  <th>Klatka</th>
-                  <th>Pas</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>128</td><td>123–132 cm</td><td>64–68 cm</td><td>58–62 cm</td></tr>
-                <tr><td>140</td><td>133–144 cm</td><td>68–74 cm</td><td>61–66 cm</td></tr>
-                <tr><td>152</td><td>145–156 cm</td><td>74–80 cm</td><td>65–70 cm</td></tr>
-                <tr><td>164</td><td>157–168 cm</td><td>80–86 cm</td><td>69–74 cm</td></tr>
-              </tbody>
-            </table>
-
-            <table class="size-table" data-table="adult">
-              <thead>
-                <tr>
-                  <th>Rozmiar</th>
-                  <th>Wzrost</th>
-                  <th>Klatka</th>
-                  <th>Pas</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>S</td><td>164–174 cm</td><td>86–94 cm</td><td>74–82 cm</td></tr>
-                <tr><td>M</td><td>170–180 cm</td><td>94–102 cm</td><td>82–90 cm</td></tr>
-                <tr><td>L</td><td>176–186 cm</td><td>102–110 cm</td><td>90–98 cm</td></tr>
-                <tr><td>XL</td><td>182–192 cm</td><td>110–118 cm</td><td>98–106 cm</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="measure-note">
-            <strong>Jak mierzyć?</strong>
-            <p>Po otrzymaniu wytycznych producenta dodamy prostą instrukcję z grafiką pokazującą miejsca pomiaru.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="akademia">
-      <div class="container split-section reveal">
-        <div>
-          <span class="section-kicker">O NAS</span>
-          <h2>Akademia Unihokeja Romgos</h2>
-          <p class="lead">
-            Miejsce na krótki, konkretny opis Akademii: dla kogo prowadzone są zajęcia,
-            jaki jest cel klubu, od kiedy działa i co wyróżnia szkolenie.
-          </p>
-          <p>
-            Nie trzeba tutaj robić rozbudowanej „encyklopedii”. Rodzic powinien w 20–30 sekund
-            zrozumieć, czym jest Akademia i gdzie odbywają się zajęcia.
-          </p>
-        </div>
-
-        <div class="info-cards">
-          <div class="info-card">
-            <span>LOKALIZACJA</span>
-            <strong>Kotlin</strong>
-            <small>Dokładny adres uzupełnimy później.</small>
-          </div>
-          <div class="info-card">
-            <span>DYSCYPLINA</span>
-            <strong>Unihokej</strong>
-            <small>Treningi dzieci i młodzieży.</small>
-          </div>
-          <div class="info-card">
-            <span>CEL</span>
-            <strong>Sport + rozwój</strong>
-            <small>Opis filozofii Akademii do uzupełnienia.</small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-dark" id="treningi">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <span class="section-kicker">TRENINGI</span>
-            <h2>Kiedy i gdzie trenujemy?</h2>
-          </div>
-          <p>Po otrzymaniu grafiku wpiszemy konkretne grupy, dni, godziny i halę.</p>
-        </div>
-
-        <div class="training-grid">
-          <article class="training-card">
-            <span class="training-group">GRUPA 01</span>
-            <h3>Młodsi</h3>
-            <p>Wtorek • 17:00–18:15</p>
-            <p>Czwartek • 17:00–18:15</p>
-            <small>Przykładowy harmonogram</small>
-          </article>
-          <article class="training-card">
-            <span class="training-group">GRUPA 02</span>
-            <h3>Starsi</h3>
-            <p>Wtorek • 18:15–19:45</p>
-            <p>Czwartek • 18:15–19:45</p>
-            <small>Przykładowy harmonogram</small>
-          </article>
-          <article class="training-card accent-card">
-            <span class="training-group">NOWI ZAWODNICY</span>
-            <h3>Chcesz dołączyć?</h3>
-            <p>Skontaktuj się z Akademią i sprawdź aktualny nabór.</p>
-            <a href="#kontakt">Przejdź do kontaktu →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="sponsorzy">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <span class="section-kicker">PARTNERZY</span>
-            <h2>Sponsorzy Akademii</h2>
-          </div>
-          <p>Logotypy podmienimy po otrzymaniu materiałów.</p>
-        </div>
-
-        <div class="sponsor-grid">
-          <div class="sponsor-placeholder">LOGO 01</div>
-          <div class="sponsor-placeholder">LOGO 02</div>
-          <div class="sponsor-placeholder">LOGO 03</div>
-          <div class="sponsor-placeholder">LOGO 04</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-soft" id="rozgrywki">
-      <div class="container split-section align-center reveal">
-        <div>
-          <span class="section-kicker">MECZE I WYNIKI</span>
-          <h2>Rozgrywki</h2>
-          <p class="lead">
-            Zamiast ręcznie przepisywać tabelę można kierować rodziców bezpośrednio
-            do aktualnych rozgrywek w serwisie Polskiego Związku Unihokeja.
-          </p>
-          <a class="btn btn-dark" id="leagueLink" target="_blank" rel="noopener noreferrer">
-            Sprawdź rozgrywki PZU
-          </a>
-        </div>
-
-        <div class="score-card">
-          <span>AKTUALNE ROZGRYWKI</span>
-          <strong>Polski Związek Unihokeja</strong>
-          <p>Link ustawiony w jednym miejscu w pliku <code>config.js</code>.</p>
-          <div class="score-lines">
-            <i></i><i></i><i></i><i></i>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="kontakt">
-      <div class="container contact-grid reveal">
-        <div>
-          <span class="section-kicker">KONTAKT</span>
-          <h2>Masz pytanie?</h2>
-          <p class="lead">Dane kontaktowe, Facebook i Instagram uzupełnimy po ich otrzymaniu.</p>
-        </div>
-
-        <div class="contact-card">
-          <a id="contactEmail" href="#">e-mail do uzupełnienia</a>
-          <a id="contactPhone" href="#">telefon do uzupełnienia</a>
-
-          <div class="social-row">
-            <a id="facebookLink" href="#" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a id="instagramLink" href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-top">
-      <div class="container footer-top-grid">
-        <div class="footer-brand">
-          <img src="assets/images/logo-akademii.png" alt="Logo Akademii Unihokeja Romgos">
-          <div>
-            <strong>Akademia Unihokeja Romgos</strong>
-            <span>Kotlin</span>
-          </div>
-          <p>Oficjalna strona Akademii — zamówienia strojów, treningi, rozgrywki i kontakt.</p>
-        </div>
-
-        <div class="footer-column">
-          <span class="footer-title">NAWIGACJA</span>
-          <a href="#zamowienia">Zamów stroje</a>
-          <a href="#rozmiary">Tabela rozmiarów</a>
-          <a href="#treningi">Treningi</a>
-          <a href="#rozgrywki">Rozgrywki</a>
-        </div>
-
-        <div class="footer-column">
-          <span class="footer-title">AKADEMIA</span>
-          <a href="#akademia">O Akademii</a>
-          <a href="#sponsorzy">Sponsorzy</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-
-        <div class="footer-column footer-contact">
-          <span class="footer-title">KONTAKT</span>
-          <a id="footerEmail" href="#">e-mail do uzupełnienia</a>
-          <a id="footerPhone" href="#">telefon do uzupełnienia</a>
-          <div class="footer-socials">
-            <a id="footerFacebook" href="#" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a id="footerInstagram" href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </div>
+            </div>
+            <label style="margin-top:12px"><span>Uwagi</span><textarea rows="4" name="notes" placeholder="Np. numer zawodnika, personalizacja, inne informacje..."></textarea></label>
+            <label class="check"><input type="checkbox" required><span>Potwierdzam poprawność danych i przyjmuję do wiadomości, że płatność następuje przy odbiorze.</span></label>
+            <button class="submit-btn" type="submit">Wyślij zamówienie</button>
+            <p class="status" id="status"></p>
+          </form>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <div class="container footer-bottom-inner">
-        <span>© <span id="year"></span> Akademia Unihokeja Romgos w Kotlinie</span>
-        <a href="#zamowienia">Zamów strój <span>→</span></a>
+  <section class="section section-soft" id="rozmiary">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="section-label">Dobór rozmiaru</span><h2>Tabela rozmiarów</h2></div>
+        <p>Wartości są przykładowe. Po otrzymaniu tabeli producenta podmienimy je na właściwe.</p>
+      </div>
+      <div class="size-box reveal">
+        <div class="tabs">
+          <button class="active" data-tab="kids">Dziecięce</button>
+          <button data-tab="adult">Dorosłe</button>
+        </div>
+        <div class="table-wrap">
+          <table class="size-table active" data-table="kids">
+            <thead><tr><th>Rozmiar</th><th>Wzrost</th><th>Klatka</th><th>Pas</th></tr></thead>
+            <tbody>
+              <tr><td>128</td><td>123–132 cm</td><td>64–68 cm</td><td>58–62 cm</td></tr>
+              <tr><td>140</td><td>133–144 cm</td><td>68–74 cm</td><td>61–66 cm</td></tr>
+              <tr><td>152</td><td>145–156 cm</td><td>74–80 cm</td><td>65–70 cm</td></tr>
+              <tr><td>164</td><td>157–168 cm</td><td>80–86 cm</td><td>69–74 cm</td></tr>
+            </tbody>
+          </table>
+          <table class="size-table" data-table="adult">
+            <thead><tr><th>Rozmiar</th><th>Wzrost</th><th>Klatka</th><th>Pas</th></tr></thead>
+            <tbody>
+              <tr><td>S</td><td>164–174 cm</td><td>86–94 cm</td><td>74–82 cm</td></tr>
+              <tr><td>M</td><td>170–180 cm</td><td>94–102 cm</td><td>82–90 cm</td></tr>
+              <tr><td>L</td><td>176–186 cm</td><td>102–110 cm</td><td>90–98 cm</td></tr>
+              <tr><td>XL</td><td>182–192 cm</td><td>110–118 cm</td><td>98–106 cm</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <section class="section" id="akademia">
+    <div class="container about-grid">
+      <div class="reveal">
+        <span class="section-label">O Akademii</span>
+        <h2>Akademia Unihokeja Romgos</h2>
+        <p class="lead">Miejsce na krótki opis Akademii, jej działalności, szkolenia dzieci i młodzieży oraz tego, co wyróżnia klub.</p>
+        <p>Po otrzymaniu gotowego opisu wstawimy tutaj finalną treść. Sekcja może też dostać dodatkowe zdjęcia.</p>
+      </div>
+      <div class="info-grid reveal">
+        <div class="info-card"><span>LOKALIZACJA</span><strong>Kotlin</strong><small>Dokładny adres do uzupełnienia.</small></div>
+        <div class="info-card"><span>DYSCYPLINA</span><strong>Unihokej</strong><small>Treningi dzieci i młodzieży.</small></div>
+        <div class="info-card"><span>AKADEMIA</span><strong>Romgos</strong><small>Informacje organizacyjne w jednym miejscu.</small></div>
+      </div>
+    </div>
+  </section>
 
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+  <section class="section section-red" id="treningi">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="section-label">Treningi</span><h2>Kiedy trenujemy?</h2></div>
+        <p>Po otrzymaniu grafiku wpiszemy tutaj rzeczywiste grupy, dni, godziny i miejsce treningów.</p>
+      </div>
+      <div class="training-grid">
+        <article class="training-card reveal"><span>GRUPA 01</span><h3>Młodsi</h3><p>Wtorek • godzina do uzupełnienia</p><p>Czwartek • godzina do uzupełnienia</p><small>Przykładowy układ</small></article>
+        <article class="training-card reveal"><span>GRUPA 02</span><h3>Starsi</h3><p>Wtorek • godzina do uzupełnienia</p><p>Czwartek • godzina do uzupełnienia</p><small>Przykładowy układ</small></article>
+        <article class="training-card light reveal"><span>NOWI ZAWODNICY</span><h3>Chcesz dołączyć?</h3><p>Skontaktuj się z Akademią i sprawdź aktualny nabór.</p><a href="#kontakt">Przejdź do kontaktu →</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sponsorzy">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="section-label">Partnerzy</span><h2>Sponsorzy Akademii</h2></div>
+        <p>Po otrzymaniu logotypów wstawimy je tutaj w jednej, równej siatce.</p>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor reveal">LOGO SPONSORA</div>
+        <div class="sponsor reveal">LOGO SPONSORA</div>
+        <div class="sponsor reveal">LOGO SPONSORA</div>
+        <div class="sponsor reveal">LOGO SPONSORA</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="rozgrywki">
+    <div class="container league-grid">
+      <div class="reveal">
+        <span class="section-label">Mecze i wyniki</span>
+        <h2>Rozgrywki</h2>
+        <p style="color:var(--muted);max-width:620px">Aktualne wyniki i tabele mogą prowadzić bezpośrednio do serwisu Polskiego Związku Unihokeja, dzięki czemu nie trzeba ręcznie aktualizować wyników na stronie.</p>
+        <a class="btn btn-red" href="https://www.polskiunihokej.pl/component/joomsport/team/756/718" target="_blank" rel="noopener">Sprawdź rozgrywki →</a>
+      </div>
+      <div class="league-card reveal"><span>AKTUALNE ROZGRYWKI</span><strong>Polski Związek Unihokeja</strong><p>Jedno miejsce z aktualnymi wynikami i tabelami.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="kontakt">
+    <div class="container contact-grid">
+      <div class="reveal"><span class="section-label">Kontakt</span><h2>Masz pytanie?</h2><p style="color:var(--muted)">Po otrzymaniu danych podmienimy poniższe pola na właściwy telefon, e-mail, Facebook i Instagram.</p></div>
+      <div class="contact-card reveal">
+        <a href="#">e-mail do uzupełnienia</a>
+        <a href="#">telefon do uzupełnienia</a>
+        <div class="socials"><a href="#">Facebook</a><a href="#">Instagram</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-cta">
+    <div class="container footer-cta-inner">
+      <div>
+        <span>STREFA RODZICA I ZAWODNIKA</span>
+        <strong>Chcesz zamówić strój?</strong>
+      </div>
+      <a href="#zamowienia" class="btn">Przejdź do zamówienia →</a>
+    </div>
+  </div>
+
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <img src="romgos-logo-2026.png" alt="Logo Akademii Unihokeja Romgos">
+      <div>
+        <strong>Akademia Unihokeja Romgos</strong>
+        <p>Kotlin • unihokej • szkolenie dzieci i młodzieży. Strona przeznaczona także do składania zamówień na odzież klubową.</p>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <b>STRONA</b>
+      <a href="#akademia">Akademia</a>
+      <a href="#treningi">Treningi</a>
+      <a href="#rozgrywki">Rozgrywki</a>
+    </div>
+
+    <div class="footer-col">
+      <b>ZAMÓWIENIA</b>
+      <a href="#zamowienia">Stroje</a>
+      <a href="#rozmiary">Rozmiary</a>
+      <a href="#zamowienia">Formularz</a>
+    </div>
+
+    <div class="footer-col">
+      <b>KONTAKT</b>
+      <a href="#">E-mail do uzupełnienia</a>
+      <a href="#">Telefon do uzupełnienia</a>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© <span id="year"></span> Akademia Unihokeja Romgos w Kotlinie</span>
+      <span>Strona klubowa • zamówienia odzieży</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const products=[
+  {id:"dres",name:"Dres klubowy",desc:"Bluza + spodnie. Nadesłana wizualizacja stroju Akademii.",price:0,image:"romgos-dres-2026.jpg",sizes:["128","140","152","164","S","M","L","XL"]},
+  {id:"komplet",name:"Komplet meczowy",desc:"Koszulka + spodenki. Zdjęcie i cena do uzupełnienia.",price:0,image:"",sizes:["128","140","152","164","S","M","L","XL"]},
+  {id:"koszulka",name:"Koszulka treningowa",desc:"Zdjęcie, cena i szczegóły do uzupełnienia.",price:0,image:"",sizes:["128","140","152","164","S","M","L","XL"]},
+  {id:"spodenki",name:"Spodenki",desc:"Zdjęcie, cena i szczegóły do uzupełnienia.",price:0,image:"",sizes:["128","140","152","164","S","M","L","XL"]},
+  {id:"czapka",name:"Czapka klubowa",desc:"Opcjonalny produkt – do ustalenia.",price:0,image:"",sizes:["Uniwersalny"]},
+  {id:"inne",name:"Inny produkt",desc:"Miejsce na kolejny element kolekcji klubowej.",price:0,image:"",sizes:["Do ustalenia"]}
+];
+const cart=[];
+const pln=n=>Number(n||0).toLocaleString("pl-PL",{style:"currency",currency:"PLN"});
+
+function renderProducts(){
+  document.querySelector("#products").innerHTML=products.map(p=>`
+  <article class="product-card reveal">
+    <div class="product-image">${p.image?`<img src="${p.image}" alt="${p.name}">`:`<div class="product-placeholder"><small>ZDJĘCIE DO UZUPEŁNIENIA</small><b>${p.name}</b></div>`}</div>
+    <div class="product-copy">
+      <div class="product-top"><h3>${p.name}</h3><span class="price">${p.price?pln(p.price):"Cena później"}</span></div>
+      <p>${p.desc}</p>
+      <div class="product-controls">
+        <select class="size">${p.sizes.map(s=>`<option>${s}</option>`).join("")}</select>
+        <select class="qty">${[1,2,3,4,5].map(q=>`<option value="${q}">${q} szt.</option>`).join("")}</select>
+      </div>
+      <button class="add-btn" data-id="${p.id}">Dodaj do zamówienia</button>
+    </div>
+  </article>`).join("");
+
+  document.querySelectorAll(".add-btn").forEach(btn=>btn.addEventListener("click",()=>{
+    const p=products.find(x=>x.id===btn.dataset.id);
+    const card=btn.closest(".product-card");
+    cart.push({key:Date.now()+Math.random(),name:p.name,size:card.querySelector(".size").value,qty:+card.querySelector(".qty").value,price:p.price});
+    renderCart();
+    const count=document.querySelector("#cartCount");
+    count.classList.remove("bump");void count.offsetWidth;count.classList.add("bump");
+  }));
+  initReveal();
+}
+
+function renderCart(){
+  const items=document.querySelector("#cartItems");
+  document.querySelector("#empty").style.display=cart.length?"none":"block";
+  document.querySelector("#cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
+  document.querySelector("#total").textContent=pln(cart.reduce((s,x)=>s+x.price*x.qty,0));
+  items.innerHTML=cart.map(x=>`<div class="cart-item"><div><strong>${x.name}</strong><small>Rozmiar: ${x.size} • ${x.qty} szt.</small></div><button data-key="${x.key}">Usuń</button></div>`).join("");
+  items.querySelectorAll("button").forEach(b=>b.onclick=()=>{const i=cart.findIndex(x=>String(x.key)===b.dataset.key);if(i>-1)cart.splice(i,1);renderCart()});
+}
+
+document.querySelector("#orderForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const s=document.querySelector("#status");
+  if(!cart.length){s.style.color="#cf1820";s.textContent="Najpierw dodaj co najmniej jeden produkt.";return}
+  s.style.color="#cf1820";
+  s.textContent="Formularz jest gotowy. W finalnej wersji podepniemy bezpłatne wysyłanie zamówień na e-mail.";
+});
+
+document.querySelectorAll("[data-tab]").forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll("[data-tab]").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll("[data-table]").forEach(x=>x.classList.remove("active"));
+  btn.classList.add("active");
+  document.querySelector(`[data-table="${btn.dataset.tab}"]`).classList.add("active");
+});
+
+const toggle=document.querySelector("#menuToggle"),nav=document.querySelector("#mainNav");
+toggle.onclick=()=>{const open=nav.classList.toggle("open");toggle.setAttribute("aria-expanded",open);document.body.classList.toggle("menu-open",open)}
+nav.querySelectorAll("a").forEach(a=>a.onclick=()=>{nav.classList.remove("open");document.body.classList.remove("menu-open")});
+
+function initReveal(){
+  const els=document.querySelectorAll(".reveal:not(.watched)");
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}}),{threshold:.08});
+  els.forEach(el=>{el.classList.add("watched");io.observe(el)});
+}
+document.querySelector("#year").textContent=new Date().getFullYear();
+renderProducts();renderCart();initReveal();
+</script>
 </body>
 </html>
