@@ -8,6 +8,9 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
+  WERSJA V6 – POPRAWIONA 2026-09-04
+  Bez folderów; wszystkie obrazy leżą obok index.html.
+
   WERSJA V4 – CZYSTA
   Celowo nie ma zewnętrznego style.css ani script.js.
   Dzięki temu GitHub Pages nie może wczytać starego zielonego CSS z cache.
@@ -448,6 +451,132 @@ textarea{resize:vertical}
 }
 
 /* MOBILE */
+
+/* =========================================================
+   POPRAWKI V6
+   ========================================================= */
+
+/* Twarde zabezpieczenie przed poziomym przewijaniem na telefonie */
+html,
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+body > *,
+header,
+main,
+footer,
+section{
+  max-width:100%;
+}
+
+.hero,
+.section,
+.steps,
+.footer{
+  overflow-x:clip;
+}
+
+.hero-grid > *,
+.section-head > *,
+.order-grid > *,
+.about-grid > *,
+.league-grid > *,
+.contact-grid > *,
+.footer-main > *{
+  min-width:0;
+}
+
+img,
+svg,
+video{
+  max-width:100%;
+  height:auto;
+}
+
+.contact-card a,
+.footer a,
+.footer p,
+.brand-copy strong{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+/* Sponsor z prawdziwym logo */
+.sponsor-logo-card{
+  padding:18px 22px;
+  background:#fff;
+  border-style:solid;
+}
+
+.sponsor-logo-card img{
+  width:100%;
+  max-width:230px;
+  max-height:82px;
+  object-fit:contain;
+}
+
+/* Logo Polskiego Związku Unihokeja */
+.league-card{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:24px;
+  align-items:center;
+}
+
+.league-logo-box{
+  width:120px;
+  height:120px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background:#fff;
+  padding:9px;
+}
+
+.league-logo-box img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+/* Stopka — wyśrodkowane napisy */
+.footer-cta-inner{
+  justify-content:center;
+  text-align:center;
+  flex-wrap:wrap;
+}
+
+.footer-main{
+  text-align:center;
+}
+
+.footer-brand{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+.footer-brand p{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.footer-col{
+  align-items:center;
+  text-align:center;
+}
+
+.footer-bottom-inner{
+  justify-content:center;
+  text-align:center;
+  flex-wrap:wrap;
+}
+
+
 @media(max-width:980px){
   .menu-toggle{display:block}
   .main-nav{
@@ -476,7 +605,89 @@ textarea{resize:vertical}
   .footer-brand{grid-column:1/-1}
 }
 @media(max-width:680px){
-  .container{width:min(calc(100% - 28px),var(--max))}
+
+  /* V6: wygodne marginesy i wyśrodkowane główne tytuły na telefonie */
+  .container{
+    width:100%;
+    max-width:100%;
+    padding-left:18px;
+    padding-right:18px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .section-head{
+    text-align:center;
+    padding-left:4px;
+    padding-right:4px;
+  }
+
+  .section-head > div,
+  .section-head > p{
+    width:100%;
+    max-width:620px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+  }
+
+  .section-label,
+  .section h2{
+    text-align:center;
+  }
+
+  .about-grid > div:first-child,
+  .league-grid > div:first-child,
+  .contact-grid > div:first-child{
+    text-align:center;
+    padding-left:4px;
+    padding-right:4px;
+  }
+
+  .about-grid > div:first-child p,
+  .league-grid > div:first-child p,
+  .contact-grid > div:first-child p{
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  .league-card{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .league-logo-box{
+    margin-left:auto;
+    margin-right:auto;
+    width:105px;
+    height:105px;
+  }
+
+  .footer-cta-inner{
+    align-items:center;
+    text-align:center;
+  }
+
+  .footer-main{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .footer-brand{
+    grid-column:auto;
+  }
+
+  .footer-col{
+    align-items:center;
+  }
+
+  .footer-bottom-inner{
+    align-items:center;
+    text-align:center;
+    width:100%;
+  }
+
+  .container{width:100%;max-width:100%;padding-left:18px;padding-right:18px}
   .brand-copy strong{font-size:12px}
   .brand-copy span{font-size:8px}
   .brand img{width:45px;height:45px}
@@ -494,11 +705,11 @@ textarea{resize:vertical}
   .product-image{height:250px}
   .form-grid{grid-template-columns:1fr}
   .training-grid{grid-template-columns:1fr}
-  .footer-cta-inner{padding:28px 0;min-height:0;align-items:flex-start;flex-direction:column}
-  .footer-main{grid-template-columns:1fr 1fr;gap:28px 18px}
-  .footer-brand{grid-template-columns:60px 1fr}
+  .footer-cta-inner{padding:28px 0;min-height:0;align-items:center;text-align:center;flex-direction:column}
+  .footer-main{grid-template-columns:1fr;gap:28px 18px;text-align:center}
+  .footer-brand{display:flex;flex-direction:column;align-items:center;text-align:center}
   .footer-brand img{width:60px;height:60px}
-  .footer-bottom-inner{padding:16px 0;min-height:0;flex-direction:column;align-items:flex-start}
+  .footer-bottom-inner{padding:16px 0;min-height:0;flex-direction:column;align-items:center;text-align:center}
 }
 </style>
 </head>
@@ -545,7 +756,6 @@ textarea{resize:vertical}
         <div class="hero-notes">
           <span>✓ Proste zamówienie</span>
           <span>✓ Płatność przy odbiorze</span>
-          <span>✓ Wersja mobilna</span>
         </div>
       </div>
 
@@ -574,7 +784,7 @@ textarea{resize:vertical}
           <span class="section-label">Strefa zamówień</span>
           <h2>Stroje i odzież klubowa</h2>
         </div>
-        <p>Na razie część produktów jest przykładowa. Po otrzymaniu cen, zdjęć i dokładnej rozmiarówki można podmienić je bez przebudowy strony.</p>
+        <p>Na razie część produktów jest przykładowa. Jak podeślesz mi resztę cen, zdjęcia i dokładne informacje o produktach, podmienię wszystko na gotowe.</p>
       </div>
 
       <div class="product-grid" id="products"></div>
@@ -623,7 +833,7 @@ textarea{resize:vertical}
     <div class="container">
       <div class="section-head reveal">
         <div><span class="section-label">Dobór rozmiaru</span><h2>Tabela rozmiarów</h2></div>
-        <p>Wartości są przykładowe. Po otrzymaniu tabeli producenta podmienimy je na właściwe.</p>
+        <p>Na razie tabela jest przykładowa. Jak podeślesz mi właściwą rozmiarówkę producenta, wstawię ją tutaj.</p>
       </div>
       <div class="size-box reveal">
         <div class="tabs">
@@ -660,7 +870,7 @@ textarea{resize:vertical}
         <span class="section-label">O Akademii</span>
         <h2>Akademia Unihokeja Romgos</h2>
         <p class="lead">Miejsce na krótki opis Akademii, jej działalności, szkolenia dzieci i młodzieży oraz tego, co wyróżnia klub.</p>
-        <p>Po otrzymaniu gotowego opisu wstawimy tutaj finalną treść. Sekcja może też dostać dodatkowe zdjęcia.</p>
+        <p>Jak podeślesz mi krótki opis Akademii, wstawię tutaj gotową treść. Jeśli podeślesz więcej zdjęć, mogę je również dodać do tej sekcji.</p>
       </div>
       <div class="info-grid reveal">
         <div class="info-card"><span>LOKALIZACJA</span><strong>Kotlin</strong><small>Dokładny adres do uzupełnienia.</small></div>
@@ -674,7 +884,7 @@ textarea{resize:vertical}
     <div class="container">
       <div class="section-head reveal">
         <div><span class="section-label">Treningi</span><h2>Kiedy trenujemy?</h2></div>
-        <p>Po otrzymaniu grafiku wpiszemy tutaj rzeczywiste grupy, dni, godziny i miejsce treningów.</p>
+        <p>Jak podeślesz mi grafik treningów, wpiszę tutaj konkretne grupy, dni, godziny i miejsce treningów.</p>
       </div>
       <div class="training-grid">
         <article class="training-card reveal"><span>GRUPA 01</span><h3>Młodsi</h3><p>Wtorek • godzina do uzupełnienia</p><p>Czwartek • godzina do uzupełnienia</p><small>Przykładowy układ</small></article>
@@ -688,10 +898,12 @@ textarea{resize:vertical}
     <div class="container">
       <div class="section-head reveal">
         <div><span class="section-label">Partnerzy</span><h2>Sponsorzy Akademii</h2></div>
-        <p>Po otrzymaniu logotypów wstawimy je tutaj w jednej, równej siatce.</p>
+        <p>ROMGOS jest już dodany. Jak podeślesz mi logotypy pozostałych sponsorów, uzupełnię tutaj całą listę.</p>
       </div>
       <div class="sponsor-grid">
-        <div class="sponsor reveal">LOGO SPONSORA</div>
+        <div class="sponsor sponsor-logo-card reveal">
+          <img src="romgos-grupa-logo-2026.png" alt="ROMGOS Grupa - sponsor Akademii">
+        </div>
         <div class="sponsor reveal">LOGO SPONSORA</div>
         <div class="sponsor reveal">LOGO SPONSORA</div>
         <div class="sponsor reveal">LOGO SPONSORA</div>
@@ -707,13 +919,22 @@ textarea{resize:vertical}
         <p style="color:var(--muted);max-width:620px">Aktualne wyniki i tabele mogą prowadzić bezpośrednio do serwisu Polskiego Związku Unihokeja, dzięki czemu nie trzeba ręcznie aktualizować wyników na stronie.</p>
         <a class="btn btn-red" href="https://www.polskiunihokej.pl/component/joomsport/team/756/718" target="_blank" rel="noopener">Sprawdź rozgrywki →</a>
       </div>
-      <div class="league-card reveal"><span>AKTUALNE ROZGRYWKI</span><strong>Polski Związek Unihokeja</strong><p>Jedno miejsce z aktualnymi wynikami i tabelami.</p></div>
+      <div class="league-card reveal">
+        <div class="league-logo-box">
+          <img src="polski-unihokej-logo-2026.png" alt="Polski Związek Unihokeja">
+        </div>
+        <div>
+          <span>AKTUALNE ROZGRYWKI</span>
+          <strong>Polski Związek Unihokeja</strong>
+          <p>Jedno miejsce z aktualnymi wynikami i tabelami.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="section" id="kontakt">
     <div class="container contact-grid">
-      <div class="reveal"><span class="section-label">Kontakt</span><h2>Masz pytanie?</h2><p style="color:var(--muted)">Po otrzymaniu danych podmienimy poniższe pola na właściwy telefon, e-mail, Facebook i Instagram.</p></div>
+      <div class="reveal"><span class="section-label">Kontakt</span><h2>Masz pytanie?</h2><p style="color:var(--muted)">Jak podeślesz mi numer telefonu, e-mail oraz linki do Facebooka i Instagrama, podmienię tutaj wszystkie dane kontaktowe.</p></div>
       <div class="contact-card reveal">
         <a href="#">e-mail do uzupełnienia</a>
         <a href="#">telefon do uzupełnienia</a>
