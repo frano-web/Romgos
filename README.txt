@@ -7,3 +7,9 @@ Dodano pełny plan zajęć na sezon 2026/2027 oraz aktualne dane kontaktowe:
 - e-mail: unihokej@romgos.pl
 
 Na GitHub wrzuć wszystkie pliki z tej paczki bezpośrednio do głównego katalogu repozytorium.
+
+
+AKTUALIZACJA V8:
+- dodano wtorek 16:00–17:30 — dziewczęta klasa 4–6
+- dodano czwartek 16:00–17:30 — dziewczęta klasa 4–6
+- pozostałe dni i godziny bez zmian
