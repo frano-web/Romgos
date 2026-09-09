@@ -8,7 +8,7 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V8 – AKTUALIZACJA PLANU 2026/2027
+  WERSJA V9 – PRODUKTY WKRÓTCE / KONTAKT / SPONSORZY
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -736,6 +736,123 @@ video{
 @media(max-width:980px){.schedule-grid{grid-template-columns:1fr}.schedule-slot-large{min-height:0}.contact-people-grid{grid-template-columns:1fr}}
 @media(max-width:680px){.schedule-day-head,.schedule-slot{padding-left:18px;padding-right:18px}.contact-person{text-align:center}.academy-mail-card{flex-direction:column;text-align:center}.academy-mail-card .btn{width:100%}}
 
+
+/* =========================================================
+   V9 — PRODUKTY WKRÓTCE
+   ========================================================= */
+
+.product-soon{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px;
+  background:
+    linear-gradient(135deg, rgba(207,24,32,.06), rgba(207,24,32,.015)),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0,
+      transparent 16px,
+      rgba(207,24,32,.028) 16px,
+      rgba(207,24,32,.028) 32px
+    ),
+    #fff;
+  overflow:hidden;
+}
+
+.product-soon::before{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  border:34px solid rgba(207,24,32,.055);
+  right:-42px;
+  top:-45px;
+}
+
+.product-soon::after{
+  content:"";
+  position:absolute;
+  left:-28px;
+  bottom:-28px;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:rgba(207,24,32,.04);
+}
+
+.product-soon-badge{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border-radius:999px;
+  padding:8px 12px;
+  background:var(--red);
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.3px;
+}
+
+.product-soon strong{
+  position:relative;
+  z-index:2;
+  margin-top:13px;
+  font-size:25px;
+  color:#202124;
+}
+
+.product-soon p{
+  position:relative;
+  z-index:2;
+  margin:7px 0 0;
+  min-height:0;
+  max-width:240px;
+  color:#777b81;
+  font-size:11px;
+}
+
+.product-card.coming-soon .product-controls,
+.product-card.coming-soon .add-btn{
+  display:none;
+}
+
+.product-card.coming-soon .price{
+  color:#8d9198;
+}
+
+.product-card.coming-soon .product-copy p{
+  min-height:0;
+}
+
+.coming-soon-note{
+  margin-top:13px;
+  padding:10px 12px;
+  border-radius:10px;
+  background:var(--red-soft);
+  color:#7c3f42;
+  font-size:11px;
+  font-weight:700;
+  text-align:center;
+}
+
+
+.sponsor-grid-single{
+  grid-template-columns:minmax(260px,420px);
+  justify-content:center;
+}
+
+.sponsor-grid-single .sponsor{
+  width:100%;
+}
+
 </style>
 </head>
 
@@ -952,15 +1069,12 @@ video{
     <div class="container">
       <div class="section-head reveal">
         <div><span class="section-label">Partnerzy</span><h2>Sponsorzy Akademii</h2></div>
-        <p>ROMGOS jest już dodany. Jak podeślesz mi logotypy pozostałych sponsorów, uzupełnię tutaj całą listę.</p>
+        <p>Partnerem Akademii jest ROMGOS.</p>
       </div>
-      <div class="sponsor-grid">
+      <div class="sponsor-grid sponsor-grid-single">
         <div class="sponsor sponsor-logo-card reveal">
           <img src="romgos-grupa-logo-2026.png" alt="ROMGOS Grupa - sponsor Akademii">
         </div>
-        <div class="sponsor reveal">LOGO SPONSORA</div>
-        <div class="sponsor reveal">LOGO SPONSORA</div>
-        <div class="sponsor reveal">LOGO SPONSORA</div>
       </div>
     </div>
   </section>
@@ -997,21 +1111,25 @@ video{
       </div>
 
       <div class="contact-people-grid">
-        <article class="contact-person reveal">
-          <span class="contact-role">PREZES</span>
-          <h3>Dariusz Łukaszyk</h3>
-          <a class="contact-phone" href="tel:+48534670060">+48 534 670 060</a>
-        </article>
+
         <article class="contact-person reveal">
           <span class="contact-role">KOORDYNATOR / TRENER</span>
           <h3>Artur Błaszczyk</h3>
           <a class="contact-phone" href="tel:+48513943750">+48 513 943 750</a>
         </article>
+
         <article class="contact-person reveal">
           <span class="contact-role">TRENER</span>
           <h3>Nikodem Marciniak</h3>
           <a class="contact-phone" href="tel:+48730200232">+48 730 200 232</a>
         </article>
+
+        <article class="contact-person reveal">
+          <span class="contact-role">PREZES</span>
+          <h3>Dariusz Łukaszyk</h3>
+          <a class="contact-phone" href="tel:+48534670060">+48 534 670 060</a>
+        </article>
+
       </div>
 
       <div class="academy-mail-card reveal">
@@ -1062,9 +1180,9 @@ video{
     <div class="footer-col">
       <b>KONTAKT</b>
       <a href="mailto:unihokej@romgos.pl">unihokej@romgos.pl</a>
-      <a href="tel:+48534670060">Prezes: +48 534 670 060</a>
-      <a href="tel:+48513943750">Koordynator: +48 513 943 750</a>
-      <a href="tel:+48730200232">Trener: +48 730 200 232</a>
+      <a href="tel:+48513943750">Artur: +48 513 943 750</a>
+      <a href="tel:+48730200232">Nikodem: +48 730 200 232</a>
+      <a href="tel:+48534670060">Dariusz: +48 534 670 060</a>
     </div>
   </div>
 
@@ -1089,19 +1207,37 @@ const cart=[];
 const pln=n=>Number(n||0).toLocaleString("pl-PL",{style:"currency",currency:"PLN"});
 
 function renderProducts(){
-  document.querySelector("#products").innerHTML=products.map(p=>`
-  <article class="product-card reveal">
-    <div class="product-image">${p.image?`<img src="${p.image}" alt="${p.name}">`:`<div class="product-placeholder"><small>ZDJĘCIE DO UZUPEŁNIENIA</small><b>${p.name}</b></div>`}</div>
+  document.querySelector("#products").innerHTML=products.map(p=>{
+    const comingSoon = !p.image;
+    return `
+  <article class="product-card reveal ${comingSoon ? "coming-soon" : ""}">
+    <div class="product-image">${
+      p.image
+        ? `<img src="${p.image}" alt="${p.name}">`
+        : `<div class="product-soon">
+             <span class="product-soon-badge">WKRÓTCE</span>
+             <strong>${p.name}</strong>
+             <p>Ten produkt pojawi się tutaj, gdy dostanę zdjęcie, cenę i szczegóły.</p>
+           </div>`
+    }</div>
     <div class="product-copy">
-      <div class="product-top"><h3>${p.name}</h3><span class="price">${p.price?pln(p.price):"Cena później"}</span></div>
-      <p>${p.desc}</p>
-      <div class="product-controls">
-        <select class="size">${p.sizes.map(s=>`<option>${s}</option>`).join("")}</select>
-        <select class="qty">${[1,2,3,4,5].map(q=>`<option value="${q}">${q} szt.</option>`).join("")}</select>
+      <div class="product-top">
+        <h3>${p.name}</h3>
+        <span class="price">${comingSoon ? "Wkrótce" : (p.price ? pln(p.price) : "Cena później")}</span>
       </div>
-      <button class="add-btn" data-id="${p.id}">Dodaj do zamówienia</button>
+      <p>${comingSoon ? "Produkt nie jest jeszcze dostępny do zamówienia." : p.desc}</p>
+
+      ${comingSoon ? `
+        <div class="coming-soon-note">Wkrótce pojawią się tutaj szczegóły i możliwość zamówienia.</div>
+      ` : `
+        <div class="product-controls">
+          <select class="size">${p.sizes.map(s=>`<option>${s}</option>`).join("")}</select>
+          <select class="qty">${[1,2,3,4,5].map(q=>`<option value="${q}">${q} szt.</option>`).join("")}</select>
+        </div>
+        <button class="add-btn" data-id="${p.id}">Dodaj do zamówienia</button>
+      `}
     </div>
-  </article>`).join("");
+  </article>`}).join("");
 
   document.querySelectorAll(".add-btn").forEach(btn=>btn.addEventListener("click",()=>{
     const p=products.find(x=>x.id===btn.dataset.id);
