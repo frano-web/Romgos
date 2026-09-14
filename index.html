@@ -8,7 +8,7 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V9 – PRODUKTY WKRÓTCE / KONTAKT / SPONSORZY
+  WERSJA V10 – OFICJALNA ROZMIARÓWKA ADIDAS
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -853,6 +853,109 @@ video{
   width:100%;
 }
 
+
+/* =========================================================
+   V10 — OFICJALNA ROZMIARÓWKA ADIDAS
+   ========================================================= */
+.size-box-wide{
+  max-width:100%;
+}
+
+.size-tabs-scroll{
+  overflow-x:auto;
+  overflow-y:hidden;
+  scrollbar-width:thin;
+  padding-bottom:4px;
+  flex-wrap:nowrap;
+}
+
+.size-tabs-scroll button{
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+
+.size-help{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  margin:0 0 12px;
+  padding:13px 15px;
+  border-radius:13px;
+  background:#fff;
+  border:1px solid var(--line);
+  font-size:11px;
+  color:var(--muted);
+}
+
+.size-help strong{
+  color:var(--text);
+  white-space:nowrap;
+}
+
+.adidas-table-wrap{
+  max-width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+.adidas-size-table{
+  min-width:760px;
+}
+
+.adidas-size-table[data-table="junior"]{
+  min-width:980px;
+}
+
+.adidas-size-table th{
+  color:#fff;
+  background:var(--red);
+  vertical-align:middle;
+}
+
+.adidas-size-table tbody tr:nth-child(even){
+  background:#fafafa;
+}
+
+.adidas-size-table td:first-child{
+  font-weight:800;
+  color:#26282d;
+}
+
+.adidas-size-table td small{
+  color:var(--muted);
+  font-size:10px;
+}
+
+.size-source-note{
+  margin:10px 3px 0;
+  color:var(--muted);
+  font-size:10px;
+}
+
+@media(max-width:680px){
+  .size-tabs-scroll{
+    margin-left:-4px;
+    margin-right:-4px;
+    padding-left:4px;
+    padding-right:4px;
+  }
+
+  .size-help{
+    flex-direction:column;
+    text-align:left;
+  }
+
+  .adidas-table-wrap{
+    border-radius:14px;
+  }
+
+  .adidas-size-table th,
+  .adidas-size-table td{
+    padding:11px 13px;
+    font-size:11px;
+  }
+}
+
 </style>
 </head>
 
@@ -926,7 +1029,7 @@ video{
           <span class="section-label">Strefa zamówień</span>
           <h2>Stroje i odzież klubowa</h2>
         </div>
-        <p></p>
+        <p>Na razie część produktów jest przykładowa. Jak podeślesz mi resztę cen, zdjęcia i dokładne informacje o produktach, podmienię wszystko na gotowe.</p>
       </div>
 
       <div class="product-grid" id="products"></div>
@@ -974,34 +1077,94 @@ video{
   <section class="section section-soft" id="rozmiary">
     <div class="container">
       <div class="section-head reveal">
-        <div><span class="section-label">Dobór rozmiaru</span><h2>Tabela rozmiarów</h2></div>
-        <p>Na razie tabela jest przykładowa. Jak podeślesz mi właściwą rozmiarówkę producenta, wstawię ją tutaj.</p>
+        <div>
+          <span class="section-label">Dobór rozmiaru</span>
+          <h2>Tabela rozmiarów Adidas</h2>
+        </div>
+        <p>Poniżej jest właściwa rozmiarówka Adidas dla odzieży juniorskiej oraz męskiej. Wybierz odpowiednią kategorię i porównaj swoje wymiary z tabelą.</p>
       </div>
-      <div class="size-box reveal">
-        <div class="tabs">
-          <button class="active" data-tab="kids">Dziecięce</button>
-          <button data-tab="adult">Dorosłe</button>
+
+      <div class="size-box size-box-wide reveal">
+        <div class="tabs size-tabs-scroll">
+          <button class="active" data-tab="junior">Ubrania juniorskie</button>
+          <button data-tab="men-tops">Koszule i koszulki męskie</button>
+          <button data-tab="men-bottoms">Spodnie i szorty męskie</button>
         </div>
-        <div class="table-wrap">
-          <table class="size-table active" data-table="kids">
-            <thead><tr><th>Rozmiar</th><th>Wzrost</th><th>Klatka</th><th>Pas</th></tr></thead>
+
+        <div class="size-help">
+          <strong>Jak korzystać z tabeli?</strong>
+          <span>Zmierz wzrost i odpowiednie obwody ciała, a następnie wybierz rozmiar, którego zakres obejmuje Twoje wymiary.</span>
+        </div>
+
+        <div class="table-wrap adidas-table-wrap">
+          <table class="size-table active adidas-size-table" data-table="junior">
+            <thead>
+              <tr>
+                <th>Rozmiar</th>
+                <th>Wzrost</th>
+                <th>Klatka piersiowa</th>
+                <th>Talia</th>
+                <th>Biodra</th>
+                <th>Wewnętrzna długość nogawki</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td>128</td><td>123–132 cm</td><td>64–68 cm</td><td>58–62 cm</td></tr>
-              <tr><td>140</td><td>133–144 cm</td><td>68–74 cm</td><td>61–66 cm</td></tr>
-              <tr><td>152</td><td>145–156 cm</td><td>74–80 cm</td><td>65–70 cm</td></tr>
-              <tr><td>164</td><td>157–168 cm</td><td>80–86 cm</td><td>69–74 cm</td></tr>
+              <tr><td>5–6 lat</td><td>111–116 cm</td><td>58,5–60,5 cm</td><td>55,5–56 cm</td><td>62,5–64 cm</td><td>52 cm</td></tr>
+              <tr><td>6–7 lat</td><td>117–122 cm</td><td>61–63 cm</td><td>56,5–57 cm</td><td>64,5–66 cm</td><td>56 cm</td></tr>
+              <tr><td>7–8 lat</td><td>123–128 cm</td><td>63,5–64 cm</td><td>57,5–59 cm</td><td>66,5–68 cm</td><td>59 cm</td></tr>
+              <tr><td>8–9 lat</td><td>129–134 cm</td><td>64,5–67,5 cm</td><td>59,5–61,5 cm</td><td>68,5–71 cm</td><td>62 cm</td></tr>
+              <tr><td>9–10 lat</td><td>135–140 cm</td><td>68–71 cm</td><td>62–63,5 cm</td><td>71,5–74,5 cm</td><td>65 cm</td></tr>
+              <tr><td>10–11 lat</td><td>141–146 cm</td><td>71,5–74,5 cm</td><td>64–66 cm</td><td>75–77,5 cm</td><td>67 cm</td></tr>
+              <tr><td>11–12 lat</td><td>147–152 cm</td><td>75–78 cm</td><td>66,5–68 cm</td><td>78–81 cm</td><td>70 cm</td></tr>
+              <tr><td>12–13 lat</td><td>153–158 cm</td><td>78,5–82 cm</td><td>68,5–70,5 cm</td><td>81,5–85 cm</td><td>73 cm</td></tr>
+              <tr><td>13–14 lat</td><td>159–164 cm</td><td>82,5–86 cm</td><td>71–73 cm</td><td>85,5–89 cm</td><td>76 cm</td></tr>
+              <tr><td>14–15 lat</td><td>165–170 cm</td><td>86,5–89 cm</td><td>73,5–74,5 cm</td><td>89,5–91,5 cm</td><td>79 cm</td></tr>
+              <tr><td>15–16 lat</td><td>171–176 cm</td><td>89,5–91,5 cm</td><td>75–76,5 cm</td><td>92–94 cm</td><td>82 cm</td></tr>
             </tbody>
           </table>
-          <table class="size-table" data-table="adult">
-            <thead><tr><th>Rozmiar</th><th>Wzrost</th><th>Klatka</th><th>Pas</th></tr></thead>
+
+          <table class="size-table adidas-size-table" data-table="men-tops">
+            <thead>
+              <tr>
+                <th>Rozmiar</th>
+                <th>Klatka piersiowa</th>
+                <th>Talia</th>
+                <th>Biodra</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td>S</td><td>164–174 cm</td><td>86–94 cm</td><td>74–82 cm</td></tr>
-              <tr><td>M</td><td>170–180 cm</td><td>94–102 cm</td><td>82–90 cm</td></tr>
-              <tr><td>L</td><td>176–186 cm</td><td>102–110 cm</td><td>90–98 cm</td></tr>
-              <tr><td>XL</td><td>182–192 cm</td><td>110–118 cm</td><td>98–106 cm</td></tr>
+              <tr><td><strong>XS</strong><br><small>40–42</small></td><td>82–87 cm</td><td>71–75 cm</td><td>82–86 cm</td></tr>
+              <tr><td><strong>S</strong><br><small>44–46</small></td><td>88–94 cm</td><td>76–82 cm</td><td>87–93 cm</td></tr>
+              <tr><td><strong>M</strong><br><small>48–50</small></td><td>95–102 cm</td><td>83–90 cm</td><td>94–101 cm</td></tr>
+              <tr><td><strong>L</strong><br><small>52–54</small></td><td>103–111 cm</td><td>91–99 cm</td><td>102–110 cm</td></tr>
+              <tr><td><strong>XL</strong><br><small>56–58</small></td><td>112–121 cm</td><td>100–109 cm</td><td>111–119 cm</td></tr>
+              <tr><td><strong>2XL</strong><br><small>60–62</small></td><td>122–132 cm</td><td>110–121 cm</td><td>120–128 cm</td></tr>
+              <tr><td><strong>3XL</strong><br><small>64–66</small></td><td>133–144 cm</td><td>122–134 cm</td><td>129–138 cm</td></tr>
+            </tbody>
+          </table>
+
+          <table class="size-table adidas-size-table" data-table="men-bottoms">
+            <thead>
+              <tr>
+                <th>Rozmiar</th>
+                <th>Talia</th>
+                <th>Biodra</th>
+                <th>Wewnętrzna długość nogawki</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>XS</strong><br><small>40–42</small></td><td>71–75 cm</td><td>82–86 cm</td><td>81 cm</td></tr>
+              <tr><td><strong>S</strong><br><small>44–46</small></td><td>76–82 cm</td><td>87–93 cm</td><td>81,5 cm</td></tr>
+              <tr><td><strong>M</strong><br><small>48–50</small></td><td>83–90 cm</td><td>94–101 cm</td><td>82 cm</td></tr>
+              <tr><td><strong>L</strong><br><small>52–54</small></td><td>91–99 cm</td><td>102–110 cm</td><td>82,5 cm</td></tr>
+              <tr><td><strong>XL</strong><br><small>56–58</small></td><td>100–109 cm</td><td>111–119 cm</td><td>83 cm</td></tr>
+              <tr><td><strong>2XL</strong><br><small>60–62</small></td><td>110–121 cm</td><td>120–128 cm</td><td>82,5 cm</td></tr>
+              <tr><td><strong>3XL</strong><br><small>64–66</small></td><td>122–134 cm</td><td>129–138 cm</td><td>82 cm</td></tr>
             </tbody>
           </table>
         </div>
+
+        <p class="size-source-note">Rozmiarówka według tabel Adidas przekazanych przez Akademię.</p>
       </div>
     </div>
   </section>
@@ -1069,7 +1232,7 @@ video{
     <div class="container">
       <div class="section-head reveal">
         <div><span class="section-label">Partnerzy</span><h2>Sponsorzy Akademii</h2></div>
-        <p></p>
+        <p>Partnerem Akademii jest ROMGOS.</p>
       </div>
       <div class="sponsor-grid sponsor-grid-single">
         <div class="sponsor sponsor-logo-card reveal">
@@ -1094,7 +1257,7 @@ video{
         <div>
           <span>AKTUALNE ROZGRYWKI</span>
           <strong>Polski Związek Unihokeja</strong>
-          <p></p>
+          <p>Jedno miejsce z aktualnymi wynikami i tabelami.</p>
         </div>
       </div>
     </div>
