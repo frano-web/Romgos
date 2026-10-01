@@ -8,7 +8,7 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V10 – OFICJALNA ROZMIARÓWKA ADIDAS
+  WERSJA V12 – PERSONALIZACJA STROJU
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -956,6 +956,171 @@ video{
   }
 }
 
+
+/* =========================================================
+   V11 — OPIS, GALERIA, SPONSORZY, STRÓJ 150 ZŁ, PLAN 29.09–31.10
+   ========================================================= */
+
+.academy-gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.gallery-item{
+  margin:0;
+  border-radius:16px;
+  overflow:hidden;
+  background:#e9eaec;
+  min-height:190px;
+  position:relative;
+}
+
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(6){
+  grid-column:span 2;
+}
+
+.gallery-item img{
+  width:100%;
+  height:100%;
+  min-height:190px;
+  object-fit:cover;
+  transition:transform .35s ease;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.035);
+}
+
+.schedule-validity{
+  width:max-content;
+  max-width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:-12px auto 22px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#fff;
+  color:var(--red);
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.schedule-validity span{
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.15px;
+}
+
+.schedule-validity strong{
+  font-size:13px;
+}
+
+.schedule-grid-current{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.schedule-grid-current .schedule-day,
+.schedule-grid-current .schedule-day:nth-child(4),
+.schedule-grid-current .schedule-day:nth-child(5){
+  grid-column:auto;
+}
+
+.sponsor-grid-three{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.sponsor-logo-card{
+  min-height:150px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+}
+
+.sponsor-logo-card img{
+  width:100%;
+  max-width:260px;
+  max-height:75px;
+  object-fit:contain;
+}
+
+.sponsor-logo-card span{
+  color:#555b63;
+  font-size:11px;
+  font-weight:800;
+  text-align:center;
+}
+
+.product-card img[alt="Komplet meczowy"]{
+  object-fit:contain;
+  background:#fff;
+}
+
+@media(max-width:980px){
+  .academy-gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(6){
+    grid-column:span 1;
+  }
+
+  .schedule-grid-current{
+    grid-template-columns:1fr;
+  }
+
+  .sponsor-grid-three{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:680px){
+  .academy-gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-item,
+  .gallery-item img{
+    min-height:220px;
+  }
+
+  .schedule-validity{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+
+/* =========================================================
+   V12 — PERSONALIZACJA STROJU
+   ========================================================= */
+.personalization-note{
+  margin:14px 0;
+  padding:13px 14px;
+  border-radius:12px;
+  background:var(--red-soft);
+  border:1px solid #ffd7d9;
+}
+
+.personalization-note strong{
+  display:block;
+  font-size:11px;
+  color:#6f252a;
+  margin-bottom:3px;
+}
+
+.personalization-note span{
+  display:block;
+  font-size:10px;
+  line-height:1.5;
+  color:#80565a;
+}
+
 </style>
 </head>
 
@@ -1056,6 +1221,11 @@ video{
               <label><span>Adres e-mail *</span><input required type="email" name="email"></label>
               <label><span>Telefon *</span><input required type="tel" name="phone"></label>
               <label><span>Grupa / rocznik</span><input name="group" placeholder="np. Młodzik / 2013"></label>
+
+              <label><span>Imię / nazwisko na koszulce</span><input name="shirtName" maxlength="20" placeholder="np. ANTEK"></label>
+
+              <label><span>Numer zawodnika</span><input name="shirtNumber" inputmode="numeric" maxlength="3" placeholder="np. 9"></label>
+
               <label><span>Sposób odbioru</span>
                 <select name="pickup">
                   <option>Odbiór na treningu</option>
@@ -1066,6 +1236,11 @@ video{
             </div>
             <label style="margin-top:12px"><span>Uwagi</span><textarea rows="4" name="notes" placeholder="Np. numer zawodnika, personalizacja, inne informacje..."></textarea></label>
             <label class="check"><input type="checkbox" required><span>Potwierdzam poprawność danych i przyjmuję do wiadomości, że płatność następuje przy odbiorze.</span></label>
+            <div class="personalization-note">
+              <strong>Personalizacja stroju</strong>
+              <span>Jeśli na koszulce ma znaleźć się imię/nazwisko lub numer, wpisz je powyżej. Jeśli pola zostawisz puste, zamówienie zostanie zapisane bez personalizacji.</span>
+            </div>
+
             <button class="submit-btn" type="submit">Wyślij zamówienie</button>
             <p class="status" id="status"></p>
           </form>
@@ -1173,14 +1348,42 @@ video{
     <div class="container about-grid">
       <div class="reveal">
         <span class="section-label">O Akademii</span>
-        <h2>Akademia Unihokeja Romgos</h2>
-        <p class="lead">Miejsce na krótki opis Akademii, jej działalności, szkolenia dzieci i młodzieży oraz tego, co wyróżnia klub.</p>
-        <p>Jak podeślesz mi krótki opis Akademii, wstawię tutaj gotową treść. Jeśli podeślesz więcej zdjęć, mogę je również dodać do tej sekcji.</p>
+        <h2>Akademia Unihokeja Romgos w Kotlinie</h2>
+        <p class="lead">Akademia Unihokeja Romgos w Kotlinie to drużyna, która łączy sportową pasję, ciężką pracę i świetną zabawę.</p>
+        <p>Rywalizujemy w rozgrywkach ligowych oraz licznych turniejach na terenie całego kraju. W naszej Akademii trenują zawodnicy od najmłodszych — przedszkolaków — aż po seniorów, którzy reprezentują klub w 1. Lidze Polskiej Ligi Unihokeja.</p>
+        <p>Nasza praca przynosi również znaczące sukcesy. W sezonie 2024/25 nasi młodzicy zdobyli tytuł Mistrza Polski, a w sezonie 2025/26 obronili mistrzowski tytuł. W sezonie 2025/26 ogromny sukces odniosły również nasze młodziczki, zdobywając brązowy medal Mistrzostw Polski.</p>
+        <p>Każdego dnia cała drużyna prężnie trenuje, rozwija swoje umiejętności, uczy się współpracy i przede wszystkim czerpie radość z gry. <strong>Akademia Unihokeja Romgos w Kotlinie — trenujemy, bawimy się i wspólnie sięgamy po kolejne sukcesy!</strong></p>
       </div>
+
       <div class="info-grid reveal">
-        <div class="info-card"><span>LOKALIZACJA</span><strong>Kotlin</strong><small>Dokładny adres do uzupełnienia.</small></div>
-        <div class="info-card"><span>DYSCYPLINA</span><strong>Unihokej</strong><small>Treningi dzieci i młodzieży.</small></div>
-        <div class="info-card"><span>AKADEMIA</span><strong>Romgos</strong><small>Informacje organizacyjne w jednym miejscu.</small></div>
+        <div class="info-card"><span>OD NAJMŁODSZYCH DO SENIORÓW</span><strong>Pełna ścieżka szkolenia</strong><small>Od przedszkolaków aż po zespół seniorski.</small></div>
+        <div class="info-card"><span>SENIORZY</span><strong>1. Liga Polska</strong><small>Reprezentacja Akademii w rozgrywkach ligowych.</small></div>
+        <div class="info-card"><span>MŁODZICY</span><strong>Mistrz Polski ×2</strong><small>Sezony 2024/25 oraz 2025/26.</small></div>
+        <div class="info-card"><span>MŁODZICZKI</span><strong>Brąz Mistrzostw Polski</strong><small>Sezon 2025/26.</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="galeria">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-label">Akademia w akcji</span>
+          <h2>Galeria</h2>
+        </div>
+        <p>Turnieje, mecze, medale i wspólne chwile zawodników Akademii Unihokeja Romgos w Kotlinie.</p>
+      </div>
+      <div class="academy-gallery">
+        <figure class="gallery-item reveal"><img src="akademia-galeria-01.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-02.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-03.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-04.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-05.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-06.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-07.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-08.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-09.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-10.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
       </div>
     </div>
   </section>
@@ -1189,40 +1392,31 @@ video{
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <span class="section-label">Plan zajęć 2026/2027</span>
+          <span class="section-label">Aktualny plan zajęć</span>
           <h2>Treningi Akademii</h2>
         </div>
-        <p>Aktualny plan zajęć Akademii Unihokeja Romgos na sezon 2026/2027.</p>
+        <p>Ten harmonogram obowiązuje od <strong>29.09 do 31.10.2026</strong>. Po tym terminie plan zajęć może zostać zaktualizowany.</p>
       </div>
 
-      <div class="schedule-grid">
-        <article class="schedule-day reveal">
-          <div class="schedule-day-head"><span>PON</span><h3>Poniedziałek</h3></div>
-          <div class="schedule-slot"><strong>16:30–17:30</strong><p>Chłopcy klasa 2–4<br>Dziewczęta klasa 2–3</p></div>
-          <div class="schedule-slot"><strong>17:30–18:30</strong><p>Przedszkole + klasa 1</p></div>
-          <div class="schedule-slot"><strong>18:00–20:00</strong><p>Chłopcy klasa 5–8<br>Dziewczęta klasa 7–8<br>Seniorzy</p></div>
-        </article>
+      <div class="schedule-validity reveal">
+        <span>OBOWIĄZUJE</span>
+        <strong>29.09–31.10.2026</strong>
+      </div>
 
+      <div class="schedule-grid schedule-grid-current">
         <article class="schedule-day reveal">
           <div class="schedule-day-head"><span>WT</span><h3>Wtorek</h3></div>
-          <div class="schedule-slot schedule-slot-large"><strong>16:00–17:30</strong><p>Dziewczęta klasa 4–6</p></div>
+          <div class="schedule-slot schedule-slot-large"><strong>16:00–17:30</strong><p>Dziewczęta klasy 3–6<br>Chłopcy klasy 2–6</p></div>
         </article>
 
         <article class="schedule-day reveal">
           <div class="schedule-day-head"><span>ŚR</span><h3>Środa</h3></div>
-          <div class="schedule-slot"><strong>16:20–17:30</strong><p>Chłopcy klasa 2–4<br>Dziewczęta klasa 2–3</p></div>
-          <div class="schedule-slot"><strong>17:30–19:00</strong><p>Chłopcy klasa 5–6<br>Dziewczęta klasa 7–8</p></div>
-          <div class="schedule-slot"><strong>19:00–20:30</strong><p>Chłopcy klasa 7–8<br>Seniorzy</p></div>
+          <div class="schedule-slot schedule-slot-large"><strong>16:30–18:30</strong><p>Chłopcy klasy 7–8<br>Seniorzy</p></div>
         </article>
 
         <article class="schedule-day reveal">
           <div class="schedule-day-head"><span>CZW</span><h3>Czwartek</h3></div>
-          <div class="schedule-slot schedule-slot-large"><strong>16:00–17:30</strong><p>Dziewczęta klasa 4–6</p></div>
-        </article>
-
-        <article class="schedule-day reveal">
-          <div class="schedule-day-head"><span>PT</span><h3>Piątek</h3></div>
-          <div class="schedule-slot schedule-slot-large"><strong>16:30–20:00</strong><p>Chłopcy klasa 7–8<br>Seniorzy</p></div>
+          <div class="schedule-slot schedule-slot-large"><strong>16:30–18:00</strong><p>Dziewczęta klasy 3–6<br>Chłopcy klasy 2–6</p></div>
         </article>
       </div>
     </div>
@@ -1232,11 +1426,21 @@ video{
     <div class="container">
       <div class="section-head reveal">
         <div><span class="section-label">Partnerzy</span><h2>Sponsorzy Akademii</h2></div>
-        <p>Partnerem Akademii jest ROMGOS.</p>
+        <p>Dziękujemy partnerom, którzy wspierają rozwój Akademii i naszych zawodników.</p>
       </div>
-      <div class="sponsor-grid sponsor-grid-single">
+
+      <div class="sponsor-grid sponsor-grid-three">
         <div class="sponsor sponsor-logo-card reveal">
-          <img src="romgos-grupa-logo-2026.png" alt="ROMGOS Grupa - sponsor Akademii">
+          <img src="romgos-grupa-logo-2026.png" alt="ROMGOS Grupa">
+          <span>ROMGOS Grupa</span>
+        </div>
+        <div class="sponsor sponsor-logo-card reveal">
+          <img src="sponsor-awans.jpg" alt="Awans Kompleksowe Roboty Ziemne">
+          <span>Awans Kompleksowe Roboty Ziemne</span>
+        </div>
+        <div class="sponsor sponsor-logo-card reveal">
+          <img src="sponsor-gmina-kotlin.jpg" alt="Gmina Kotlin">
+          <span>Gmina Kotlin</span>
         </div>
       </div>
     </div>
@@ -1360,7 +1564,7 @@ video{
 <script>
 const products=[
   {id:"dres",name:"Dres klubowy",desc:"Bluza + spodnie. Nadesłana wizualizacja stroju Akademii.",price:0,image:"romgos-dres-2026.jpg",sizes:["128","140","152","164","S","M","L","XL"]},
-  {id:"komplet",name:"Komplet meczowy",desc:"Koszulka + spodenki. Zdjęcie i cena do uzupełnienia.",price:0,image:"",sizes:["128","140","152","164","S","M","L","XL"]},
+  {id:"komplet",name:"Komplet meczowy",desc:"Koszulka + spodenki Akademii. Cena kompletu: 150 zł.",price:150,image:"stroj-meczowy-romgos-2026.jpg",sizes:["5–6 lat","6–7 lat","7–8 lat","8–9 lat","9–10 lat","10–11 lat","11–12 lat","12–13 lat","13–14 lat","14–15 lat","15–16 lat","XS","S","M","L","XL","2XL","3XL"]},
   {id:"koszulka",name:"Koszulka treningowa",desc:"Zdjęcie, cena i szczegóły do uzupełnienia.",price:0,image:"",sizes:["128","140","152","164","S","M","L","XL"]},
   {id:"spodenki",name:"Spodenki",desc:"Zdjęcie, cena i szczegóły do uzupełnienia.",price:0,image:"",sizes:["128","140","152","164","S","M","L","XL"]},
   {id:"czapka",name:"Czapka klubowa",desc:"Opcjonalny produkt – do ustalenia.",price:0,image:"",sizes:["Uniwersalny"]},
@@ -1425,9 +1629,20 @@ function renderCart(){
 document.querySelector("#orderForm").addEventListener("submit",e=>{
   e.preventDefault();
   const s=document.querySelector("#status");
-  if(!cart.length){s.style.color="#cf1820";s.textContent="Najpierw dodaj co najmniej jeden produkt.";return}
+  if(!cart.length){
+    s.style.color="#cf1820";
+    s.textContent="Najpierw dodaj co najmniej jeden produkt.";
+    return;
+  }
+
+  const form = e.currentTarget;
+  const shirtName = form.elements["shirtName"]?.value.trim() || "";
+  const shirtNumber = form.elements["shirtNumber"]?.value.trim() || "";
+
   s.style.color="#cf1820";
-  s.textContent="Formularz jest gotowy. W finalnej wersji podepniemy bezpłatne wysyłanie zamówień na e-mail.";
+  s.textContent = shirtName || shirtNumber
+    ? `Formularz jest gotowy. Personalizacja: ${shirtName || "bez napisu"}${shirtNumber ? `, numer ${shirtNumber}` : ""}. W finalnej wersji podepniemy bezpłatne wysyłanie zamówień na e-mail.`
+    : "Formularz jest gotowy. W finalnej wersji podepniemy bezpłatne wysyłanie zamówień na e-mail.";
 });
 
 document.querySelectorAll("[data-tab]").forEach(btn=>btn.onclick=()=>{

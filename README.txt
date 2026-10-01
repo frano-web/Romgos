@@ -1,24 +1,21 @@
-AKADEMIA UNIHOKEJA ROMGOS — V7
+AKADEMIA UNIHOKEJA ROMGOS — V11
 
-Dodano pełny plan zajęć na sezon 2026/2027 oraz aktualne dane kontaktowe:
-- Prezes Dariusz Łukaszyk +48 534 670 060
-- Koordynator/Trener Artur Błaszczyk +48 513 943 750
-- Trener Nikodem Marciniak +48 730 200 232
-- e-mail: unihokej@romgos.pl
+Dodano:
+- pełny opis Akademii przekazany przez klub
+- osiągnięcia: Mistrz Polski młodzików 2024/25 i 2025/26
+- brąz Mistrzostw Polski młodziczek 2025/26
+- informację o seniorach grających w 1. Lidze Polskiej Ligi Unihokeja
+- galerię ze zdjęć Akademii
+- sponsorów: ROMGOS Grupa, Awans Kompleksowe Roboty Ziemne, Gmina Kotlin
+- aktualny plan treningów obowiązujący 29.09–31.10.2026
+- komplet meczowy z wizualizacją i ceną 150 zł
+- komplet meczowy można dodać do zamówienia
 
 Na GitHub wrzuć wszystkie pliki z tej paczki bezpośrednio do głównego katalogu repozytorium.
 
 
-AKTUALIZACJA V8:
-- dodano wtorek 16:00–17:30 — dziewczęta klasa 4–6
-- dodano czwartek 16:00–17:30 — dziewczęta klasa 4–6
-- pozostałe dni i godziny bez zmian
-
-
-AKTUALIZACJA V9:
-- produkty bez zdjęć i danych mają teraz planszę „WKRÓTCE”
-- takich produktów nie można jeszcze dodać do zamówienia
-- kolejność kontaktów: Artur Błaszczyk → Nikodem Marciniak → Dariusz Łukaszyk
-- taka sama kolejność w stopce
-- usunięto puste miejsca na pozostałych sponsorów
-- w sponsorach został tylko ROMGOS
+AKTUALIZACJA V12:
+- dodano pole „Imię / nazwisko na koszulce”
+- dodano pole „Numer zawodnika”
+- dodano informację o personalizacji
+- personalizacja pojawia się w komunikacie po zatwierdzeniu formularza
