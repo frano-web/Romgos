@@ -10,7 +10,7 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V20 – ROZMIARÓWKA KOMPLETU MECZOWEGO
+  WERSJA V21 – ROZMIARÓWKA + ROZMIARY W FORMULARZU
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -1169,6 +1169,33 @@ video{
   }
 }
 
+
+/* =========================================================
+   V21 — ROZMIARÓWKA + ZGODNE ROZMIARY W FORMULARZU
+   ========================================================= */
+.size-tabs-scroll{
+  display:flex;
+  gap:10px;
+  margin:0 0 16px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.size-tabs-scroll button{
+  border:1px solid rgba(207,24,32,.18);
+  background:#fff;
+  color:var(--ink);
+  border-radius:999px;
+  padding:10px 16px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.size-tabs-scroll button.active{
+  background:var(--red);
+  color:#fff;
+  border-color:var(--red);
+}
+
 </style>
 </head>
 
@@ -1208,7 +1235,7 @@ video{
 
         <div class="hero-actions">
           <a href="#zamowienia" class="btn btn-red">Zamów strój <b>→</b></a>
-          <a href="#rozmiary" class="btn btn-light">Tabela rozmiarów</a>
+          <a href="#rozmiary" class="btn btn-light">Rozmiarówka</a>
         </div>
 
         <div class="hero-notes">
@@ -1306,15 +1333,18 @@ video{
       <div class="section-head reveal">
         <div>
           <span class="section-label">Dobór rozmiaru</span>
-          <h2>Komplet meczowy</h2>
+          <h2>Rozmiarówka</h2>
         </div>
         <p>Poniżej znajduje się aktualna tabela rozmiarów kompletu meczowego. Pozostałe rozmiarówki dodamy później.</p>
       </div>
 
       <div class="size-box reveal">
+        <div class="size-tabs-scroll">
+          <button class="active" data-tab="komplet" type="button">Komplet meczowy</button>
+        </div>
         <div class="size-help size-context">
-          <strong>Jak dobrać rozmiar?</strong>
-          <span>Porównaj szerokość koszulki, długość koszulki, długość od pachy do dołu oraz obwód w pasie spodenek. Na telefonie tabelę można przewijać poziomo.</span>
+          <strong>Komplet meczowy</strong>
+          <span>Tej tabeli użyj przy wyborze kompletu meczowego. Porównaj szerokość koszulki, jej długość, długość od pachy do dołu oraz obwód w pasie spodenek. Na telefonie tabelę można przewijać poziomo.</span>
         </div>
 
         <div class="table-wrap adidas-table-wrap">
@@ -1513,7 +1543,7 @@ video{
     <div class="footer-col">
       <b>ZAMÓWIENIA</b>
       <a href="#zamowienia">Stroje</a>
-      <a href="#rozmiary">Rozmiary</a>
+      <a href="#rozmiary">Rozmiarówka</a>
       <a href="#zamowienia">Formularz</a>
     </div>
 
@@ -1537,7 +1567,7 @@ video{
 <script>
 const products=[
   {id:"dres",name:"Dres klubowy",desc:"Bluza + spodnie. Nadesłana wizualizacja stroju Akademii.",price:0,image:"romgos-dres-2026.jpg",sizes:["128","140","152","164","S","M","L","XL"]},
-  {id:"komplet",name:"Komplet meczowy",desc:"Koszulka + spodenki Akademii. Cena kompletu: 150 zł.",price:150,image:"stroj-meczowy-romgos-2026.jpg",sizes:["5–6 lat","6–7 lat","7–8 lat","8–9 lat","9–10 lat","10–11 lat","11–12 lat","12–13 lat","13–14 lat","14–15 lat","15–16 lat","XS","S","M","L","XL","2XL","3XL"]},
+  {id:"komplet",name:"Komplet meczowy",desc:"Koszulka + spodenki Akademii. Cena kompletu: 150 zł.",price:150,image:"stroj-meczowy-romgos-2026.jpg",sizes:["116","128","140","152","164","S","M","L","XL","XXL"]},
   {id:"koszulka",name:"Koszulka treningowa",desc:"Zdjęcie, cena i szczegóły do uzupełnienia.",price:0,image:"",sizes:["128","140","152","164","S","M","L","XL"]},
   {id:"spodenki",name:"Spodenki",desc:"Zdjęcie, cena i szczegóły do uzupełnienia.",price:0,image:"",sizes:["128","140","152","164","S","M","L","XL"]},
   {id:"czapka",name:"Czapka klubowa",desc:"Opcjonalny produkt – do ustalenia.",price:0,image:"",sizes:["Uniwersalny"]},
@@ -1686,17 +1716,9 @@ document.querySelector("#orderForm").addEventListener("submit", async e=>{
 });
 
 const sizeDescriptions = {
-  "junior": {
-    title: "Dzieci – dres i strój",
-    text: "Tej tabeli użyj przy wyborze dziecięcego dresu lub stroju. Najłatwiej zacząć od wzrostu, a potem porównać klatkę, talię i biodra."
-  },
-  "men-tops": {
-    title: "Koszulka / bluza – rozmiary dorosłe",
-    text: "Tej tabeli użyj przy wyborze górnej części stroju lub dresu: koszulki albo bluzy. Najważniejsze są klatka piersiowa, talia i biodra."
-  },
-  "men-bottoms": {
-    title: "Spodenki / spodnie – rozmiary dorosłe",
-    text: "Tej tabeli użyj przy wyborze spodenek meczowych lub spodni dresowych. Sprawdź talię, biodra oraz wewnętrzną długość nogawki."
+  "komplet": {
+    title: "Komplet meczowy",
+    text: "Tej tabeli użyj przy wyborze kompletu meczowego. Porównaj szerokość koszulki, jej długość, długość od pachy do dołu oraz obwód w pasie spodenek."
   }
 };
 
@@ -1704,7 +1726,8 @@ document.querySelectorAll("[data-tab]").forEach(btn=>btn.onclick=()=>{
   document.querySelectorAll("[data-tab]").forEach(x=>x.classList.remove("active"));
   document.querySelectorAll("[data-table]").forEach(x=>x.classList.remove("active"));
   btn.classList.add("active");
-  document.querySelector(`[data-table="${btn.dataset.tab}"]`).classList.add("active");
+  const table = document.querySelector(`[data-table="${btn.dataset.tab}"]`);
+  if(table) table.classList.add("active");
 
   const context = document.querySelector("#sizeContext");
   const data = sizeDescriptions[btn.dataset.tab];
