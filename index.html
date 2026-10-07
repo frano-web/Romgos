@@ -10,7 +10,7 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V19 – BEZ TEKSTU ROBOCZEGO
+  WERSJA V20 – ROZMIARÓWKA KOMPLETU MECZOWEGO
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -1126,6 +1126,49 @@ video{
 @media(max-width:680px){
 }
 
+
+/* =========================================================
+   V20 — TYLKO ROZMIARÓWKA KOMPLETU MECZOWEGO
+   ========================================================= */
+.size-box{
+  max-width:100%;
+}
+.size-context{
+  border-left:4px solid var(--red);
+}
+.adidas-table-wrap{
+  max-width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.adidas-size-table{
+  min-width:920px;
+}
+.adidas-size-table th{
+  color:#fff;
+  background:var(--red);
+  vertical-align:middle;
+}
+.adidas-size-table tbody tr:nth-child(even){
+  background:#fafafa;
+}
+.adidas-size-table td:first-child{
+  font-weight:800;
+  color:#26282d;
+}
+.size-source-note{
+  margin:10px 3px 0;
+  color:var(--muted);
+  font-size:10px;
+}
+@media(max-width:680px){
+  .adidas-size-table th,
+  .adidas-size-table td{
+    padding:11px 13px;
+    font-size:11px;
+  }
+}
+
 </style>
 </head>
 
@@ -1263,92 +1306,44 @@ video{
       <div class="section-head reveal">
         <div>
           <span class="section-label">Dobór rozmiaru</span>
-          <h2>Tabela rozmiarów</h2>
+          <h2>Komplet meczowy</h2>
         </div>
-        <p>Wybierz rodzaj odzieży, który chcesz zamówić. Każda tabela pokazuje inne wymiary, dlatego przed wyborem rozmiaru sprawdź opis nad tabelą.</p>
+        <p>Poniżej znajduje się aktualna tabela rozmiarów kompletu meczowego. Pozostałe rozmiarówki dodamy później.</p>
       </div>
 
-      <div class="size-box size-box-wide reveal">
-        <div class="tabs size-tabs-scroll">
-          <button class="active" data-tab="junior">Dzieci – dres i strój</button>
-          <button data-tab="men-tops">Koszulka / bluza – dorosłe</button>
-          <button data-tab="men-bottoms">Spodenki / spodnie – dorosłe</button>
-        </div>
-
-        <div class="size-help size-context" id="sizeContext">
-          <strong>Dzieci – dres i strój</strong>
-          <span>Tej tabeli użyj przy wyborze dziecięcego dresu lub stroju. Najłatwiej zacząć od wzrostu, a potem porównać klatkę, talię i biodra.</span>
+      <div class="size-box reveal">
+        <div class="size-help size-context">
+          <strong>Jak dobrać rozmiar?</strong>
+          <span>Porównaj szerokość koszulki, długość koszulki, długość od pachy do dołu oraz obwód w pasie spodenek. Na telefonie tabelę można przewijać poziomo.</span>
         </div>
 
         <div class="table-wrap adidas-table-wrap">
-          <table class="size-table active adidas-size-table" data-table="junior">
+          <table class="size-table active adidas-size-table" data-table="komplet">
             <thead>
               <tr>
                 <th>Rozmiar</th>
-                <th>Wzrost</th>
-                <th>Klatka piersiowa</th>
-                <th>Talia</th>
-                <th>Biodra</th>
-                <th>Wewnętrzna długość nogawki</th>
+                <th>Szerokość pomiędzy pachami (cm)</th>
+                <th>Długość koszulki (cm)</th>
+                <th>Długość od pachy do dołu (cm)</th>
+                <th>Obwód w pasie spodenek (cm)</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>5–6 lat</td><td>111–116 cm</td><td>58,5–60,5 cm</td><td>55,5–56 cm</td><td>62,5–64 cm</td><td>52 cm</td></tr>
-              <tr><td>6–7 lat</td><td>117–122 cm</td><td>61–63 cm</td><td>56,5–57 cm</td><td>64,5–66 cm</td><td>56 cm</td></tr>
-              <tr><td>7–8 lat</td><td>123–128 cm</td><td>63,5–64 cm</td><td>57,5–59 cm</td><td>66,5–68 cm</td><td>59 cm</td></tr>
-              <tr><td>8–9 lat</td><td>129–134 cm</td><td>64,5–67,5 cm</td><td>59,5–61,5 cm</td><td>68,5–71 cm</td><td>62 cm</td></tr>
-              <tr><td>9–10 lat</td><td>135–140 cm</td><td>68–71 cm</td><td>62–63,5 cm</td><td>71,5–74,5 cm</td><td>65 cm</td></tr>
-              <tr><td>10–11 lat</td><td>141–146 cm</td><td>71,5–74,5 cm</td><td>64–66 cm</td><td>75–77,5 cm</td><td>67 cm</td></tr>
-              <tr><td>11–12 lat</td><td>147–152 cm</td><td>75–78 cm</td><td>66,5–68 cm</td><td>78–81 cm</td><td>70 cm</td></tr>
-              <tr><td>12–13 lat</td><td>153–158 cm</td><td>78,5–82 cm</td><td>68,5–70,5 cm</td><td>81,5–85 cm</td><td>73 cm</td></tr>
-              <tr><td>13–14 lat</td><td>159–164 cm</td><td>82,5–86 cm</td><td>71–73 cm</td><td>85,5–89 cm</td><td>76 cm</td></tr>
-              <tr><td>14–15 lat</td><td>165–170 cm</td><td>86,5–89 cm</td><td>73,5–74,5 cm</td><td>89,5–91,5 cm</td><td>79 cm</td></tr>
-              <tr><td>15–16 lat</td><td>171–176 cm</td><td>89,5–91,5 cm</td><td>75–76,5 cm</td><td>92–94 cm</td><td>82 cm</td></tr>
-            </tbody>
-          </table>
-
-          <table class="size-table adidas-size-table" data-table="men-tops">
-            <thead>
-              <tr>
-                <th>Rozmiar</th>
-                <th>Klatka piersiowa</th>
-                <th>Talia</th>
-                <th>Biodra</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>XS</strong><br><small>40–42</small></td><td>82–87 cm</td><td>71–75 cm</td><td>82–86 cm</td></tr>
-              <tr><td><strong>S</strong><br><small>44–46</small></td><td>88–94 cm</td><td>76–82 cm</td><td>87–93 cm</td></tr>
-              <tr><td><strong>M</strong><br><small>48–50</small></td><td>95–102 cm</td><td>83–90 cm</td><td>94–101 cm</td></tr>
-              <tr><td><strong>L</strong><br><small>52–54</small></td><td>103–111 cm</td><td>91–99 cm</td><td>102–110 cm</td></tr>
-              <tr><td><strong>XL</strong><br><small>56–58</small></td><td>112–121 cm</td><td>100–109 cm</td><td>111–119 cm</td></tr>
-              <tr><td><strong>2XL</strong><br><small>60–62</small></td><td>122–132 cm</td><td>110–121 cm</td><td>120–128 cm</td></tr>
-              <tr><td><strong>3XL</strong><br><small>64–66</small></td><td>133–144 cm</td><td>122–134 cm</td><td>129–138 cm</td></tr>
-            </tbody>
-          </table>
-
-          <table class="size-table adidas-size-table" data-table="men-bottoms">
-            <thead>
-              <tr>
-                <th>Rozmiar</th>
-                <th>Talia</th>
-                <th>Biodra</th>
-                <th>Wewnętrzna długość nogawki</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>XS</strong><br><small>40–42</small></td><td>71–75 cm</td><td>82–86 cm</td><td>81 cm</td></tr>
-              <tr><td><strong>S</strong><br><small>44–46</small></td><td>76–82 cm</td><td>87–93 cm</td><td>81,5 cm</td></tr>
-              <tr><td><strong>M</strong><br><small>48–50</small></td><td>83–90 cm</td><td>94–101 cm</td><td>82 cm</td></tr>
-              <tr><td><strong>L</strong><br><small>52–54</small></td><td>91–99 cm</td><td>102–110 cm</td><td>82,5 cm</td></tr>
-              <tr><td><strong>XL</strong><br><small>56–58</small></td><td>100–109 cm</td><td>111–119 cm</td><td>83 cm</td></tr>
-              <tr><td><strong>2XL</strong><br><small>60–62</small></td><td>110–121 cm</td><td>120–128 cm</td><td>82,5 cm</td></tr>
-              <tr><td><strong>3XL</strong><br><small>64–66</small></td><td>122–134 cm</td><td>129–138 cm</td><td>82 cm</td></tr>
+              <tr><td>116</td><td>33</td><td>41</td><td>29</td><td>52–56</td></tr>
+              <tr><td>128</td><td>35</td><td>45</td><td>32</td><td>54–58</td></tr>
+              <tr><td>140</td><td>39</td><td>49</td><td>34</td><td>56–64</td></tr>
+              <tr><td>152</td><td>42</td><td>54</td><td>37</td><td>63–69</td></tr>
+              <tr><td>164</td><td>45</td><td>59</td><td>40</td><td>68–73</td></tr>
+              <tr><td>S</td><td>48</td><td>70</td><td>46</td><td>64–72</td></tr>
+              <tr><td>M</td><td>52</td><td>71</td><td>47</td><td>70–80</td></tr>
+              <tr><td>L</td><td>57</td><td>75</td><td>48</td><td>75–85</td></tr>
+              <tr><td>XL</td><td>59</td><td>76</td><td>51</td><td>80–93</td></tr>
+              <tr><td>XXL</td><td>60</td><td>79</td><td>53</td><td>86–110</td></tr>
             </tbody>
           </table>
         </div>
 
-        <p class="size-source-note">Rozmiarówka przekazana przez Akademię.</p>
+        <p class="size-source-note">Rozmiarówka kompletu meczowego na podstawie przesłanej tabeli.</p>
       </div>
     </div>
   </section>

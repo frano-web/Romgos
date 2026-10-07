@@ -49,3 +49,10 @@ AKTUALIZACJA V17:
 AKTUALIZACJA V18:
 - finalny adres zamówień: a.blaszczyk@romgos.pl
 - po pierwszej wysyłce trzeba jednorazowo potwierdzić formularz na tym adresie
+
+
+AKTUALIZACJA V20:
+- usunięto wcześniejsze widoczne rozmiarówki
+- pozostawiono tylko jedną sekcję: Komplet meczowy
+- dodano tabelę rozmiarów kompletu meczowego z przesłanych screenów
+- pozostałe rozmiarówki można dodać później
