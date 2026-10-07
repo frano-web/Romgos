@@ -4,11 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#cf1820">
-<title>Akademia Unihokeja Romgos | Kotlin</title>
+<title>Akademia Unihokeja Romgos w Kotlinie</title>
+  <link rel="icon" type="image/png" href="romgos-logo-2026.png">
+  <link rel="shortcut icon" href="romgos-logo-2026.png">
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V15 – TESTOWY EMAIL dawidfrankowiak@wp.pl
+  WERSJA V17 – BEZ KAFELKÓW W SEKCJI O AKADEMII
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -335,14 +337,9 @@ textarea{resize:vertical}
 .size-table td{font-size:12px}
 
 /* AKADEMIA */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.about-grid{display:block;max-width:900px}
 .about-grid .lead{font-size:18px;color:#3e4248;margin-top:22px}
 .about-grid p{color:var(--muted)}
-.info-grid{display:grid;gap:11px}
-.info-card{padding:19px;border:1px solid var(--line);border-radius:16px;background:#fff}
-.info-card span{font-size:9px;color:var(--red);font-weight:900;letter-spacing:1.2px}
-.info-card strong{display:block;font-size:22px;margin-top:3px}
-.info-card small{color:var(--muted)}
 
 /* TRENINGI */
 .training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -1119,6 +1116,16 @@ video{
   }
 }
 
+
+/* =========================================================
+   V16 — FAVICON + KAFELKI INFORMACYJNE
+   ========================================================= */
+
+
+
+@media(max-width:680px){
+}
+
 </style>
 </head>
 
@@ -1355,13 +1362,6 @@ video{
         <p>Rywalizujemy w rozgrywkach ligowych oraz licznych turniejach na terenie całego kraju. W naszej Akademii trenują zawodnicy od najmłodszych — przedszkolaków — aż po seniorów, którzy reprezentują klub w 1. Lidze Polskiej Ligi Unihokeja.</p>
         <p>Nasza praca przynosi również znaczące sukcesy. W sezonie 2024/25 nasi młodzicy zdobyli tytuł Mistrza Polski, a w sezonie 2025/26 obronili mistrzowski tytuł. W sezonie 2025/26 ogromny sukces odniosły również nasze młodziczki, zdobywając brązowy medal Mistrzostw Polski.</p>
         <p>Każdego dnia cała drużyna prężnie trenuje, rozwija swoje umiejętności, uczy się współpracy i przede wszystkim czerpie radość z gry. <strong>Akademia Unihokeja Romgos w Kotlinie — trenujemy, bawimy się i wspólnie sięgamy po kolejne sukcesy!</strong></p>
-      </div>
-
-      <div class="info-grid reveal">
-        <div class="info-card"><span>OD NAJMŁODSZYCH DO SENIORÓW</span><strong>Pełna ścieżka szkolenia</strong><small>Od przedszkolaków aż po zespół seniorski.</small></div>
-        <div class="info-card"><span>SENIORZY</span><strong>1. Liga Polska</strong><small>Reprezentacja Akademii w rozgrywkach ligowych.</small></div>
-        <div class="info-card"><span>MŁODZICY</span><strong>Mistrz Polski ×2</strong><small>Sezony 2024/25 oraz 2025/26.</small></div>
-        <div class="info-card"><span>MŁODZICZKI</span><strong>Brąz Mistrzostw Polski</strong><small>Sezon 2025/26.</small></div>
       </div>
     </div>
   </section>

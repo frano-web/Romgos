@@ -29,3 +29,18 @@ AKTUALIZACJA V15 — TEST:
 - formularz wysyła teraz testowo na: dawidfrankowiak@wp.pl
 - po pierwszej próbie trzeba potwierdzić aktywację FormSubmit na tym adresie
 - po testach adres należy podmienić z powrotem na: a.blaszczyk@romgos.pl
+
+
+AKTUALIZACJA V16:
+- dodano logo klubu jako favicon w zakładce przeglądarki
+- ustawiono tytuł zakładki: Akademia Unihokeja Romgos w Kotlinie
+- poprawiono kafelki informacyjne na telefonie:
+  - mniejsze puste przestrzenie
+  - bardziej zwarte odstępy
+  - lepsza czytelność tekstu
+
+
+AKTUALIZACJA V17:
+- usunięto wszystkie kafelki informacyjne z sekcji „O Akademii”
+- zostawiono wyłącznie pełny opis tekstowy
+- favicon z logo klubu pozostaje
