@@ -10,7 +10,7 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V22 – BEZ OPISU PRZY ROZMIARÓWCE
+  WERSJA V23 – GALERIA PRZYWRÓCONA
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -1196,6 +1196,56 @@ video{
   border-color:var(--red);
 }
 
+
+/* =========================================================
+   V23 — PRZYWRÓCONA GALERIA
+   ========================================================= */
+.academy-gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.gallery-item{
+  margin:0;
+  border-radius:16px;
+  overflow:hidden;
+  background:#e9eaec;
+  min-height:190px;
+  position:relative;
+}
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(6){
+  grid-column:span 2;
+}
+.gallery-item img{
+  width:100%;
+  height:100%;
+  min-height:190px;
+  object-fit:cover;
+  transition:transform .35s ease;
+}
+.gallery-item:hover img{
+  transform:scale(1.035);
+}
+@media(max-width:980px){
+  .academy-gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(6){
+    grid-column:span 1;
+  }
+}
+@media(max-width:680px){
+  .academy-gallery{
+    grid-template-columns:1fr;
+  }
+  .gallery-item,
+  .gallery-item img{
+    min-height:220px;
+  }
+}
+
 </style>
 </head>
 
@@ -1391,7 +1441,31 @@ video{
     </div>
   </section>
 
-<section class="section section-red" id="treningi">
+<section class="section section-soft" id="galeria">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-label">Akademia w akcji</span>
+          <h2>Galeria</h2>
+        </div>
+        <p>Turnieje, mecze, medale i wspólne chwile zawodników Akademii Unihokeja Romgos w Kotlinie.</p>
+      </div>
+      <div class="academy-gallery">
+        <figure class="gallery-item reveal"><img src="akademia-galeria-01.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-02.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-03.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-04.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-05.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-06.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-07.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-08.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-09.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-10.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-red" id="treningi">
     <div class="container">
       <div class="section-head reveal">
         <div>
