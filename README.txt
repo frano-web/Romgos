@@ -44,3 +44,8 @@ AKTUALIZACJA V17:
 - usunięto wszystkie kafelki informacyjne z sekcji „O Akademii”
 - zostawiono wyłącznie pełny opis tekstowy
 - favicon z logo klubu pozostaje
+
+
+AKTUALIZACJA V18:
+- finalny adres zamówień: a.blaszczyk@romgos.pl
+- po pierwszej wysyłce trzeba jednorazowo potwierdzić formularz na tym adresie
