@@ -1,21 +1,31 @@
-AKADEMIA UNIHOKEJA ROMGOS — V11
+AKADEMIA UNIHOKEJA ROMGOS — V13
 
-Dodano:
-- pełny opis Akademii przekazany przez klub
-- osiągnięcia: Mistrz Polski młodzików 2024/25 i 2025/26
-- brąz Mistrzostw Polski młodziczek 2025/26
-- informację o seniorach grających w 1. Lidze Polskiej Ligi Unihokeja
-- galerię ze zdjęć Akademii
-- sponsorów: ROMGOS Grupa, Awans Kompleksowe Roboty Ziemne, Gmina Kotlin
-- aktualny plan treningów obowiązujący 29.09–31.10.2026
-- komplet meczowy z wizualizacją i ceną 150 zł
-- komplet meczowy można dodać do zamówienia
+NAJWAŻNIEJSZE:
+- formularz zamówień wysyła dane na: a.blaszczyk@romgos.pl
+- wysyłka działa przez FormSubmit AJAX, bez otwierania Gmaila/Outlooka u rodzica
+- przycisk pokazuje stan „Wysyłanie...”
+- użytkownik dostaje wyraźny komunikat sukcesu albo błędu
+- do maila trafiają: rodzic, zawodnik, telefon, e-mail, grupa, personalizacja,
+  numer, odbiór, uwagi, dokładna zawartość koszyka i łączna kwota
+- usunięto całą sekcję galerii i wszystkie 11 zdjęć galerii
 
-Na GitHub wrzuć wszystkie pliki z tej paczki bezpośrednio do głównego katalogu repozytorium.
+WAŻNA AKTYWACJA FORMULARZA:
+FormSubmit wymaga jednorazowego potwierdzenia adresu odbiorcy.
+Po pierwszej próbnej wysyłce na a.blaszczyk@romgos.pl przyjdzie wiadomość aktywacyjna
+od FormSubmit. Trzeba wejść w nią i potwierdzić formularz.
+Dopiero po aktywacji należy wykonać drugie testowe zamówienie i sprawdzić, że dotarło.
+
+GitHub:
+Wrzuć pliki z tej paczki do głównego katalogu repozytorium.
 
 
-AKTUALIZACJA V12:
-- dodano pole „Imię / nazwisko na koszulce”
-- dodano pole „Numer zawodnika”
-- dodano informację o personalizacji
-- personalizacja pojawia się w komunikacie po zatwierdzeniu formularza
+AKTUALIZACJA V14:
+- usunięto nazwę Adidas z sekcji rozmiarów
+- rozmiarówki nazwano według zastosowania
+- nad tabelą pojawia się jasny opis, do jakiej części stroju użyć danej tabeli
+
+
+AKTUALIZACJA V15 — TEST:
+- formularz wysyła teraz testowo na: dawidfrankowiak@wp.pl
+- po pierwszej próbie trzeba potwierdzić aktywację FormSubmit na tym adresie
+- po testach adres należy podmienić z powrotem na: a.blaszczyk@romgos.pl

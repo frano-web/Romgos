@@ -8,7 +8,7 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V12 – PERSONALIZACJA STROJU
+  WERSJA V15 – TESTOWY EMAIL dawidfrankowiak@wp.pl
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -957,41 +957,7 @@ video{
 }
 
 
-/* =========================================================
-   V11 — OPIS, GALERIA, SPONSORZY, STRÓJ 150 ZŁ, PLAN 29.09–31.10
-   ========================================================= */
-
-.academy-gallery{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.gallery-item{
-  margin:0;
-  border-radius:16px;
-  overflow:hidden;
-  background:#e9eaec;
-  min-height:190px;
-  position:relative;
-}
-
-.gallery-item:nth-child(1),
-.gallery-item:nth-child(6){
-  grid-column:span 2;
-}
-
-.gallery-item img{
-  width:100%;
-  height:100%;
-  min-height:190px;
-  object-fit:cover;
-  transition:transform .35s ease;
-}
-
-.gallery-item:hover img{
-  transform:scale(1.035);
-}
+/* V11/V13 — sponsorzy, strój 150 zł, plan 29.09–31.10 */
 
 .schedule-validity{
   width:max-content;
@@ -1061,14 +1027,6 @@ video{
 }
 
 @media(max-width:980px){
-  .academy-gallery{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .gallery-item:nth-child(1),
-  .gallery-item:nth-child(6){
-    grid-column:span 1;
-  }
 
   .schedule-grid-current{
     grid-template-columns:1fr;
@@ -1080,14 +1038,6 @@ video{
 }
 
 @media(max-width:680px){
-  .academy-gallery{
-    grid-template-columns:1fr;
-  }
-
-  .gallery-item,
-  .gallery-item img{
-    min-height:220px;
-  }
 
   .schedule-validity{
     width:100%;
@@ -1119,6 +1069,54 @@ video{
   font-size:10px;
   line-height:1.5;
   color:#80565a;
+}
+
+
+/* =========================================================
+   V13 — WYSYŁKA ZAMÓWIEŃ + PORZĄDKI
+   ========================================================= */
+.form-honey{
+  position:absolute !important;
+  left:-9999px !important;
+  width:1px !important;
+  height:1px !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+
+.order-email-info{
+  margin:9px 0 0;
+  color:var(--muted);
+  font-size:10px;
+  text-align:center;
+}
+
+.submit-btn:disabled{
+  opacity:.62;
+  cursor:wait;
+}
+
+.status{
+  text-align:center;
+}
+
+
+/* =========================================================
+   V14 — CZYTELNE TABELE ROZMIARÓW
+   ========================================================= */
+.size-context{
+  border-left:4px solid var(--red);
+}
+.size-context strong{
+  min-width:220px;
+}
+@media(max-width:680px){
+  .size-context strong{
+    min-width:0;
+  }
+  .size-tabs-scroll button{
+    padding:11px 14px;
+  }
 }
 
 </style>
@@ -1214,7 +1212,10 @@ video{
         <div class="card">
           <span class="section-label">Dane zamawiającego</span>
           <h3>Uzupełnij dane</h3>
-          <form id="orderForm">
+          <form id="orderForm" autocomplete="on">
+            <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="hidden" name="_subject" value="Nowe zamówienie stroju — Akademia Unihokeja Romgos">
+            <input type="hidden" name="_template" value="table">
             <div class="form-grid">
               <label><span>Imię i nazwisko rodzica / opiekuna *</span><input required name="parent"></label>
               <label><span>Imię i nazwisko zawodnika *</span><input required name="player"></label>
@@ -1241,8 +1242,9 @@ video{
               <span>Jeśli na koszulce ma znaleźć się imię/nazwisko lub numer, wpisz je powyżej. Jeśli pola zostawisz puste, zamówienie zostanie zapisane bez personalizacji.</span>
             </div>
 
-            <button class="submit-btn" type="submit">Wyślij zamówienie</button>
-            <p class="status" id="status"></p>
+            <button class="submit-btn" type="submit" id="submitOrderBtn">Wyślij zamówienie</button>
+            <p class="order-email-info">Zamówienie zostanie wysłane bezpośrednio do osoby odpowiedzialnej za zamówienia w Akademii.</p>
+            <p class="status" id="status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
@@ -1254,21 +1256,21 @@ video{
       <div class="section-head reveal">
         <div>
           <span class="section-label">Dobór rozmiaru</span>
-          <h2>Tabela rozmiarów Adidas</h2>
+          <h2>Tabela rozmiarów</h2>
         </div>
-        <p>Poniżej jest właściwa rozmiarówka Adidas dla odzieży juniorskiej oraz męskiej. Wybierz odpowiednią kategorię i porównaj swoje wymiary z tabelą.</p>
+        <p>Wybierz rodzaj odzieży, który chcesz zamówić. Każda tabela pokazuje inne wymiary, dlatego przed wyborem rozmiaru sprawdź opis nad tabelą.</p>
       </div>
 
       <div class="size-box size-box-wide reveal">
         <div class="tabs size-tabs-scroll">
-          <button class="active" data-tab="junior">Ubrania juniorskie</button>
-          <button data-tab="men-tops">Koszule i koszulki męskie</button>
-          <button data-tab="men-bottoms">Spodnie i szorty męskie</button>
+          <button class="active" data-tab="junior">Dzieci – dres i strój</button>
+          <button data-tab="men-tops">Koszulka / bluza – dorosłe</button>
+          <button data-tab="men-bottoms">Spodenki / spodnie – dorosłe</button>
         </div>
 
-        <div class="size-help">
-          <strong>Jak korzystać z tabeli?</strong>
-          <span>Zmierz wzrost i odpowiednie obwody ciała, a następnie wybierz rozmiar, którego zakres obejmuje Twoje wymiary.</span>
+        <div class="size-help size-context" id="sizeContext">
+          <strong>Dzieci – dres i strój</strong>
+          <span>Tej tabeli użyj przy wyborze dziecięcego dresu lub stroju. Najłatwiej zacząć od wzrostu, a potem porównać klatkę, talię i biodra.</span>
         </div>
 
         <div class="table-wrap adidas-table-wrap">
@@ -1339,7 +1341,7 @@ video{
           </table>
         </div>
 
-        <p class="size-source-note">Rozmiarówka według tabel Adidas przekazanych przez Akademię.</p>
+        <p class="size-source-note">Rozmiarówka przekazana przez Akademię.</p>
       </div>
     </div>
   </section>
@@ -1364,31 +1366,7 @@ video{
     </div>
   </section>
 
-  <section class="section section-soft" id="galeria">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-label">Akademia w akcji</span>
-          <h2>Galeria</h2>
-        </div>
-        <p>Turnieje, mecze, medale i wspólne chwile zawodników Akademii Unihokeja Romgos w Kotlinie.</p>
-      </div>
-      <div class="academy-gallery">
-        <figure class="gallery-item reveal"><img src="akademia-galeria-01.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-02.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-03.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-04.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-05.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-06.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-07.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-08.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-09.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-10.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-red" id="treningi">
+<section class="section section-red" id="treningi">
     <div class="container">
       <div class="section-head reveal">
         <div>
@@ -1626,30 +1604,119 @@ function renderCart(){
   items.querySelectorAll("button").forEach(b=>b.onclick=()=>{const i=cart.findIndex(x=>String(x.key)===b.dataset.key);if(i>-1)cart.splice(i,1);renderCart()});
 }
 
-document.querySelector("#orderForm").addEventListener("submit",e=>{
+document.querySelector("#orderForm").addEventListener("submit", async e=>{
   e.preventDefault();
-  const s=document.querySelector("#status");
+
+  const form = e.currentTarget;
+  const status = document.querySelector("#status");
+  const submitBtn = document.querySelector("#submitOrderBtn");
+
   if(!cart.length){
-    s.style.color="#cf1820";
-    s.textContent="Najpierw dodaj co najmniej jeden produkt.";
+    status.style.color="#cf1820";
+    status.textContent="Najpierw dodaj co najmniej jeden produkt do zamówienia.";
     return;
   }
 
-  const form = e.currentTarget;
-  const shirtName = form.elements["shirtName"]?.value.trim() || "";
-  const shirtNumber = form.elements["shirtNumber"]?.value.trim() || "";
+  if(form.elements["_honey"]?.value){
+    return;
+  }
 
-  s.style.color="#cf1820";
-  s.textContent = shirtName || shirtNumber
-    ? `Formularz jest gotowy. Personalizacja: ${shirtName || "bez napisu"}${shirtNumber ? `, numer ${shirtNumber}` : ""}. W finalnej wersji podepniemy bezpłatne wysyłanie zamówień na e-mail.`
-    : "Formularz jest gotowy. W finalnej wersji podepniemy bezpłatne wysyłanie zamówień na e-mail.";
+  if(!form.checkValidity()){
+    form.reportValidity();
+    return;
+  }
+
+  const orderLines = cart.map((item,index)=>{
+    const lineTotal = item.price * item.qty;
+    return `${index+1}. ${item.name} | rozmiar: ${item.size} | ilość: ${item.qty} | wartość: ${pln(lineTotal)}`;
+  }).join("\n");
+
+  const total = cart.reduce((sum,item)=>sum + item.price * item.qty,0);
+  const shirtName = form.elements["shirtName"]?.value.trim() || "brak";
+  const shirtNumber = form.elements["shirtNumber"]?.value.trim() || "brak";
+
+  const payload = {
+    "_subject": `NOWE ZAMÓWIENIE | ${form.elements["player"].value.trim()}`,
+    "_template": "table",
+    "_replyto": form.elements["email"].value.trim(),
+    "Rodzic / opiekun": form.elements["parent"].value.trim(),
+    "Zawodnik": form.elements["player"].value.trim(),
+    "E-mail zamawiającego": form.elements["email"].value.trim(),
+    "Telefon": form.elements["phone"].value.trim(),
+    "Grupa / rocznik": form.elements["group"].value.trim() || "nie podano",
+    "Imię / nazwisko na koszulce": shirtName,
+    "Numer zawodnika": shirtNumber,
+    "Sposób odbioru": form.elements["pickup"].value,
+    "Uwagi": form.elements["notes"].value.trim() || "brak",
+    "Zamówienie": orderLines,
+    "Łączna wartość": pln(total),
+    "Płatność": "przy odbiorze",
+    "Data wysłania": new Date().toLocaleString("pl-PL")
+  };
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Wysyłanie...";
+  status.style.color="#555b63";
+  status.textContent="Wysyłam zamówienie...";
+
+  try{
+    const response = await fetch("https://formsubmit.co/ajax/dawidfrankowiak@wp.pl",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      },
+      body:JSON.stringify(payload)
+    });
+
+    const data = await response.json().catch(()=>({}));
+
+    if(!response.ok || data.success === "false" || data.success === false){
+      throw new Error(data.message || "Nie udało się wysłać formularza.");
+    }
+
+    status.style.color="#27753a";
+    status.textContent="Zamówienie zostało wysłane. Dziękujemy!";
+    form.reset();
+    cart.splice(0,cart.length);
+    renderCart();
+  }catch(error){
+    console.error("Błąd wysyłki zamówienia:",error);
+    status.style.color="#cf1820";
+    status.textContent="Nie udało się wysłać zamówienia. Spróbuj ponownie za chwilę.";
+  }finally{
+    submitBtn.disabled=false;
+    submitBtn.textContent="Wyślij zamówienie";
+  }
 });
+
+const sizeDescriptions = {
+  "junior": {
+    title: "Dzieci – dres i strój",
+    text: "Tej tabeli użyj przy wyborze dziecięcego dresu lub stroju. Najłatwiej zacząć od wzrostu, a potem porównać klatkę, talię i biodra."
+  },
+  "men-tops": {
+    title: "Koszulka / bluza – rozmiary dorosłe",
+    text: "Tej tabeli użyj przy wyborze górnej części stroju lub dresu: koszulki albo bluzy. Najważniejsze są klatka piersiowa, talia i biodra."
+  },
+  "men-bottoms": {
+    title: "Spodenki / spodnie – rozmiary dorosłe",
+    text: "Tej tabeli użyj przy wyborze spodenek meczowych lub spodni dresowych. Sprawdź talię, biodra oraz wewnętrzną długość nogawki."
+  }
+};
 
 document.querySelectorAll("[data-tab]").forEach(btn=>btn.onclick=()=>{
   document.querySelectorAll("[data-tab]").forEach(x=>x.classList.remove("active"));
   document.querySelectorAll("[data-table]").forEach(x=>x.classList.remove("active"));
   btn.classList.add("active");
   document.querySelector(`[data-table="${btn.dataset.tab}"]`).classList.add("active");
+
+  const context = document.querySelector("#sizeContext");
+  const data = sizeDescriptions[btn.dataset.tab];
+  if(context && data){
+    context.querySelector("strong").textContent = data.title;
+    context.querySelector("span").textContent = data.text;
+  }
 });
 
 const toggle=document.querySelector("#menuToggle"),nav=document.querySelector("#mainNav");
