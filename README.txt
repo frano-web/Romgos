@@ -20,3 +20,18 @@ AKTUALIZACJA V24:
 - daty pokazują się w czytelnej liście
 - na telefonie wybór kategorii przewija się poziomo, ale sama treść nie rozwala szerokości strony
 - pozostawiono odnośnik do oficjalnych wyników Polskiego Związku Unihokeja
+
+
+AKTUALIZACJA V25:
+Kolejność strony:
+1. Wstęp „Zamów strój Akademii”
+2. Treningi
+3. Rozgrywki Akademii
+4. Zamawianie
+5. Rozmiarówka
+6. O Akademii
+7. Galeria
+8. Sponsorzy
+9. Kontakt
+
+Menu u góry ustawione w tej samej kolejności.

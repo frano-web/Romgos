@@ -10,7 +10,7 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V24 – KALENDARZ ROZGRYWEK 2026/27
+  WERSJA V25 – NOWA KOLEJNOŚĆ SEKCJI
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -1435,18 +1435,20 @@ video{
     </button>
 
     <nav class="main-nav" id="mainNav">
-      <a href="#zamowienia" class="nav-primary">Zamów strój</a>
-      <a href="#akademia">Akademia</a>
       <a href="#treningi">Treningi</a>
-      <a href="#sponsorzy">Sponsorzy</a>
       <a href="#rozgrywki">Rozgrywki</a>
+      <a href="#zamowienia" class="nav-primary">Zamów strój</a>
+      <a href="#rozmiary">Rozmiarówka</a>
+      <a href="#akademia">Akademia</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#sponsorzy">Sponsorzy</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <section class="hero">
+<section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy reveal">
         <div class="kicker">Akademia Unihokeja Romgos • Kotlin</div>
@@ -1474,7 +1476,7 @@ video{
     </div>
   </section>
 
-  <section class="steps">
+<section class="steps">
     <div class="container steps-grid">
       <div class="step"><span class="step-no">01</span><div><strong>Wybierz produkt</strong><small>Dres, komplet, koszulka lub dodatki.</small></div></div>
       <div class="step"><span class="step-no">02</span><div><strong>Wybierz rozmiar</strong><small>Skorzystaj z tabeli rozmiarów.</small></div></div>
@@ -1482,160 +1484,7 @@ video{
     </div>
   </section>
 
-  <section class="section" id="zamowienia">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-label">Strefa zamówień</span>
-          <h2>Stroje i odzież klubowa</h2>
-        </div>
-
-      </div>
-
-      <div class="product-grid" id="products"></div>
-
-      <div class="order-grid reveal">
-        <aside class="card cart">
-          <div class="cart-head">
-            <div><span class="section-label">Twoje zamówienie</span><h3>Podsumowanie</h3></div>
-            <span class="cart-count" id="cartCount">0</span>
-          </div>
-          <div class="empty" id="empty">Dodaj wybrany produkt do zamówienia.</div>
-          <div id="cartItems"></div>
-          <div class="cart-total"><span>Łącznie</span><strong id="total">0,00 zł</strong></div>
-          <div class="payment-note"><strong>Płatność przy odbiorze</strong><span>Na stronie nie są pobierane płatności.</span></div>
-        </aside>
-
-        <div class="card">
-          <span class="section-label">Dane zamawiającego</span>
-          <h3>Uzupełnij dane</h3>
-          <form id="orderForm" autocomplete="on">
-            <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <input type="hidden" name="_subject" value="Nowe zamówienie stroju — Akademia Unihokeja Romgos">
-            <input type="hidden" name="_template" value="table">
-            <div class="form-grid">
-              <label><span>Imię i nazwisko rodzica / opiekuna *</span><input required name="parent"></label>
-              <label><span>Imię i nazwisko zawodnika *</span><input required name="player"></label>
-              <label><span>Adres e-mail *</span><input required type="email" name="email"></label>
-              <label><span>Telefon *</span><input required type="tel" name="phone"></label>
-              <label><span>Grupa / rocznik</span><input name="group" placeholder="np. Młodzik / 2013"></label>
-
-              <label><span>Imię / nazwisko na koszulce</span><input name="shirtName" maxlength="20" placeholder="np. ANTEK"></label>
-
-              <label><span>Numer zawodnika</span><input name="shirtNumber" inputmode="numeric" maxlength="3" placeholder="np. 9"></label>
-
-              <label><span>Sposób odbioru</span>
-                <select name="pickup">
-                  <option>Odbiór na treningu</option>
-                  <option>Odbiór po wcześniejszym kontakcie</option>
-                  <option>Inny – wpiszę w uwagach</option>
-                </select>
-              </label>
-            </div>
-            <label style="margin-top:12px"><span>Uwagi</span><textarea rows="4" name="notes" placeholder="Np. numer zawodnika, personalizacja, inne informacje..."></textarea></label>
-            <label class="check"><input type="checkbox" required><span>Potwierdzam poprawność danych i przyjmuję do wiadomości, że płatność następuje przy odbiorze.</span></label>
-            <div class="personalization-note">
-              <strong>Personalizacja stroju</strong>
-              <span>Jeśli na koszulce ma znaleźć się imię/nazwisko lub numer, wpisz je powyżej. Jeśli pola zostawisz puste, zamówienie zostanie zapisane bez personalizacji.</span>
-            </div>
-
-            <button class="submit-btn" type="submit" id="submitOrderBtn">Wyślij zamówienie</button>
-            <p class="order-email-info">Zamówienie zostanie wysłane bezpośrednio do osoby odpowiedzialnej za zamówienia w Akademii.</p>
-            <p class="status" id="status" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-soft" id="rozmiary">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-label">Dobór rozmiaru</span>
-          <h2>Rozmiarówka</h2>
-        </div>
-        
-      </div>
-
-      <div class="size-box reveal">
-        <div class="size-tabs-scroll">
-          <button class="active" data-tab="komplet" type="button">Komplet meczowy</button>
-        </div>
-        <div class="size-help size-context">
-          <strong>Komplet meczowy</strong>
-          <span>Tej tabeli użyj przy wyborze kompletu meczowego. Porównaj szerokość koszulki, jej długość, długość od pachy do dołu oraz obwód w pasie spodenek. Na telefonie tabelę można przewijać poziomo.</span>
-        </div>
-
-        <div class="table-wrap adidas-table-wrap">
-          <table class="size-table active adidas-size-table" data-table="komplet">
-            <thead>
-              <tr>
-                <th>Rozmiar</th>
-                <th>Szerokość pomiędzy pachami (cm)</th>
-                <th>Długość koszulki (cm)</th>
-                <th>Długość od pachy do dołu (cm)</th>
-                <th>Obwód w pasie spodenek (cm)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>116</td><td>33</td><td>41</td><td>29</td><td>52–56</td></tr>
-              <tr><td>128</td><td>35</td><td>45</td><td>32</td><td>54–58</td></tr>
-              <tr><td>140</td><td>39</td><td>49</td><td>34</td><td>56–64</td></tr>
-              <tr><td>152</td><td>42</td><td>54</td><td>37</td><td>63–69</td></tr>
-              <tr><td>164</td><td>45</td><td>59</td><td>40</td><td>68–73</td></tr>
-              <tr><td>S</td><td>48</td><td>70</td><td>46</td><td>64–72</td></tr>
-              <tr><td>M</td><td>52</td><td>71</td><td>47</td><td>70–80</td></tr>
-              <tr><td>L</td><td>57</td><td>75</td><td>48</td><td>75–85</td></tr>
-              <tr><td>XL</td><td>59</td><td>76</td><td>51</td><td>80–93</td></tr>
-              <tr><td>XXL</td><td>60</td><td>79</td><td>53</td><td>86–110</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p class="size-source-note">Rozmiarówka kompletu meczowego na podstawie przesłanej tabeli.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="akademia">
-    <div class="container about-grid">
-      <div class="reveal">
-        <span class="section-label">O Akademii</span>
-        <h2>Akademia Unihokeja Romgos w Kotlinie</h2>
-        <p class="lead">Akademia Unihokeja Romgos w Kotlinie to drużyna, która łączy sportową pasję, ciężką pracę i świetną zabawę.</p>
-        <p>Rywalizujemy w rozgrywkach ligowych oraz licznych turniejach na terenie całego kraju. W naszej Akademii trenują zawodnicy od najmłodszych — przedszkolaków — aż po seniorów, którzy reprezentują klub w 1. Lidze Polskiej Ligi Unihokeja.</p>
-        <p>Nasza praca przynosi również znaczące sukcesy. W sezonie 2024/25 nasi młodzicy zdobyli tytuł Mistrza Polski, a w sezonie 2025/26 obronili mistrzowski tytuł. W sezonie 2025/26 ogromny sukces odniosły również nasze młodziczki, zdobywając brązowy medal Mistrzostw Polski.</p>
-        <p>Każdego dnia cała drużyna prężnie trenuje, rozwija swoje umiejętności, uczy się współpracy i przede wszystkim czerpie radość z gry. <strong>Akademia Unihokeja Romgos w Kotlinie — trenujemy, bawimy się i wspólnie sięgamy po kolejne sukcesy!</strong></p>
-      </div>
-    </div>
-  </section>
-
-<section class="section section-soft" id="galeria">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-label">Akademia w akcji</span>
-          <h2>Galeria</h2>
-        </div>
-        <p>Turnieje, mecze, medale i wspólne chwile zawodników Akademii Unihokeja Romgos w Kotlinie.</p>
-      </div>
-      <div class="academy-gallery">
-        <figure class="gallery-item reveal"><img src="akademia-galeria-01.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-02.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-03.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-04.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-05.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-06.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-07.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-08.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-09.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-        <figure class="gallery-item reveal"><img src="akademia-galeria-10.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-red" id="treningi">
+<section class="section section-red" id="treningi">
     <div class="container">
       <div class="section-head reveal">
         <div>
@@ -1669,31 +1518,7 @@ video{
     </div>
   </section>
 
-  <section class="section" id="sponsorzy">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><span class="section-label">Partnerzy</span><h2>Sponsorzy Akademii</h2></div>
-        <p>Dziękujemy partnerom, którzy wspierają rozwój Akademii i naszych zawodników.</p>
-      </div>
-
-      <div class="sponsor-grid sponsor-grid-three">
-        <div class="sponsor sponsor-logo-card reveal">
-          <img src="romgos-grupa-logo-2026.png" alt="ROMGOS Grupa">
-          <span>ROMGOS Grupa</span>
-        </div>
-        <div class="sponsor sponsor-logo-card reveal">
-          <img src="sponsor-awans.jpg" alt="Awans Kompleksowe Roboty Ziemne">
-          <span>Awans Kompleksowe Roboty Ziemne</span>
-        </div>
-        <div class="sponsor sponsor-logo-card reveal">
-          <img src="sponsor-gmina-kotlin.jpg" alt="Gmina Kotlin">
-          <span>Gmina Kotlin</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-soft" id="rozgrywki">
+<section class="section section-soft" id="rozgrywki">
     <div class="container">
       <div class="section-head reveal">
         <div>
@@ -1987,7 +1812,184 @@ video{
     </div>
   </section>
 
-  <section class="section" id="kontakt">
+<section class="section" id="zamowienia">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-label">Strefa zamówień</span>
+          <h2>Stroje i odzież klubowa</h2>
+        </div>
+
+      </div>
+
+      <div class="product-grid" id="products"></div>
+
+      <div class="order-grid reveal">
+        <aside class="card cart">
+          <div class="cart-head">
+            <div><span class="section-label">Twoje zamówienie</span><h3>Podsumowanie</h3></div>
+            <span class="cart-count" id="cartCount">0</span>
+          </div>
+          <div class="empty" id="empty">Dodaj wybrany produkt do zamówienia.</div>
+          <div id="cartItems"></div>
+          <div class="cart-total"><span>Łącznie</span><strong id="total">0,00 zł</strong></div>
+          <div class="payment-note"><strong>Płatność przy odbiorze</strong><span>Na stronie nie są pobierane płatności.</span></div>
+        </aside>
+
+        <div class="card">
+          <span class="section-label">Dane zamawiającego</span>
+          <h3>Uzupełnij dane</h3>
+          <form id="orderForm" autocomplete="on">
+            <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="hidden" name="_subject" value="Nowe zamówienie stroju — Akademia Unihokeja Romgos">
+            <input type="hidden" name="_template" value="table">
+            <div class="form-grid">
+              <label><span>Imię i nazwisko rodzica / opiekuna *</span><input required name="parent"></label>
+              <label><span>Imię i nazwisko zawodnika *</span><input required name="player"></label>
+              <label><span>Adres e-mail *</span><input required type="email" name="email"></label>
+              <label><span>Telefon *</span><input required type="tel" name="phone"></label>
+              <label><span>Grupa / rocznik</span><input name="group" placeholder="np. Młodzik / 2013"></label>
+
+              <label><span>Imię / nazwisko na koszulce</span><input name="shirtName" maxlength="20" placeholder="np. ANTEK"></label>
+
+              <label><span>Numer zawodnika</span><input name="shirtNumber" inputmode="numeric" maxlength="3" placeholder="np. 9"></label>
+
+              <label><span>Sposób odbioru</span>
+                <select name="pickup">
+                  <option>Odbiór na treningu</option>
+                  <option>Odbiór po wcześniejszym kontakcie</option>
+                  <option>Inny – wpiszę w uwagach</option>
+                </select>
+              </label>
+            </div>
+            <label style="margin-top:12px"><span>Uwagi</span><textarea rows="4" name="notes" placeholder="Np. numer zawodnika, personalizacja, inne informacje..."></textarea></label>
+            <label class="check"><input type="checkbox" required><span>Potwierdzam poprawność danych i przyjmuję do wiadomości, że płatność następuje przy odbiorze.</span></label>
+            <div class="personalization-note">
+              <strong>Personalizacja stroju</strong>
+              <span>Jeśli na koszulce ma znaleźć się imię/nazwisko lub numer, wpisz je powyżej. Jeśli pola zostawisz puste, zamówienie zostanie zapisane bez personalizacji.</span>
+            </div>
+
+            <button class="submit-btn" type="submit" id="submitOrderBtn">Wyślij zamówienie</button>
+            <p class="order-email-info">Zamówienie zostanie wysłane bezpośrednio do osoby odpowiedzialnej za zamówienia w Akademii.</p>
+            <p class="status" id="status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section section-soft" id="rozmiary">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-label">Dobór rozmiaru</span>
+          <h2>Rozmiarówka</h2>
+        </div>
+        
+      </div>
+
+      <div class="size-box reveal">
+        <div class="size-tabs-scroll">
+          <button class="active" data-tab="komplet" type="button">Komplet meczowy</button>
+        </div>
+        <div class="size-help size-context">
+          <strong>Komplet meczowy</strong>
+          <span>Tej tabeli użyj przy wyborze kompletu meczowego. Porównaj szerokość koszulki, jej długość, długość od pachy do dołu oraz obwód w pasie spodenek. Na telefonie tabelę można przewijać poziomo.</span>
+        </div>
+
+        <div class="table-wrap adidas-table-wrap">
+          <table class="size-table active adidas-size-table" data-table="komplet">
+            <thead>
+              <tr>
+                <th>Rozmiar</th>
+                <th>Szerokość pomiędzy pachami (cm)</th>
+                <th>Długość koszulki (cm)</th>
+                <th>Długość od pachy do dołu (cm)</th>
+                <th>Obwód w pasie spodenek (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>116</td><td>33</td><td>41</td><td>29</td><td>52–56</td></tr>
+              <tr><td>128</td><td>35</td><td>45</td><td>32</td><td>54–58</td></tr>
+              <tr><td>140</td><td>39</td><td>49</td><td>34</td><td>56–64</td></tr>
+              <tr><td>152</td><td>42</td><td>54</td><td>37</td><td>63–69</td></tr>
+              <tr><td>164</td><td>45</td><td>59</td><td>40</td><td>68–73</td></tr>
+              <tr><td>S</td><td>48</td><td>70</td><td>46</td><td>64–72</td></tr>
+              <tr><td>M</td><td>52</td><td>71</td><td>47</td><td>70–80</td></tr>
+              <tr><td>L</td><td>57</td><td>75</td><td>48</td><td>75–85</td></tr>
+              <tr><td>XL</td><td>59</td><td>76</td><td>51</td><td>80–93</td></tr>
+              <tr><td>XXL</td><td>60</td><td>79</td><td>53</td><td>86–110</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="size-source-note">Rozmiarówka kompletu meczowego na podstawie przesłanej tabeli.</p>
+      </div>
+    </div>
+  </section>
+
+<section class="section" id="akademia">
+    <div class="container about-grid">
+      <div class="reveal">
+        <span class="section-label">O Akademii</span>
+        <h2>Akademia Unihokeja Romgos w Kotlinie</h2>
+        <p class="lead">Akademia Unihokeja Romgos w Kotlinie to drużyna, która łączy sportową pasję, ciężką pracę i świetną zabawę.</p>
+        <p>Rywalizujemy w rozgrywkach ligowych oraz licznych turniejach na terenie całego kraju. W naszej Akademii trenują zawodnicy od najmłodszych — przedszkolaków — aż po seniorów, którzy reprezentują klub w 1. Lidze Polskiej Ligi Unihokeja.</p>
+        <p>Nasza praca przynosi również znaczące sukcesy. W sezonie 2024/25 nasi młodzicy zdobyli tytuł Mistrza Polski, a w sezonie 2025/26 obronili mistrzowski tytuł. W sezonie 2025/26 ogromny sukces odniosły również nasze młodziczki, zdobywając brązowy medal Mistrzostw Polski.</p>
+        <p>Każdego dnia cała drużyna prężnie trenuje, rozwija swoje umiejętności, uczy się współpracy i przede wszystkim czerpie radość z gry. <strong>Akademia Unihokeja Romgos w Kotlinie — trenujemy, bawimy się i wspólnie sięgamy po kolejne sukcesy!</strong></p>
+      </div>
+    </div>
+  </section>
+
+<section class="section section-soft" id="galeria">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-label">Akademia w akcji</span>
+          <h2>Galeria</h2>
+        </div>
+        <p>Turnieje, mecze, medale i wspólne chwile zawodników Akademii Unihokeja Romgos w Kotlinie.</p>
+      </div>
+      <div class="academy-gallery">
+        <figure class="gallery-item reveal"><img src="akademia-galeria-01.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-02.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-03.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-04.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-05.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-06.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-07.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-08.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-09.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+        <figure class="gallery-item reveal"><img src="akademia-galeria-10.jpg" alt="Akademia Unihokeja Romgos w Kotlinie"><span></span></figure>
+      </div>
+    </div>
+  </section>
+
+<section class="section" id="sponsorzy">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="section-label">Partnerzy</span><h2>Sponsorzy Akademii</h2></div>
+        <p>Dziękujemy partnerom, którzy wspierają rozwój Akademii i naszych zawodników.</p>
+      </div>
+
+      <div class="sponsor-grid sponsor-grid-three">
+        <div class="sponsor sponsor-logo-card reveal">
+          <img src="romgos-grupa-logo-2026.png" alt="ROMGOS Grupa">
+          <span>ROMGOS Grupa</span>
+        </div>
+        <div class="sponsor sponsor-logo-card reveal">
+          <img src="sponsor-awans.jpg" alt="Awans Kompleksowe Roboty Ziemne">
+          <span>Awans Kompleksowe Roboty Ziemne</span>
+        </div>
+        <div class="sponsor sponsor-logo-card reveal">
+          <img src="sponsor-gmina-kotlin.jpg" alt="Gmina Kotlin">
+          <span>Gmina Kotlin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" id="kontakt">
     <div class="container">
       <div class="section-head reveal">
         <div>
