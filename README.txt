@@ -12,3 +12,11 @@ AKTUALIZACJA V23:
 - przywrócono galerię dokładnie jak wcześniej
 - przywrócono 11 zdjęć galerii
 - wszystkie późniejsze poprawki strony zostały zachowane
+
+
+AKTUALIZACJA V24:
+- dodano funkcjonalny Kalendarz rozgrywek sezonu 2026/27
+- 9 kategorii z osobnymi zakładkami
+- daty pokazują się w czytelnej liście
+- na telefonie wybór kategorii przewija się poziomo, ale sama treść nie rozwala szerokości strony
+- pozostawiono odnośnik do oficjalnych wyników Polskiego Związku Unihokeja

@@ -10,7 +10,7 @@
 <meta name="description" content="Akademia Unihokeja Romgos w Kotlinie. Zamów stroje klubowe, sprawdź treningi i informacje o Akademii.">
 
 <!--
-  WERSJA V23 – GALERIA PRZYWRÓCONA
+  WERSJA V24 – KALENDARZ ROZGRYWEK 2026/27
   Bez folderów; wszystkie obrazy leżą obok index.html.
 
   WERSJA V4 – CZYSTA
@@ -1246,6 +1246,176 @@ video{
   }
 }
 
+
+/* =========================================================
+   V24 — KALENDARZ ROZGRYWEK 2026/27
+   ========================================================= */
+.league-category-tabs{
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  padding:2px 0 14px;
+  margin-bottom:14px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+}
+.league-tab{
+  flex:0 0 auto;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#34373c;
+  border-radius:999px;
+  padding:11px 15px;
+  font-size:11px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.18s;
+}
+.league-tab:hover{
+  border-color:#c9c9ce;
+  transform:translateY(-1px);
+}
+.league-tab.active{
+  background:var(--red);
+  color:#fff;
+  border-color:var(--red);
+}
+
+.league-panels{
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:#fff;
+  overflow:hidden;
+}
+.league-panel{
+  display:none;
+}
+.league-panel.active{
+  display:block;
+}
+.league-panel-head{
+  padding:22px 24px 18px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(135deg,#fff,#fafafa);
+}
+.league-panel-head span{
+  display:block;
+  color:var(--red);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.35px;
+  margin-bottom:6px;
+}
+.league-panel-head h3{
+  margin:0;
+  font-size:clamp(23px,3vw,34px);
+  line-height:1.05;
+}
+.league-events{
+  display:grid;
+}
+.league-event{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:18px;
+  align-items:center;
+  padding:16px 24px;
+  border-bottom:1px solid var(--line);
+}
+.league-event:last-child{
+  border-bottom:0;
+}
+.league-event time{
+  color:var(--red);
+  font-size:13px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.league-event strong{
+  display:block;
+  font-size:14px;
+  line-height:1.35;
+}
+.league-event small{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:10px;
+}
+.league-event:hover{
+  background:#fff8f8;
+}
+
+.league-source-card{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:22px;
+  align-items:center;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#fff;
+}
+.league-source-card .league-logo-box{
+  width:110px;
+  height:110px;
+}
+.league-source-card span{
+  color:var(--red);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.2px;
+}
+.league-source-card strong{
+  display:block;
+  margin:5px 0 7px;
+  font-size:22px;
+}
+.league-source-card p{
+  max-width:720px;
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+@media(max-width:680px){
+  .league-category-tabs{
+    margin-left:-4px;
+    margin-right:-4px;
+    padding-left:4px;
+    padding-right:4px;
+  }
+  .league-tab{
+    padding:10px 13px;
+  }
+  .league-panel-head{
+    padding:18px;
+  }
+  .league-event{
+    grid-template-columns:1fr;
+    gap:4px;
+    padding:15px 18px;
+  }
+  .league-event time{
+    font-size:12px;
+  }
+  .league-event strong{
+    font-size:13px;
+  }
+  .league-source-card{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .league-source-card .league-logo-box{
+    margin:0 auto;
+  }
+  .league-source-card p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+
 </style>
 </head>
 
@@ -1524,21 +1694,294 @@ video{
   </section>
 
   <section class="section section-soft" id="rozgrywki">
-    <div class="container league-grid">
-      <div class="reveal">
-        <span class="section-label">Mecze i wyniki</span>
-        <h2>Rozgrywki</h2>
-        <p style="color:var(--muted);max-width:620px">Aktualne wyniki i tabele mogą prowadzić bezpośrednio do serwisu Polskiego Związku Unihokeja, dzięki czemu nie trzeba ręcznie aktualizować wyników na stronie.</p>
-        <a class="btn btn-red" href="https://www.polskiunihokej.pl/component/joomsport/team/756/718" target="_blank" rel="noopener">Sprawdź rozgrywki →</a>
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-label">Sezon 2026/2027</span>
+          <h2>Kalendarz rozgrywek</h2>
+        </div>
       </div>
-      <div class="league-card reveal">
+
+      <div class="league-category-tabs reveal" aria-label="Kategorie rozgrywek">
+        <button type="button" class="league-tab active" data-league-tab="seniorzy">1 Liga mężczyzn</button>
+<button type="button" class="league-tab" data-league-tab="junior-wlkp">Junior młodszy – Wlkp.</button>
+<button type="button" class="league-tab" data-league-tab="junior-polska">Junior młodszy – Polska</button>
+<button type="button" class="league-tab" data-league-tab="juniorka-wlkp">Juniorka młodsza – Wlkp.</button>
+<button type="button" class="league-tab" data-league-tab="juniorka-polska">Juniorka młodsza – Polska</button>
+<button type="button" class="league-tab" data-league-tab="mlodzik">Młodzik kl. 5–6</button>
+<button type="button" class="league-tab" data-league-tab="mlodziczka">Młodziczka kl. 5–6</button>
+<button type="button" class="league-tab" data-league-tab="dzieci-chlopcy">Dzieci chłopcy kl. 1–4</button>
+<button type="button" class="league-tab" data-league-tab="dzieci-dziewczeta">Dzieci dziewczęta kl. 1–4</button>
+      </div>
+
+      <div class="league-panels reveal">
+        <div class="league-panel active" data-league-panel="seniorzy">
+        <div class="league-panel-head">
+          <span>SEZON 2026/27</span>
+          <h3>1 Liga mężczyzn</h3>
+        </div>
+        <div class="league-events">
+          <div class="league-event">
+            <time>13.09.2026</time>
+            <div><strong>Zielonka – Kotlin</strong></div>
+          </div>
+<div class="league-event">
+            <time>26.09.2026</time>
+            <div><strong>Kotlin – Łochów</strong></div>
+          </div>
+<div class="league-event">
+            <time>11.10.2026</time>
+            <div><strong>Niechanowo – Kotlin</strong></div>
+          </div>
+<div class="league-event">
+            <time>08.11.2026</time>
+            <div><strong>Kotlin – Toruń</strong></div>
+          </div>
+<div class="league-event">
+            <time>21.11.2026</time>
+            <div><strong>Siedlec – Kotlin</strong></div>
+          </div>
+<div class="league-event">
+            <time>29.11.2026</time>
+            <div><strong>Gdańsk – Kotlin</strong></div>
+          </div>
+<div class="league-event">
+            <time>06.12.2026</time>
+            <div><strong>Kotlin – Warszawa</strong></div>
+          </div>
+<div class="league-event">
+            <time>19.12.2026</time>
+            <div><strong>Łochów – Kotlin</strong></div>
+          </div>
+<div class="league-event">
+            <time>17.01.2027</time>
+            <div><strong>Kotlin – Siedlec</strong></div>
+          </div>
+<div class="league-event">
+            <time>30.01.2027</time>
+            <div><strong>Kotlin – Niechanowo</strong></div>
+          </div>
+<div class="league-event">
+            <time>13.02.2027</time>
+            <div><strong>Toruń – Kotlin</strong></div>
+          </div>
+<div class="league-event">
+            <time>13.03.2027</time>
+            <div><strong>Kotlin – Gdańsk</strong></div>
+          </div>
+<div class="league-event">
+            <time>03.04.2027</time>
+            <div><strong>Warszawa – Kotlin</strong></div>
+          </div>
+<div class="league-event">
+            <time>18.04.2027</time>
+            <div><strong>Kotlin – Zielonka</strong></div>
+          </div>
+        </div>
+      </div>
+<div class="league-panel" data-league-panel="junior-wlkp">
+        <div class="league-panel-head">
+          <span>SEZON 2026/27</span>
+          <h3>Junior młodszy – Wlkp.</h3>
+        </div>
+        <div class="league-events">
+          <div class="league-event">
+            <time>14.11.2026</time>
+            <div><strong>Gułtowy</strong><small>Wielkopolska Liga Unihokeja</small></div>
+          </div>
+<div class="league-event">
+            <time>05–06.12.2026</time>
+            <div><strong>Termin turniejowy</strong><small>dokładny dzień do potwierdzenia</small></div>
+          </div>
+<div class="league-event">
+            <time>06–07.02.2027</time>
+            <div><strong>Termin turniejowy</strong><small>dokładny dzień do potwierdzenia</small></div>
+          </div>
+        </div>
+      </div>
+<div class="league-panel" data-league-panel="junior-polska">
+        <div class="league-panel-head">
+          <span>SEZON 2026/27</span>
+          <h3>Junior młodszy – Polska</h3>
+        </div>
+        <div class="league-events">
+          <div class="league-event">
+            <time>10.10.2026</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>28.11.2026</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>10.01.2027</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>14.03.2027</time>
+            <div><strong>Turniej półfinałowy</strong></div>
+          </div>
+<div class="league-event">
+            <time>24–25.04.2027</time>
+            <div><strong>Turniej finałowy</strong></div>
+          </div>
+        </div>
+      </div>
+<div class="league-panel" data-league-panel="juniorka-wlkp">
+        <div class="league-panel-head">
+          <span>SEZON 2026/27</span>
+          <h3>Juniorka młodsza – Wlkp.</h3>
+        </div>
+        <div class="league-events">
+          <div class="league-event">
+            <time>08.11.2026</time>
+            <div><strong>Zaniemyśl</strong><small>Wielkopolska Liga Unihokeja</small></div>
+          </div>
+<div class="league-event">
+            <time>05–06.12.2026</time>
+            <div><strong>Termin turniejowy</strong><small>dokładny dzień do potwierdzenia</small></div>
+          </div>
+<div class="league-event">
+            <time>06–07.02.2027</time>
+            <div><strong>Termin turniejowy</strong><small>dokładny dzień do potwierdzenia</small></div>
+          </div>
+        </div>
+      </div>
+<div class="league-panel" data-league-panel="juniorka-polska">
+        <div class="league-panel-head">
+          <span>SEZON 2026/27</span>
+          <h3>Juniorka młodsza – Polska</h3>
+        </div>
+        <div class="league-events">
+          <div class="league-event">
+            <time>11.10.2026</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>29.11.2026</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>09.01.2027</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>13.03.2027</time>
+            <div><strong>Turniej półfinałowy</strong></div>
+          </div>
+<div class="league-event">
+            <time>24–25.04.2027</time>
+            <div><strong>Turniej finałowy</strong></div>
+          </div>
+        </div>
+      </div>
+<div class="league-panel" data-league-panel="mlodzik">
+        <div class="league-panel-head">
+          <span>SEZON 2026/27</span>
+          <h3>Młodzik kl. 5–6</h3>
+        </div>
+        <div class="league-events">
+          <div class="league-event">
+            <time>17–18.10.2026</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>14–15.11.2026</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>23–24.01.2027</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>07–08.03.2027</time>
+            <div><strong>Turniej półfinałowy</strong></div>
+          </div>
+<div class="league-event">
+            <time>17–18.04.2027</time>
+            <div><strong>Turniej finałowy</strong></div>
+          </div>
+        </div>
+      </div>
+<div class="league-panel" data-league-panel="mlodziczka">
+        <div class="league-panel-head">
+          <span>SEZON 2026/27</span>
+          <h3>Młodziczka kl. 5–6</h3>
+        </div>
+        <div class="league-events">
+          <div class="league-event">
+            <time>17–18.10.2026</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>14–15.11.2026</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>23–24.01.2027</time>
+            <div><strong>Turniej eliminacyjny</strong></div>
+          </div>
+<div class="league-event">
+            <time>07–08.03.2027</time>
+            <div><strong>Turniej półfinałowy</strong></div>
+          </div>
+<div class="league-event">
+            <time>17–18.04.2027</time>
+            <div><strong>Turniej finałowy</strong></div>
+          </div>
+        </div>
+      </div>
+<div class="league-panel" data-league-panel="dzieci-chlopcy">
+        <div class="league-panel-head">
+          <span>SEZON 2026/27</span>
+          <h3>Dzieci chłopcy kl. 1–4</h3>
+        </div>
+        <div class="league-events">
+          <div class="league-event">
+            <time>10–11.10.2026</time>
+            <div><strong>Termin turniejowy</strong></div>
+          </div>
+<div class="league-event">
+            <time>05–06.12.2026</time>
+            <div><strong>Termin turniejowy</strong></div>
+          </div>
+<div class="league-event">
+            <time>06–07.02.2027</time>
+            <div><strong>Termin turniejowy</strong></div>
+          </div>
+        </div>
+      </div>
+<div class="league-panel" data-league-panel="dzieci-dziewczeta">
+        <div class="league-panel-head">
+          <span>SEZON 2026/27</span>
+          <h3>Dzieci dziewczęta kl. 1–4</h3>
+        </div>
+        <div class="league-events">
+          <div class="league-event">
+            <time>10–11.10.2026</time>
+            <div><strong>Termin turniejowy</strong></div>
+          </div>
+<div class="league-event">
+            <time>05–06.12.2026</time>
+            <div><strong>Termin turniejowy</strong></div>
+          </div>
+<div class="league-event">
+            <time>06–07.02.2027</time>
+            <div><strong>Termin turniejowy</strong></div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="league-source-card reveal">
         <div class="league-logo-box">
           <img src="polski-unihokej-logo-2026.png" alt="Polski Związek Unihokeja">
         </div>
         <div>
-          <span>AKTUALNE ROZGRYWKI</span>
+          <span>WYNIKI I TABELE</span>
           <strong>Polski Związek Unihokeja</strong>
-          <p>Jedno miejsce z aktualnymi wynikami i tabelami.</p>
+          <p>Aktualne wyniki i oficjalne tabele rozgrywek można sprawdzić bezpośrednio w serwisie Polskiego Związku Unihokeja.</p>
+          <a class="btn btn-red" href="https://www.polskiunihokej.pl/component/joomsport/team/756/718" target="_blank" rel="noopener">Sprawdź wyniki →</a>
         </div>
       </div>
     </div>
@@ -1822,6 +2265,17 @@ function initReveal(){
 }
 document.querySelector("#year").textContent=new Date().getFullYear();
 renderProducts();renderCart();initReveal();
+
+document.querySelectorAll("[data-league-tab]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const key=btn.dataset.leagueTab;
+    document.querySelectorAll("[data-league-tab]").forEach(x=>x.classList.toggle("active",x===btn));
+    document.querySelectorAll("[data-league-panel]").forEach(panel=>{
+      panel.classList.toggle("active",panel.dataset.leaguePanel===key);
+    });
+  });
+});
+
 </script>
 </body>
 </html>
