@@ -2083,6 +2083,12 @@ video{
   </div>
 </footer>
 
+<!-- EmailJS: obsługa wysyłki zamówień -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
+<script>
+  emailjs.init({ publicKey: "gG1-ObPE1_1y2r2qf" });
+</script>
+
 <script>
 const products=[
   {id:"dres",name:"Dres klubowy",desc:"Bluza + spodnie. Nadesłana wizualizacja stroju Akademii.",price:0,image:"romgos-dres-2026.jpg",sizes:["128","140","152","164","S","M","L","XL"]},
@@ -2179,23 +2185,23 @@ document.querySelector("#orderForm").addEventListener("submit", async e=>{
   const shirtName = form.elements["shirtName"]?.value.trim() || "brak";
   const shirtNumber = form.elements["shirtNumber"]?.value.trim() || "brak";
 
-  const payload = {
-    "_subject": `NOWE ZAMÓWIENIE | ${form.elements["player"].value.trim()}`,
-    "_template": "table",
-    "_replyto": form.elements["email"].value.trim(),
-    "Rodzic / opiekun": form.elements["parent"].value.trim(),
-    "Zawodnik": form.elements["player"].value.trim(),
-    "E-mail zamawiającego": form.elements["email"].value.trim(),
-    "Telefon": form.elements["phone"].value.trim(),
-    "Grupa / rocznik": form.elements["group"].value.trim() || "nie podano",
-    "Imię / nazwisko na koszulce": shirtName,
-    "Numer zawodnika": shirtNumber,
-    "Sposób odbioru": form.elements["pickup"].value,
-    "Uwagi": form.elements["notes"].value.trim() || "brak",
-    "Zamówienie": orderLines,
-    "Łączna wartość": pln(total),
-    "Płatność": "przy odbiorze",
-    "Data wysłania": new Date().toLocaleString("pl-PL")
+  const templateParams = {
+    to_email: "dawidfrankowiak@wp.pl",
+    subject: `NOWE ZAMÓWIENIE | ${form.elements["player"].value.trim()}`,
+    reply_to: form.elements["email"].value.trim(),
+    parent: form.elements["parent"].value.trim(),
+    player: form.elements["player"].value.trim(),
+    customer_email: form.elements["email"].value.trim(),
+    phone: form.elements["phone"].value.trim(),
+    group: form.elements["group"].value.trim() || "nie podano",
+    shirt_name: shirtName,
+    shirt_number: shirtNumber,
+    pickup: form.elements["pickup"].value,
+    notes: form.elements["notes"].value.trim() || "brak",
+    order_lines: orderLines,
+    total: pln(total),
+    payment: "przy odbiorze",
+    date: new Date().toLocaleString("pl-PL")
   };
 
   submitBtn.disabled = true;
@@ -2204,19 +2210,14 @@ document.querySelector("#orderForm").addEventListener("submit", async e=>{
   status.textContent="Wysyłam zamówienie...";
 
   try{
-    const response = await fetch("https://formsubmit.co/ajax/dawidfrankowiak@wp.pl",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "Accept":"application/json"
-      },
-      body:JSON.stringify(payload)
-    });
+    const response = await emailjs.send(
+      "service_k586k84",
+      "template_pfjzwfv",
+      templateParams
+    );
 
-    const data = await response.json().catch(()=>({}));
-
-    if(!response.ok || data.success === "false" || data.success === false){
-      throw new Error(data.message || "Nie udało się wysłać formularza.");
+    if(response.status !== 200){
+      throw new Error("EmailJS nie potwierdził wysłania wiadomości.");
     }
 
     status.style.color="#27753a";
