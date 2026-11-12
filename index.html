@@ -1416,6 +1416,30 @@ video{
   }
 }
 
+
+/* V27 — czytelny tygodniowy plan treningów */
+.schedule-grid-current{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
+}
+.schedule-grid-current .schedule-day{
+  height:100%;
+}
+.schedule-grid-current .schedule-slot{
+  padding:16px 20px;
+}
+.schedule-grid-current .schedule-slot strong{
+  font-size:17px;
+  margin-bottom:6px;
+}
+.schedule-grid-current .schedule-slot p{
+  font-size:13px;
+  line-height:1.55;
+}
+@media(max-width:980px){
+  .schedule-grid-current{grid-template-columns:1fr;}
+}
+
 </style>
 </head>
 
@@ -1488,49 +1512,40 @@ video{
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <span class="section-label">Aktualny plan zajęć</span>
+          <span class="section-label">Plan tygodnia</span>
           <h2>Treningi Akademii</h2>
         </div>
-        <p>Ten harmonogram obowiązuje od <strong>29.09 do 31.10.2026</strong>. Po tym terminie plan zajęć może zostać zaktualizowany.</p>
       </div>
 
-      <div class="schedule-validity reveal">
-<div class="schedule-grid schedule-grid-current">
-  <article class="schedule-day reveal">
-    <div class="schedule-day-head"><span>PN</span><h3>Poniedziałek</h3></div>
-    <div class="schedule-slot schedule-slot-large"><strong>16:30–17:30</strong><p>Chłopcy klasy 2–4</p></div>
-    <div class="schedule-slot schedule-slot-large"><strong>17:30–18:30</strong><p>Przedszkole + 1 klasa</p></div>
-    <div class="schedule-slot schedule-slot-large"><strong>18:30–20:00</strong><p>Chłopcy klasy 5–8<br>Seniorzy</p></div>
-  </article>
+      <div class="schedule-grid schedule-grid-current">
+        <article class="schedule-day reveal">
+          <div class="schedule-day-head"><span>PN</span><h3>Poniedziałek</h3></div>
+          <div class="schedule-slot"><strong>16:30–17:30</strong><p>Chłopcy klasy 2–4</p></div>
+          <div class="schedule-slot"><strong>17:30–18:30</strong><p>Przedszkole + 1. klasa</p></div>
+          <div class="schedule-slot"><strong>18:30–20:00</strong><p>Chłopcy klasy 5–8 + seniorzy</p></div>
+        </article>
 
-  <article class="schedule-day reveal">
-    <div class="schedule-day-head"><span>WT</span><h3>Wtorek</h3></div>
-    <div class="schedule-slot schedule-slot-large"><strong>16:00–17:30</strong><p>Dziewczęta klasy 2–6</p></div>
-  </article>
+        <article class="schedule-day reveal">
+          <div class="schedule-day-head"><span>WT</span><h3>Wtorek</h3></div>
+          <div class="schedule-slot"><strong>16:00–17:30</strong><p>Dziewczęta klasy 2–6</p></div>
+        </article>
 
-  <article class="schedule-day reveal">
-    <div class="schedule-day-head"><span>ŚR</span><h3>Środa</h3></div>
-    <div class="schedule-slot schedule-slot-large"><strong>16:20–17:30</strong><p>Chłopcy klasy 2–4</p></div>
-    <div class="schedule-slot schedule-slot-large"><strong>17:30–19:00</strong><p>Chłopcy klasy 5–6<br>Dziewczęta klasy 7–8</p></div>
-    <div class="schedule-slot schedule-slot-large"><strong>19:00–20:30</strong><p>Chłopcy klasy 7–8<br>Seniorzy</p></div>
-  </article>
+        <article class="schedule-day reveal">
+          <div class="schedule-day-head"><span>ŚR</span><h3>Środa</h3></div>
+          <div class="schedule-slot"><strong>16:20–17:30</strong><p>Chłopcy klasy 2–4</p></div>
+          <div class="schedule-slot"><strong>17:30–19:00</strong><p>Chłopcy klasy 5–6 + dziewczęta klasy 7–8</p></div>
+          <div class="schedule-slot"><strong>19:00–20:30</strong><p>Chłopcy klasy 7–8 + seniorzy</p></div>
+        </article>
 
-  <article class="schedule-day reveal">
-    <div class="schedule-day-head"><span>CZW</span><h3>Czwartek</h3></div>
-    <div class="schedule-slot schedule-slot-large"><strong>16:00–17:30</strong><p>Dziewczęta klasy 2–6</p></div>
-  </article>
-
-  <article class="schedule-day reveal">
-    <div class="schedule-day-head"><span>PT</span><h3>Piątek</h3></div>
-    <div class="schedule-slot schedule-slot-large"><strong>16:30–20:00</strong><p>Chłopcy klasy 7–8<br>Seniorzy</p></div>
-  </article>
-</div>
+        <article class="schedule-day reveal">
+          <div class="schedule-day-head"><span>CZW</span><h3>Czwartek</h3></div>
+          <div class="schedule-slot"><strong>16:00–17:30</strong><p>Dziewczęta klasy 2–6</p></div>
+        </article>
 
         <article class="schedule-day reveal">
           <div class="schedule-day-head"><span>PT</span><h3>Piątek</h3></div>
-          <div class="schedule-slot schedule-slot-large"><strong>16:30–20:00</strong><p>Chłopcy klasa 7–8<br>Seniorzy</p></div>
+          <div class="schedule-slot"><strong>16:30–20:00</strong><p>Chłopcy klasy 7–8 + seniorzy</p></div>
         </article>
-        
       </div>
     </div>
   </section>
